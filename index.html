@@ -3,76 +3,549 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Каталог елей — тестовая версия</title>
+    <meta name="theme-color" content="#092d23" />
+    <title>Искусственные ели — каталог в наличии</title>
+    <link rel="preload" as="image" href="public/catalog-live/afrodita-hero.jpg" />
     <style>
-      :root{--ink:#123b30;--deep:#092d23;--pine:#285e4a;--paper:#faf9f4;--mist:#edf1eb;--line:rgba(18,59,48,.16);--serif:Georgia,"Times New Roman",serif;--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.shell{width:min(1180px,calc(100% - 48px));margin:auto}.hero{min-height:760px;color:#fff;position:relative;overflow:hidden;background:var(--deep)}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#082e24 0%,#082e24 36%,rgba(8,46,36,.92) 50%,rgba(8,46,36,.25) 68%,rgba(8,46,36,.12) 100%),linear-gradient(0deg,rgba(8,46,36,.28),transparent 52%),url('public/catalog-live/afrodita-hero.jpg') 86% bottom/auto 100% no-repeat}.hero .shell{min-height:760px;position:relative;display:flex;flex-direction:column}.topbar{height:98px;display:flex;align-items:center;gap:28px;border-bottom:1px solid rgba(255,255,255,.22)}.brand{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:11px;line-height:1.2}.brand i{font:400 22px var(--serif);width:31px;height:31px;display:grid;place-items:center;border:1px solid currentColor;border-radius:50%;font-style:normal}.nav{margin-left:auto;color:#fff;opacity:.85;font-size:14px}.outline,.primary,.light{border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:24px;transition:.2s}.outline{border-color:rgba(255,255,255,.55);color:#fff;background:transparent;padding:12px 17px;font-size:13px}.outline:hover,.primary:hover,.light:hover{transform:translateY(-2px)}.hero-copy{max-width:650px;margin:auto 0;padding:80px 0 50px}.eyebrow{margin:0 0 20px;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:700;opacity:.84}.hero h1,.catalog h2,.callout h2,.detail h2{font:400 clamp(48px,6vw,82px)/.95 var(--serif);letter-spacing:-.05em;margin:0 0 26px}.hero h1 em{font-style:italic;color:#d4e2aa}.hero-copy>p:not(.eyebrow){font-size:18px;line-height:1.55;max-width:520px;color:rgba(255,255,255,.84);margin:0}.hero-actions{display:flex;gap:24px;align-items:center;margin-top:36px}.primary{background:var(--pine);color:#fff;padding:16px 18px;font-size:14px;font-weight:700}.hero-actions small{color:rgba(255,255,255,.68);line-height:1.5}.hero-note{margin-bottom:28px;color:rgba(255,255,255,.72);font-size:12px;display:flex;align-items:center;gap:10px}.dot{width:8px;height:8px;border-radius:50%;background:#d4e2aa}.divider{height:14px;border-left:1px solid rgba(255,255,255,.45)}.trust{background:#dce6d3;padding:26px 0}.trust .shell{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.trust p{margin:0;padding-right:25px;border-right:1px solid rgba(18,59,48,.2)}.trust p:last-child{border:0}.trust strong,.trust span{display:block}.trust strong{font:400 19px var(--serif)}.trust span{margin-top:5px;font-size:12px;opacity:.7}.catalog{padding:110px 0 120px}.catalog-head{display:flex;align-items:end;justify-content:space-between;gap:48px;border-bottom:1px solid var(--line);padding-bottom:37px}.dark{color:var(--pine);opacity:1}.catalog h2,.callout h2,.detail h2{font-size:clamp(40px,5vw,62px);margin:0}.catalog-intro{max-width:370px;font-size:15px;line-height:1.6;opacity:.72;margin:0}.filters{display:flex;gap:42px;flex-wrap:wrap;padding:27px 0 18px}.filter label{display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;opacity:.55}.pills{display:flex;gap:7px;flex-wrap:wrap}.pill{border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 12px;font-size:13px}.pill.active,.pill:hover{background:var(--pine);border-color:var(--pine);color:#fff}.count{font-size:12px;opacity:.58;margin:0 0 25px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 20px}.card-image{width:100%;height:405px;padding:0;border:0;position:relative;overflow:hidden;background:#e8ece5;text-align:left}.card-image:after{content:"";pointer-events:none;position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,36,28,.55),transparent 42%)}.card-image img{width:100%;height:100%;object-fit:cover;object-position:18% center;transition:.5s}.card-image:hover img{transform:scale(1.035)}.photo-label,.badge{z-index:1;position:absolute;font-size:11px;font-weight:700}.photo-label{left:16px;bottom:15px;color:#fff}.badge{top:14px;left:14px;background:rgba(255,255,255,.92);padding:7px 9px;color:var(--ink);text-transform:uppercase;letter-spacing:.05em}.info{padding:17px 4px 0}.type{margin:0 0 8px;color:var(--pine);font-size:12px}.info h3{margin:0 0 15px;font:400 29px var(--serif);letter-spacing:-.035em}.sizes{margin:0 0 14px;font-size:12px;color:rgba(18,59,48,.7)}.sizes b{color:var(--ink);margin-right:7px}.price{margin:0 0 18px;display:flex;gap:6px;align-items:baseline}.price span{font-size:12px;opacity:.58}.price strong{font:400 22px var(--serif)}.text{border:0;background:transparent;color:var(--pine);padding:0;font-size:13px;font-weight:700}.more{display:block;width:100%;border:1px solid var(--line);background:transparent;color:var(--ink);padding:17px;margin-top:47px;font-size:14px}.callout{background:var(--ink);color:#fff;padding:80px 0}.callout .shell{display:grid;grid-template-columns:1.25fr .7fr auto;align-items:center;gap:42px}.callout h2{font-size:clamp(36px,4vw,53px)}.callout p:not(.eyebrow){margin:0;color:rgba(255,255,255,.72);font-size:15px;line-height:1.65}.light{background:#dce6d3;color:var(--ink);padding:16px 18px;white-space:nowrap;font-size:13px;font-weight:700}.footer{display:flex;justify-content:space-between;align-items:center;padding:35px 0 40px}.footer p{margin:0;text-align:right;color:rgba(18,59,48,.62);font-size:12px;line-height:1.5}.modal{position:fixed;z-index:5;inset:0;background:rgba(7,31,25,.72);padding:24px;display:none;place-items:center}.modal.open{display:grid}.detail{position:relative;width:min(940px,100%);max-height:calc(100vh - 48px);overflow:auto;background:var(--paper);display:grid;grid-template-columns:1fr 1fr}.close{position:absolute;z-index:2;right:13px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);font-size:28px;color:var(--ink)}.detail-image{min-height:580px;position:relative;overflow:hidden;background:#e7ece4}.detail-image img{width:100%;height:100%;object-fit:cover;object-position:18% center}.detail-image span{position:absolute;left:15px;bottom:15px;background:rgba(7,31,25,.62);color:#fff;padding:7px 9px;font-size:11px}.detail-copy{padding:58px 44px 42px}.detail h2{font-size:48px;margin-bottom:11px}.detail-sub{line-height:1.5;opacity:.72}.detail-price{font:400 30px var(--serif);margin:25px 0 17px}.height-options{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}.height-option{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 12px;font-size:13px}.height-option.active,.height-option:hover{background:var(--pine);border-color:var(--pine);color:#fff}dl{margin:0;border-top:1px solid var(--line)}dl div{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}dt{opacity:.6}dd{margin:0;text-align:right;font-weight:700}.notice{font-size:12px;line-height:1.5;color:rgba(18,59,48,.78);padding:14px 0}.full{width:100%}@media(max-width:820px){.shell{width:min(100% - 32px,620px)}.hero,.hero .shell{min-height:720px}.hero:before{background:linear-gradient(180deg,#082e24 0%,rgba(8,46,36,.96) 43%,rgba(8,46,36,.28) 100%),url('public/catalog-live/afrodita-hero.jpg') 68% bottom/auto 69% no-repeat}.topbar{height:76px;gap:14px}.nav{display:none}.outline{margin-left:auto;padding:10px 12px;font-size:11px}.hero-copy{padding:75px 0 30px}.hero-copy>p:not(.eyebrow){font-size:16px}.hero-actions{flex-direction:column;align-items:start;gap:15px;margin-top:30px}.trust .shell,.grid,.callout .shell,.detail{grid-template-columns:1fr}.trust .shell{gap:15px}.trust p{padding:0 0 15px;border-right:0;border-bottom:1px solid rgba(18,59,48,.18)}.trust p:last-child{padding:0;border:0}.catalog{padding:74px 0}.catalog-head{align-items:start;flex-direction:column;gap:22px;padding-bottom:26px}.filters{gap:21px}.grid{gap:32px}.card-image{height:445px}.callout{padding:62px 0}.callout .shell{gap:25px}.light{width:max-content}.footer{align-items:start;flex-direction:column;gap:22px}.footer p{text-align:left}.detail-image{min-height:310px;height:390px}.detail-copy{padding:34px 26px 30px}.modal{padding:16px}}
-    </style>
-    <style>
-      .gallery{width:100%;margin:0 0 12px;padding:13px 15px;color:var(--pine);border-color:var(--line);background:transparent}
-      .detail-media{min-width:0;display:flex;flex-direction:column;background:#e7ece4}.detail-image{min-height:530px;flex:1}.detail-image img,.detail-image video{width:100%;height:100%;display:block;object-fit:cover;object-position:center}.detail-image video{background:#092d23}.gallery-thumbs{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#e9ece6;scrollbar-width:thin}.gallery-thumb{width:56px;height:56px;flex:0 0 56px;overflow:hidden;border:1px solid transparent;background:#f7f6f1;color:var(--ink);padding:0;font-size:10px;font-weight:700}.gallery-thumb.active{border:2px solid var(--pine)}.gallery-thumb img{width:100%;height:100%;display:block;object-fit:cover}.gallery-thumb.video{display:grid;place-items:center;background:var(--ink);color:#fff}
-      @media(max-width:820px){
-        .outline{min-height:44px}.hero h1{font-size:clamp(42px,12.8vw,49px)}.primary,.light{min-height:48px}.pill,.height-option{min-height:44px}.detail-media{order:1}.detail-copy{order:2;padding:31px 22px 28px}.detail-image{min-height:235px;height:285px}.gallery-thumbs{padding:9px 12px}.detail h2{font-size:clamp(36px,11vw,42px)}.detail-price{margin-bottom:18px}.gallery{min-height:48px}
+      :root {
+        --ink: #123b30;
+        --deep: #092d23;
+        --pine: #285e4a;
+        --paper: #faf9f4;
+        --mist: #edf1eb;
+        --line: rgba(18, 59, 48, .16);
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --ease-out: cubic-bezier(.23, 1, .32, 1);
       }
-    </style>
-    <style>
-      /* Mobile-first repair: imagery never sits underneath the sales copy. */
-      .hero::before{content:none}
-      .hero{background:var(--deep)}
-      .hero .shell{isolation:isolate}
-      .hero-visual{position:absolute;z-index:0;top:0;right:0;bottom:0;width:51%;background:linear-gradient(90deg,var(--deep) 0%,rgba(9,45,35,.96) 8%,rgba(9,45,35,.20) 38%,rgba(9,45,35,.04) 100%),url('public/catalog-live/afrodita-hero.jpg') center bottom/cover no-repeat}
-      .hero-copy,.topbar,.hero-note{position:relative;z-index:1}
-      .hero-copy{max-width:525px}
-      .hero h1{font-size:clamp(48px,5vw,68px)}
-      .card-image img{object-fit:contain;object-position:center}
-      .detail{align-items:start}
-      .detail-media{align-self:start}
-      .detail-image{min-height:0;height:auto;aspect-ratio:3/4;flex:0 0 auto}
-      .detail-image img,.detail-image video{object-fit:contain;object-position:center}
-      @media(max-width:820px){
-        .hero,.hero .shell{min-height:0}
-        .hero .shell{display:flex}
-        .hero-visual{position:relative;z-index:1;top:auto;right:auto;bottom:auto;order:3;width:100%;height:300px;margin:0;background:linear-gradient(180deg,var(--deep) 0%,rgba(9,45,35,.12) 32%,rgba(9,45,35,.06) 74%,var(--deep) 100%),url('public/catalog-live/afrodita-hero.jpg') center 63%/cover no-repeat}
-        .hero-copy{order:2;max-width:none;margin:0;padding:54px 0 22px}
-        .hero-copy>p:not(.eyebrow){font-size:16px}
-        .hero-actions{margin-top:24px}
-        .hero-note{order:4;margin:18px 0 28px}
-        .card-image{height:auto;aspect-ratio:3/4}
-        .modal{padding:0;align-items:stretch}
-        .detail{width:100%;min-height:100dvh;max-height:100dvh;overflow-y:auto}
-        .detail-media{width:100%}
-        .detail-image{height:min(52dvh,430px);aspect-ratio:auto}
-        .close{position:fixed;right:14px;top:14px;box-shadow:0 4px 18px rgba(7,31,25,.18)}
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+      body.modal-open { overflow: hidden; }
+      button, a { font: inherit; }
+      button { cursor: pointer; }
+      a { color: inherit; text-decoration: none; }
+      button:focus-visible, a:focus-visible { outline: 2px solid #d4e2aa; outline-offset: 3px; }
+      .shell { width: min(1180px, calc(100% - 48px)); margin: auto; }
+
+      .hero { min-height: 760px; position: relative; overflow: hidden; color: #fff; background: var(--deep); }
+      .hero .shell { min-height: 760px; position: relative; display: flex; flex-direction: column; isolation: isolate; }
+      .hero-visual { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; width: 51%; background: linear-gradient(90deg, var(--deep) 0%, rgba(9,45,35,.96) 8%, rgba(9,45,35,.20) 38%, rgba(9,45,35,.04) 100%), url('public/catalog-live/afrodita-hero.jpg') center bottom / cover no-repeat; }
+      .topbar, .hero-copy, .hero-note { position: relative; z-index: 1; }
+      .topbar { min-height: 98px; display: flex; align-items: center; gap: 28px; border-bottom: 1px solid rgba(255,255,255,.22); }
+      .brand { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; font-weight: 700; line-height: 1.2; }
+      .brand i { display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid currentColor; border-radius: 50%; font: 400 22px var(--serif); font-style: normal; letter-spacing: 0; }
+      .nav { margin-left: auto; color: rgba(255,255,255,.85); font-size: 14px; }
+      .outline, .primary, .light { display: inline-flex; align-items: center; justify-content: center; gap: 16px; border: 1px solid transparent; transition: transform 180ms var(--ease-out), background-color 180ms ease, border-color 180ms ease; }
+      .outline { padding: 12px 17px; border-color: rgba(255,255,255,.55); color: #fff; background: transparent; font-size: 13px; }
+      .primary { padding: 16px 18px; color: #fff; background: var(--pine); font-size: 14px; font-weight: 700; }
+      .light { padding: 16px 18px; color: var(--ink); background: #dce6d3; white-space: nowrap; font-size: 13px; font-weight: 700; }
+      .outline:hover, .primary:hover, .light:hover { transform: translateY(-2px); }
+      .outline:active, .primary:active, .light:active { transform: scale(.975); }
+      .hero-copy { max-width: 525px; margin: auto 0; padding: 80px 0 50px; }
+      .eyebrow { margin: 0 0 20px; text-transform: uppercase; letter-spacing: .14em; font-size: 11px; font-weight: 700; opacity: .84; }
+      .dark { color: var(--pine); opacity: 1; }
+      .hero h1, .catalog h2, .callout h2, .detail h2 { margin: 0 0 26px; font: 400 clamp(48px, 5vw, 68px) / .95 var(--serif); letter-spacing: -.05em; }
+      .hero h1 em { color: #d4e2aa; font-style: italic; }
+      .hero-copy > p:not(.eyebrow) { max-width: 520px; margin: 0; color: rgba(255,255,255,.84); font-size: 18px; line-height: 1.55; }
+      .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 36px; }
+      .hero-actions small { max-width: 230px; color: rgba(255,255,255,.68); font-size: 12px; line-height: 1.5; }
+      .hero-note { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; color: rgba(255,255,255,.72); font-size: 12px; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #d4e2aa; }
+      .divider { height: 14px; border-left: 1px solid rgba(255,255,255,.45); }
+
+      .trust { padding: 26px 0; background: #dce6d3; }
+      .trust .shell { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+      .trust p { margin: 0; padding-right: 25px; border-right: 1px solid rgba(18,59,48,.2); }
+      .trust p:last-child { border: 0; }
+      .trust strong, .trust span { display: block; }
+      .trust strong { font: 400 19px var(--serif); }
+      .trust span { margin-top: 5px; font-size: 12px; opacity: .7; }
+
+      .catalog { padding: 110px 0 120px; }
+      .catalog-head { display: flex; align-items: end; justify-content: space-between; gap: 48px; padding-bottom: 37px; border-bottom: 1px solid var(--line); }
+      .catalog h2, .callout h2, .detail h2 { margin: 0; font-size: clamp(40px, 5vw, 62px); }
+      .catalog-intro { max-width: 370px; margin: 0; font-size: 15px; line-height: 1.6; opacity: .72; }
+      .filters { display: flex; flex-wrap: wrap; gap: 42px; padding: 27px 0 18px; }
+      .filter label { display: block; margin-bottom: 10px; text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 700; opacity: .55; }
+      .pills { display: flex; flex-wrap: wrap; gap: 7px; }
+      .pill { min-height: 40px; padding: 9px 12px; border: 1px solid var(--line); color: var(--ink); background: transparent; font-size: 13px; transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 160ms var(--ease-out); }
+      .pill.active, .pill:hover { border-color: var(--pine); color: #fff; background: var(--pine); }
+      .pill:active, .height-option:active { transform: scale(.97); }
+      .count { margin: 0 0 25px; font-size: 12px; opacity: .58; }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 20px; }
+      .card-image { position: relative; width: 100%; height: 405px; padding: 0; overflow: hidden; border: 0; background: #e8ece5; text-align: left; transition: transform 180ms var(--ease-out); }
+      .card-image::after { position: absolute; inset: 0; pointer-events: none; content: ""; background: linear-gradient(0deg, rgba(5,36,28,.55), transparent 42%); }
+      .card-image img { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform 360ms var(--ease-out); }
+      @media (hover: hover) and (pointer: fine) { .card-image:hover img { transform: scale(1.025); } }
+      .card-image:active { transform: scale(.99); }
+      .photo-label, .badge { position: absolute; z-index: 1; font-size: 11px; font-weight: 700; }
+      .photo-label { bottom: 15px; left: 16px; display: inline-flex; align-items: center; gap: 6px; color: #fff; }
+      .badge { top: 14px; left: 14px; padding: 7px 9px; color: var(--ink); background: rgba(255,255,255,.92); text-transform: uppercase; letter-spacing: .05em; }
+      .info { padding: 17px 4px 0; }
+      .type { margin: 0 0 8px; color: var(--pine); font-size: 12px; }
+      .info h3 { margin: 0 0 15px; font: 400 29px var(--serif); letter-spacing: -.035em; }
+      .sizes { margin: 0 0 14px; color: rgba(18,59,48,.7); font-size: 12px; }
+      .sizes b { margin-right: 7px; color: var(--ink); }
+      .price { display: flex; align-items: baseline; gap: 6px; margin: 0 0 18px; }
+      .price span { font-size: 12px; opacity: .58; }
+      .price strong { font: 400 22px var(--serif); }
+      .text { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; color: var(--pine); background: transparent; font-size: 13px; font-weight: 700; transition: transform 160ms var(--ease-out); }
+      .text:active { transform: scale(.97); }
+      .more { display: block; width: 100%; margin-top: 47px; padding: 17px; border: 1px solid var(--line); color: var(--ink); background: transparent; font-size: 14px; }
+
+      .callout { padding: 80px 0; color: #fff; background: var(--ink); }
+      .callout .shell { display: grid; grid-template-columns: 1.25fr .7fr auto; align-items: center; gap: 42px; }
+      .callout h2 { font-size: clamp(36px, 4vw, 53px); }
+      .callout p:not(.eyebrow) { margin: 0; color: rgba(255,255,255,.72); font-size: 15px; line-height: 1.65; }
+      .footer { display: flex; align-items: center; justify-content: space-between; padding: 35px 0 40px; }
+      .footer p { margin: 0; color: rgba(18,59,48,.62); text-align: right; font-size: 12px; line-height: 1.5; }
+
+      .modal { position: fixed; z-index: 20; inset: 0; display: none; place-items: center; padding: 30px; background: rgba(7,31,25,.72); }
+      .modal.open { display: grid; }
+      .detail { position: relative; display: grid; grid-template-columns: 1.02fr .98fr; align-items: start; width: min(960px, 100%); max-height: min(720px, calc(100vh - 60px)); overflow: auto; background: var(--paper); }
+      .close { position: absolute; z-index: 5; top: 12px; right: 13px; display: grid; width: 40px; height: 40px; place-items: center; border: 0; border-radius: 50%; color: var(--ink); background: rgba(255,255,255,.94); box-shadow: 0 4px 18px rgba(7,31,25,.11); font-size: 26px; line-height: 1; transition: transform 180ms var(--ease-out); }
+      .close:active { transform: scale(.94); }
+      .detail-media { display: flex; min-width: 0; flex-direction: column; align-self: start; background: #e7ece4; }
+      .detail-image { position: relative; min-height: 0; flex: 0 0 auto; overflow: hidden; background: #e7ece4; aspect-ratio: 3 / 4; }
+      .detail-image img, .detail-image video { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+      .detail-image video { background: #092d23; }
+      .gallery-control, .fullscreen { position: absolute; z-index: 2; border: 0; color: #fff; background: rgba(7,31,25,.68); transition: transform 180ms var(--ease-out), background-color 180ms ease; }
+      .gallery-control { top: 50%; width: 42px; height: 42px; border-radius: 50%; transform: translateY(-50%); font-size: 26px; line-height: 1; }
+      .gallery-control:hover, .fullscreen:hover { background: rgba(7,31,25,.88); }
+      .gallery-control:active { transform: translateY(-50%) scale(.94); }
+      .gallery-prev { left: 14px; }
+      .gallery-next { right: 14px; }
+      .fullscreen { right: 14px; bottom: 14px; min-height: 34px; padding: 0 10px; font-size: 10px; font-weight: 700; }
+      .fullscreen:active { transform: scale(.96); }
+      .detail-label { position: absolute; z-index: 2; bottom: 15px; left: 16px; right: 76px; display: flex; align-items: end; justify-content: space-between; gap: 10px; color: #fff; font-size: 11px; }
+      .detail-label span, .detail-label b { padding: 7px 9px; background: rgba(7,31,25,.62); }
+      .detail-label b { font-size: 10px; white-space: nowrap; }
+      .gallery-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 12px; background: #e9ece6; scrollbar-width: thin; }
+      .gallery-thumbs.six { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); overflow: hidden; }
+      .gallery-thumb { width: 56px; height: 56px; min-width: 56px; padding: 0; overflow: hidden; border: 1px solid transparent; color: var(--ink); background: #f7f6f1; font-size: 10px; font-weight: 700; transition: transform 160ms var(--ease-out), border-color 160ms ease; }
+      .gallery-thumbs.six .gallery-thumb { width: auto; min-width: 0; }
+      .gallery-thumb.active { border: 2px solid var(--pine); }
+      .gallery-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; background: #dfe7dc; }
+      .gallery-thumb.video { display: grid; place-items: center; color: #fff; background: var(--ink); }
+      .gallery-thumb:active { transform: scale(.94); }
+      .detail-copy { padding: 58px 44px 42px; }
+      .detail h2 { margin-bottom: 11px; font-size: 48px; }
+      .detail-sub { margin: 0; line-height: 1.5; opacity: .72; }
+      .detail-price { margin: 25px 0 17px; font: 400 30px var(--serif); }
+      .height-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+      .height-option { padding: 9px 12px; border: 1px solid var(--line); color: var(--ink); background: #fff; font-size: 13px; transition: transform 160ms var(--ease-out), background-color 160ms ease, color 160ms ease; }
+      .height-option.active, .height-option:hover { border-color: var(--pine); color: #fff; background: var(--pine); }
+      dl { margin: 0; border-top: 1px solid var(--line); }
+      dl div { display: flex; justify-content: space-between; gap: 15px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+      dt { opacity: .6; }
+      dd { margin: 0; text-align: right; font-weight: 700; }
+      .notice { padding: 14px 0; color: rgba(18,59,48,.78); font-size: 12px; line-height: 1.5; }
+      .gallery { width: 100%; margin: 0 0 12px; padding: 13px 15px; color: var(--pine); border-color: var(--line); background: transparent; }
+      .full { width: 100%; }
+
+      .lightbox { position: fixed; z-index: 40; inset: 0; display: none; place-items: center; padding: 16px; color: #fff; background: rgba(4,20,16,.96); }
+      .lightbox.open { display: grid; }
+      .lightbox-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: min(1100px, 100%); height: min(820px, 100%); }
+      .lightbox-topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 14px; }
+      .lightbox-topbar p, .lightbox-hint { margin: 0; color: rgba(255,255,255,.72); font-size: 12px; }
+      .lightbox-actions { display: flex; gap: 7px; }
+      .lightbox-actions button, .lightbox-nav { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; color: #fff; background: rgba(255,255,255,.08); font-size: 21px; transition: transform 180ms var(--ease-out), background-color 180ms ease, opacity 180ms ease; }
+      .lightbox-actions button:hover, .lightbox-nav:hover { background: rgba(255,255,255,.2); }
+      .lightbox-actions button:active, .lightbox-nav:active { transform: scale(.94); }
+      .lightbox-actions button:disabled { cursor: default; opacity: .35; }
+      .lightbox-stage { position: relative; display: grid; min-height: 0; place-items: center; overflow: hidden; }
+      .lightbox-stage img { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center; transition: transform 220ms var(--ease-out); }
+      .lightbox-nav { position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); }
+      .lightbox-nav:active { transform: translateY(-50%) scale(.94); }
+      .lightbox-prev { left: 4px; }
+      .lightbox-next { right: 4px; }
+      .lightbox-hint { padding-top: 14px; text-align: center; }
+
+      @media (max-width: 820px) {
+        .shell { width: min(100% - 32px, 620px); }
+        .hero, .hero .shell { min-height: 0; }
+        .hero .shell { display: flex; }
+        .hero-visual { position: relative; z-index: 1; top: auto; right: auto; bottom: auto; order: 3; width: 100%; height: 330px; margin: 10px 0 0; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(9,45,35,.35) 0%, rgba(9,45,35,.02) 34%, rgba(9,45,35,.12) 74%, var(--deep) 100%), url('public/catalog-live/afrodita-hero.jpg') center 63% / cover no-repeat; }
+        .topbar { min-height: 76px; gap: 14px; }
+        .nav { display: none; }
+        .outline { min-height: 44px; margin-left: auto; padding: 10px 12px; font-size: 11px; }
+        .hero-copy { order: 2; max-width: none; margin: 0; padding: 50px 0 16px; }
+        .hero h1 { font-size: clamp(42px, 12.8vw, 49px); }
+        .hero-copy > p:not(.eyebrow) { font-size: 16px; }
+        .hero-actions { align-items: start; flex-direction: column; gap: 15px; margin-top: 24px; }
+        .hero-actions small { max-width: 300px; }
+        .hero-note { order: 4; margin: 18px 0 28px; font-size: 11px; }
+        .primary, .light { min-height: 48px; }
+        .trust .shell, .grid, .callout .shell, .detail { grid-template-columns: 1fr; }
+        .trust .shell { gap: 15px; }
+        .trust p { padding: 0 0 15px; border-right: 0; border-bottom: 1px solid rgba(18,59,48,.18); }
+        .trust p:last-child { padding: 0; border: 0; }
+        .catalog { padding: 74px 0; }
+        .catalog-head { align-items: start; flex-direction: column; gap: 22px; padding-bottom: 26px; }
+        .filters { gap: 21px; }
+        .pill, .height-option { min-height: 44px; }
+        .grid { gap: 26px; }
+        .card-image { height: auto; aspect-ratio: 3 / 4; }
+        .info { padding: 14px 6px 0; }
+        .type { margin-bottom: 6px; }
+        .info h3 { margin-bottom: 12px; }
+        .price { margin-bottom: 14px; }
+        .callout { padding: 62px 0; }
+        .callout .shell { gap: 25px; }
+        .light { width: max-content; }
+        .footer { align-items: start; flex-direction: column; gap: 22px; }
+        .footer p { text-align: left; }
+        .modal { padding: 0; place-items: stretch; }
+        .detail { width: 100%; min-height: 100dvh; max-height: 100dvh; overflow-y: auto; }
+        .detail-media { width: 100%; order: 1; }
+        .detail-copy { order: 2; padding: 31px 22px 28px; }
+        .detail-image { height: min(46dvh, 400px); aspect-ratio: auto; }
+        .close { position: fixed; top: 14px; right: 14px; }
+        .gallery-control { width: 38px; height: 38px; }
+        .gallery-prev { left: 10px; }
+        .gallery-next { right: 10px; }
+        .fullscreen { right: 10px; bottom: 10px; width: 34px; min-height: 32px; padding: 0; font-size: 0; }
+        .fullscreen::after { content: "⛶"; font-size: 17px; }
+        .detail-label { right: 58px; bottom: 10px; left: 12px; }
+        .detail-label span { max-width: 215px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .gallery-thumbs { gap: 6px; padding: 9px 12px; }
+        .gallery-thumb { width: 48px; height: 48px; min-width: 48px; }
+        .detail h2 { font-size: clamp(36px, 11vw, 42px); }
+        .detail-price { margin-bottom: 18px; }
+        .gallery { min-height: 48px; }
+        .lightbox { padding: 12px; }
+        .lightbox-panel { height: 100%; }
+        .lightbox-topbar { padding-bottom: 10px; }
+        .lightbox-topbar p { max-width: 45vw; }
+        .lightbox-actions button, .lightbox-nav { width: 38px; height: 38px; }
+        .lightbox-prev { left: 0; }
+        .lightbox-next { right: 0; }
+        .lightbox-hint { padding-top: 10px; font-size: 11px; }
+      }
+
+      /* Art direction: editorial commerce — calm artboard, one decisive image, thin rules. */
+      .hero { min-height: 0; background: var(--deep); }
+      .hero .shell { min-height: 0; }
+      .hero-stage { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); margin-top: 42px; border-top: 1px solid rgba(255,255,255,.18); }
+      .hero-copy { display: flex; max-width: none; min-height: 620px; margin: 0; padding: 94px 50px 74px 0; flex-direction: column; justify-content: flex-end; }
+      .hero h1 { max-width: 580px; margin-bottom: 30px; font-size: clamp(54px, 5.45vw, 78px); }
+      .hero-copy > p:not(.eyebrow) { max-width: 450px; font-size: 16px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; gap: 16px; margin-top: 32px; }
+      .hero-actions small { max-width: 310px; padding-left: 1px; }
+      .hero-visual { position: relative; z-index: 1; top: auto; right: auto; bottom: auto; width: auto; min-height: 620px; margin: 0; border-left: 1px solid rgba(255,255,255,.18); background: url('public/catalog-live/afrodita-hero.jpg') center 56% / cover no-repeat; }
+      .hero-visual::before { position: absolute; inset: 0; content: ""; pointer-events: none; background: linear-gradient(180deg, rgba(4,24,18,.07), rgba(4,24,18,0) 37%, rgba(4,24,18,.38)); }
+      .hero-caption { position: absolute; z-index: 1; right: 18px; bottom: 17px; left: 18px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.45); color: #fff; font-size: 12px; line-height: 1.35; }
+      .hero-caption b { font-weight: 500; white-space: nowrap; }
+      .hero-note { margin: 0; padding: 22px 0 26px; }
+      .trust { padding: 28px 0 32px; background: #e2ead8; }
+      .trust strong { font-size: 20px; }
+      .catalog { padding-top: 98px; }
+      .catalog-head { padding-bottom: 32px; }
+      .filters { padding-top: 30px; }
+      .grid { gap: 48px 22px; }
+      .grid > article { padding-top: 13px; border-top: 1px solid var(--line); }
+      .card-image { background: #f0efe9; }
+      .card-image::after { background: linear-gradient(0deg, rgba(10,38,29,.52), transparent 30%); }
+      .card-image img { padding: 8px; }
+      .badge { top: 12px; left: 12px; border: 1px solid rgba(18,59,48,.15); background: rgba(250,249,244,.96); }
+      .photo-label { bottom: 13px; left: 14px; letter-spacing: .01em; }
+      .info { padding: 18px 1px 0; }
+      .info h3 { font-size: 31px; }
+      .callout { padding: 96px 0; }
+      .detail { border: 1px solid rgba(18,59,48,.12); box-shadow: 0 28px 80px rgba(2,18,13,.28); }
+      .detail-image { background: #f2f1eb; }
+      .detail-image.is-changing img { animation: media-in 300ms var(--ease-out); }
+      .detail-copy { padding: 64px 50px 46px; }
+      .detail h2 { font-size: 52px; }
+      .detail .gallery { color: var(--ink); border-color: var(--line); }
+      .lightbox-prev { left: 12px; background: rgba(4,20,16,.76); }
+      .lightbox-next { right: 12px; background: rgba(4,20,16,.76); }
+      @keyframes editorial-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes media-in { from { opacity: .12; transform: scale(1.018); } to { opacity: 1; transform: scale(1); } }
+      @media (prefers-reduced-motion: no-preference) {
+        .hero-copy { animation: editorial-rise 600ms var(--ease-out) both; }
+        .hero-visual { animation: editorial-rise 680ms 80ms var(--ease-out) both; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 1ms !important; transition-duration: 1ms !important; }
+      }
+      @media (max-width: 820px) {
+        .hero .shell { width: 100%; }
+        .topbar { min-height: 78px; padding: 0 22px; }
+        .hero-stage { grid-template-columns: 1fr; margin-top: 0; border-top: 0; }
+        .hero-copy { min-height: 0; padding: 54px 24px 40px; }
+        .hero h1 { max-width: 370px; margin-bottom: 25px; font-size: clamp(45px, 12.35vw, 55px); }
+        .hero-copy > p:not(.eyebrow) { max-width: 355px; font-size: 16px; }
+        .hero-visual { min-height: 0; height: 440px; border-top: 1px solid rgba(255,255,255,.18); border-left: 0; background-position: center 58%; }
+        .hero-caption { right: 15px; bottom: 15px; left: 15px; font-size: 11px; }
+        .hero-caption b { font-size: 10px; }
+        .hero-note { padding: 19px 24px 23px; }
+        .trust .shell { width: min(100% - 48px, 620px); }
+        .catalog { padding: 74px 0 80px; }
+        .catalog-head { gap: 18px; }
+        .filters { gap: 22px; padding-top: 25px; }
+        .grid { gap: 42px; }
+        .grid > article { padding-top: 12px; }
+        .card-image { aspect-ratio: 4 / 5; }
+        .card-image img { padding: 7px; }
+        .info { padding-top: 15px; }
+        .info h3 { font-size: 34px; }
+        .callout { padding: 64px 0; }
+        .detail { border: 0; box-shadow: none; }
+        .detail-image { height: min(42dvh, 360px); }
+        .detail-copy { padding: 30px 22px 34px; }
+        .detail h2 { font-size: clamp(38px, 11.8vw, 48px); }
+        .lightbox-prev { left: 8px; }
+        .lightbox-next { right: 8px; }
       }
     </style>
   </head>
   <body>
     <main>
-      <section class="hero" id="top"><div class="shell"><nav class="topbar"><a class="brand" href="#top"><i>Е</i><span>Ели<br>в наличии</span></a><a class="nav" href="#catalog">Каталог</a><a class="outline" href="#catalog">Подобрать ёлку</a></nav><div class="hero-copy"><p class="eyebrow">Каталог остатков · сезон 2026</p><h1>Выберите ёлку,<br>которую приятно <em>видеть дома.</em></h1><p>Выберите высоту — и сразу увидите её цену, диаметр и наличие. Смотрите спокойно, без обязательной переписки.</p><div class="hero-actions"><a class="primary" href="#catalog">Смотреть каталог <span>↓</span></a><small>На обложке — живое фото «Афродиты Премиум».<br>Фотогалереи и видео переносим в карточки моделей.</small></div></div><div class="hero-visual" aria-hidden="true"></div><div class="hero-note"><i class="dot"></i><span>Тестовая версия</span><i class="divider"></i><span>8 моделей из остатков</span></div></div></section>
+      <section class="hero" id="top">
+        <div class="shell">
+          <nav class="topbar" aria-label="Главная навигация">
+            <a class="brand" href="#top"><i>Е</i><span>Ели<br>в наличии</span></a>
+            <a class="nav" href="#catalog">Каталог</a>
+            <a class="outline" href="#catalog">Подобрать ёлку</a>
+          </nav>
+          <div class="hero-stage">
+            <div class="hero-copy">
+              <p class="eyebrow">Каталог остатков · сезон 2026</p>
+              <h1>Выберите ёлку,<br>которую приятно <em>видеть дома.</em></h1>
+              <p>Выберите высоту — и сразу увидите цену, диаметр и наличие. Без обязательной переписки.</p>
+              <div class="hero-actions">
+                <a class="primary" href="#catalog">Смотреть каталог <span>↓</span></a>
+                <small>У каждой модели — реальные фото, видео и детали комплектации.</small>
+              </div>
+            </div>
+            <figure class="hero-visual" aria-label="Афродита Премиум в интерьере">
+              <figcaption class="hero-caption"><span>Афродита Премиум в интерьере</span><b>240 см · в наличии</b></figcaption>
+            </figure>
+          </div>
+          <div class="hero-note"><i class="dot"></i><span>Актуальные остатки</span><i class="divider"></i><span>8 моделей из остатков</span></div>
+        </div>
+      </section>
+
       <section class="trust"><div class="shell"><p><strong>Доступные ростовки</strong><span>скрываем то, чего уже нет</span></p><p><strong>Цена по выбранной высоте</strong><span>без путаницы с «от»</span></p><p><strong>Реальные фотогалереи</strong><span>связаны с карточками моделей</span></p></div></section>
-      <section class="catalog shell" id="catalog"><div class="catalog-head"><div><p class="eyebrow dark">Выберите свою</p><h2>Каталог елей</h2></div><p class="catalog-intro">Для сравнения откройте любую модель: там будут её размеры, фото, видео и детали комплектации.</p></div><div class="filters"><div class="filter"><label>Высота</label><div class="pills" id="height-pills"></div></div><div class="filter"><label>Форма</label><div class="pills" id="kind-pills"></div></div></div><p class="count" id="count"></p><div class="grid" id="products"></div><button class="more" id="more">Показать все модели <span>↓</span></button></section>
-      <section class="callout"><div class="shell"><div><p class="eyebrow">Не хочется выбирать самому?</p><h2>Скажите высоту,<br>бюджет и город.</h2></div><p>В следующей версии эта форма станет точкой входа для менеджера: он пришлёт 2–3 подходящие ёлки с живыми фото и видео.</p><a class="light" href="tel:+79650298353">Связаться с Максимом <span>→</span></a></div></section>
-      <footer class="shell footer"><a class="brand" href="#top"><i>Е</i><span>Ели в наличии</span></a><p>Тестовый каталог по остаткам прошлого сезона.<br>Наличие и окончательную цену уточняйте перед заказом.</p></footer>
+
+      <section class="catalog shell" id="catalog">
+        <div class="catalog-head"><div><p class="eyebrow dark">Выберите свою</p><h2>Каталог елей</h2></div><p class="catalog-intro">Для сравнения откройте любую модель: там будут её размеры, фото, видео и детали комплектации.</p></div>
+        <div class="filters"><div class="filter"><label>Высота</label><div class="pills" id="height-pills"></div></div><div class="filter"><label>Форма</label><div class="pills" id="kind-pills"></div></div></div>
+        <p class="count" id="count"></p>
+        <div class="grid" id="products"></div>
+        <button class="more" id="more">Показать все модели <span>↓</span></button>
+      </section>
+
+      <section class="callout"><div class="shell"><div><p class="eyebrow">Не хочется выбирать самому?</p><h2>Скажите высоту,<br>бюджет и город.</h2></div><p>Напишите высоту, бюджет и город — подберём 2–3 подходящие модели с реальными фото и видео.</p><a class="light" href="tel:+79650298353">Связаться с Максимом <span>→</span></a></div></section>
+      <footer class="shell footer"><a class="brand" href="#top"><i>Е</i><span>Ели в наличии</span></a><p>Каталог остатков прошлого сезона.<br>Наличие и окончательную цену уточняйте перед заказом.</p></footer>
     </main>
-    <div class="modal" id="modal"><section class="detail"><button class="close" aria-label="Закрыть">×</button><div class="detail-media"><div class="detail-image"><img id="detail-img" alt=""><video id="detail-video" controls playsinline preload="metadata" hidden></video><span id="detail-label">Фото модели</span></div><div class="gallery-thumbs" id="detail-thumbs" aria-label="Фотогалерея модели"></div></div><div class="detail-copy"><p class="eyebrow dark">В наличии</p><h2 id="detail-name"></h2><p class="detail-sub" id="detail-sub"></p><p class="detail-price" id="detail-price"></p><div class="height-options" id="detail-heights" aria-label="Выберите высоту"></div><dl id="detail-specs"></dl><p class="notice">✦ Откройте реальную фотогалерею этой модели. Видео добавим только после проверки, что оно относится к выбранной ростовке.</p><a class="outline gallery" id="detail-gallery" target="_blank" rel="noreferrer">Открыть фотогалерею <span>↗</span></a><a class="primary full" href="tel:+79650298353">Уточнить наличие <span>→</span></a></div></section></div>
+
+    <div class="modal" id="modal" role="presentation">
+      <section class="detail" role="dialog" aria-modal="true" aria-label="Карточка модели">
+        <button class="close" type="button" aria-label="Закрыть карточку модели">×</button>
+        <div class="detail-media">
+          <div class="detail-image">
+            <img id="detail-img" alt="">
+            <video id="detail-video" controls playsinline preload="metadata" hidden></video>
+            <button class="gallery-control gallery-prev" id="gallery-prev" type="button" aria-label="Предыдущее фото или видео">‹</button>
+            <button class="gallery-control gallery-next" id="gallery-next" type="button" aria-label="Следующее фото или видео">›</button>
+            <button class="fullscreen" id="fullscreen" type="button" aria-label="Открыть фото на весь экран">На весь экран</button>
+            <div class="detail-label"><span id="detail-label">Фото модели</span><b id="detail-counter" hidden></b></div>
+          </div>
+          <div class="gallery-thumbs" id="detail-thumbs" aria-label="Фотогалерея модели"></div>
+        </div>
+        <div class="detail-copy">
+          <p class="eyebrow dark">В наличии</p><h2 id="detail-name"></h2><p class="detail-sub" id="detail-sub"></p><p class="detail-price" id="detail-price"></p>
+          <div class="height-options" id="detail-heights" aria-label="Выберите высоту"></div><dl id="detail-specs"></dl>
+          <p class="notice" id="detail-notice"></p><a class="outline gallery" id="detail-gallery" target="_blank" rel="noreferrer">Открыть фотогалерею <span>→</span></a><a class="primary full" href="tel:+79650298353">Уточнить наличие <span>→</span></a>
+        </div>
+      </section>
+    </div>
+
+    <div class="lightbox" id="lightbox" role="presentation">
+      <section class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Просмотр фото на весь экран">
+        <div class="lightbox-topbar"><p id="lightbox-label">Фото модели</p><div class="lightbox-actions"><button id="zoom-out" type="button" aria-label="Уменьшить фото" disabled>−</button><button id="zoom-in" type="button" aria-label="Увеличить фото">+</button><button id="lightbox-close" type="button" aria-label="Закрыть просмотр">×</button></div></div>
+        <div class="lightbox-stage"><button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Предыдущее фото">‹</button><img id="lightbox-img" alt=""><button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Следующее фото">›</button></div>
+        <p class="lightbox-hint">Используйте +/− для масштаба. Стрелки листают фото.</p>
+      </section>
+    </div>
+
     <script>
-      const trees=[
-        {id:'afrodita',name:'Афродита Премиум',sub:'Выразительная, с густой кроной',needles:'100% литые ветки',assembly:'Шарнирная сборка',image:'public/catalog-live/afrodita-hero.jpg',galleryUrl:'https://disk.yandex.ru/d/YL3N2aXdPyYa9A',badge:'Премиум',kind:'lush',variations:[{height:240,price:18900,oldPrice:34990,diameter:'150 см',weight:'—'}]},
-        {id:'tayga',name:'Тайга',sub:'Натуральный силуэт для дома',needles:'Литые ветки + ПВХ',assembly:'Шарнирная сборка',stand:'Железная складная',image:'public/catalog-live/tayga-studio-v1.png',gallery:[{src:'public/catalog-live/tayga-studio-v1.png',label:'Общий вид модели'},{src:'public/catalog-live/tayga-angle-02.jpg',label:'Реальная хвоя крупным планом'},{src:'public/catalog-live/tayga-needles.jpg',label:'Фактура веток и иголок'},{src:'public/catalog-live/tayga-detail-02.jpg',label:'Каркас и крепления'},{src:'public/catalog-live/tayga-stand.jpg',label:'Железная складная подставка'},{src:'public/catalog-live/tayga-motion-web.mov',label:'Видео реальной модели · 12 с',type:'video'}],badge:'Топ продаж',kind:'lush',variations:[{height:210,price:9700,oldPrice:16900,diameter:'—',weight:'—'},{height:240,price:13900,oldPrice:23490,diameter:'155 см',weight:'—'}]},
-{id:'krasavitsa',name:'Красавица светлая',sub:'Светлый оттенок хвои, Беларусь',needles:'100% литые ветки',assembly:'Отгибная сборка',image:'public/catalog-live/krasavitsa-svetlaya-main.jpg',galleryUrl:'https://disk.yandex.ru/d/0eLf81pnauaqpA',kind:'lush',variations:[{height:190,price:13500,oldPrice:19490,diameter:'130 см',weight:'12,5 кг'},{height:220,price:15900,oldPrice:26490,diameter:'140 см',weight:'17 кг'}]},
-        {id:'lady',name:'Леди',sub:'Аккуратная и пышная классика',needles:'100% литые ветки',assembly:'Шарнирная сборка',image:'public/catalog/lady.png',galleryUrl:'https://disk.yandex.ru/d/DuwumiPk8ZZffA',badge:'Топ продаж',kind:'lush',variations:[{height:210,price:12800,oldPrice:16900,diameter:'128 см',weight:'—'},{height:270,price:24500,oldPrice:31000,diameter:'130 см',weight:'—'}]},
-        {id:'victoria',name:'Виктория Премиум',sub:'Строгая форма и литая хвоя',needles:'100% литые ветки',assembly:'Шарнирная сборка',image:'public/catalog/victoria.png',galleryUrl:'https://disk.yandex.ru/d/UAyPgIUojCBLAw',badge:'Премиум',kind:'lush',variations:[{height:210,price:16800,oldPrice:29990,diameter:'135 см',weight:'16,9 кг'}]},
-        {id:'baikal',name:'Байкал',sub:'Большая ёлка для просторной комнаты',needles:'100% литые ветки',assembly:'Отгибная сборка',image:'public/catalog-live/baikal-main.jpg',galleryUrl:'https://disk.yandex.ru/d/_VFuToIuu2lbJQ',kind:'lush',variations:[{height:230,price:25800,oldPrice:39990,diameter:'145 см',weight:'22,7 кг'}]},
-        {id:'prezidentskaya',name:'Президентская',sub:'Пышная форма с выразительным объёмом',needles:'100% литые ветки',assembly:'Отгибная сборка',image:'public/catalog/prezidentskaya.png',galleryUrl:'https://disk.yandex.ru/d/wuL5LiG7dK7cVw',badge:'Премиум',kind:'lush',variations:[{height:210,price:22200,oldPrice:36990,diameter:'140 см',weight:'16,1 кг'},{height:230,price:27400,oldPrice:37990,diameter:'155 см',weight:'21,5 кг'}]},
-    {id:'voronezhskaya',name:'Воронежская',sub:'Крупная модель с натуральной формой',needles:'100% литые ветки',assembly:'Отгибная сборка',image:'public/catalog-live/voronezhskaya-main.jpg',galleryUrl:'https://disk.yandex.ru/d/IBMP6CuH_U4xSw',kind:'lush',variations:[{height:230,price:30300,oldPrice:45990,diameter:'155 см',weight:'26,4 кг'}]}
+      const trees = [
+        { id:'afrodita', name:'Афродита Премиум', sub:'Выразительная, с густой кроной', needles:'100% литые ветки', assembly:'Шарнирная сборка', image:'public/catalog-live/afrodita-hero.jpg', galleryUrl:'https://disk.yandex.ru/d/YL3N2aXdPyYa9A', badge:'Премиум', kind:'lush', variations:[{height:240,price:18900,oldPrice:34990,diameter:'150 см',weight:'—'}] },
+        { id:'tayga', name:'Тайга', sub:'Натуральный силуэт для дома', needles:'Литые ветки + ПВХ', assembly:'Шарнирная сборка', stand:'Железная складная', image:'public/catalog-live/tayga-studio-v1.png', gallery:[{src:'public/catalog-live/tayga-studio-v1.png',label:'Общий вид модели',thumbPosition:'50% 45%'},{src:'public/catalog-live/tayga-angle-02.jpg',label:'Реальная хвоя крупным планом',thumbPosition:'82% 50%'},{src:'public/catalog-live/tayga-needles.jpg',label:'Фактура веток и иголок',thumbPosition:'48% 50%'},{src:'public/catalog-live/tayga-detail-02.jpg',label:'Каркас и крепления',thumbPosition:'48% 42%'},{src:'public/catalog-live/tayga-stand.jpg',label:'Железная складная подставка',thumbPosition:'76% 54%'},{src:'public/catalog-live/tayga-motion-web.mov',label:'Видео реальной модели · 12 с',type:'video'}], badge:'Топ продаж', kind:'lush', variations:[{height:210,price:9700,oldPrice:16900,diameter:'—',weight:'—'},{height:240,price:13900,oldPrice:23490,diameter:'155 см',weight:'—'}] },
+        { id:'krasavitsa', name:'Красавица светлая', sub:'Светлый оттенок хвои, Беларусь', needles:'100% литые ветки', assembly:'Отгибная сборка', image:'public/catalog-live/krasavitsa-svetlaya-main.jpg', galleryUrl:'https://disk.yandex.ru/d/0eLf81pnauaqpA', kind:'lush', variations:[{height:190,price:13500,oldPrice:19490,diameter:'130 см',weight:'12,5 кг'},{height:220,price:15900,oldPrice:26490,diameter:'140 см',weight:'17 кг'}] },
+        { id:'lady', name:'Леди', sub:'Аккуратная и пышная классика', needles:'100% литые ветки', assembly:'Шарнирная сборка', image:'public/catalog/lady.png', galleryUrl:'https://disk.yandex.ru/d/DuwumiPk8ZZffA', badge:'Топ продаж', kind:'lush', variations:[{height:210,price:12800,oldPrice:16900,diameter:'128 см',weight:'—'},{height:270,price:24500,oldPrice:31000,diameter:'130 см',weight:'—'}] },
+        { id:'victoria', name:'Виктория Премиум', sub:'Строгая форма и литая хвоя', needles:'100% литые ветки', assembly:'Шарнирная сборка', image:'public/catalog/victoria.png', galleryUrl:'https://disk.yandex.ru/d/UAyPgIUojCBLAw', badge:'Премиум', kind:'lush', variations:[{height:210,price:16800,oldPrice:29990,diameter:'135 см',weight:'16,9 кг'}] },
+        { id:'baikal', name:'Байкал', sub:'Большая ёлка для просторной комнаты', needles:'100% литые ветки', assembly:'Отгибная сборка', image:'public/catalog-live/baikal-main.jpg', galleryUrl:'https://disk.yandex.ru/d/_VFuToIuu2lbJQ', kind:'lush', variations:[{height:230,price:25800,oldPrice:39990,diameter:'145 см',weight:'22,7 кг'}] },
+        { id:'prezidentskaya', name:'Президентская', sub:'Пышная форма с выразительным объёмом', needles:'100% литые ветки', assembly:'Отгибная сборка', image:'public/catalog/prezidentskaya.png', galleryUrl:'https://disk.yandex.ru/d/wuL5LiG7dK7cVw', badge:'Премиум', kind:'lush', variations:[{height:210,price:22200,oldPrice:36990,diameter:'140 см',weight:'16,1 кг'},{height:230,price:27400,oldPrice:37990,diameter:'155 см',weight:'21,5 кг'}] },
+        { id:'voronezhskaya', name:'Воронежская', sub:'Крупная модель с натуральной формой', needles:'100% литые ветки', assembly:'Отгибная сборка', image:'public/catalog-live/voronezhskaya-main.jpg', galleryUrl:'https://disk.yandex.ru/d/IBMP6CuH_U4xSw', kind:'lush', variations:[{height:230,price:30300,oldPrice:45990,diameter:'155 см',weight:'26,4 кг'}] }
       ];
-      const money=new Intl.NumberFormat('ru-RU');let height='Все',kind='all',all=false;
-      const h=[['Все','Любая'],['до 150','до 150 см'],['180–210','180–210 см'],['от 230','от 230 см']],k=[['all','Все формы'],['lush','Пышные'],['slim','Узкие']];
-      const sizes=t=>t.variations.map(v=>v.height), from=t=>Math.min(...t.variations.map(v=>v.price));
-      const matches=t=> (kind==='all'||t.kind===kind)&&(height==='Все'||height==='до 150'&&sizes(t).some(x=>x<=150)||height==='180–210'&&sizes(t).some(x=>x>=180&&x<=210)||height==='от 230'&&sizes(t).some(x=>x>=230));
-      function pills(){document.querySelector('#height-pills').innerHTML=h.map(([v,n])=>`<button class="pill ${height===v?'active':''}" data-h="${v}">${n}</button>`).join('');document.querySelector('#kind-pills').innerHTML=k.map(([v,n])=>`<button class="pill ${kind===v?'active':''}" data-k="${v}">${n}</button>`).join('');document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{height=b.dataset.h;all=false;render()});document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{kind=b.dataset.k;all=false;render()})}
-      function render(){pills();const list=trees.filter(matches),shown=all?list:list.slice(0,6);document.querySelector('#count').textContent=`Показано: ${shown.length} из ${list.length} моделей`;document.querySelector('#products').innerHTML=shown.map(t=>`<article><button class="card-image" data-id="${t.id}" aria-label="Открыть ${t.name}"><img src="${t.image}" alt="Ёлка ${t.name}"><span class="photo-label">Смотреть фото ↗</span>${t.badge?`<span class="badge">${t.badge}</span>`:''}</button><div class="info"><p class="type">${t.sub}</p><h3>${t.name}</h3><p class="sizes"><b>В наличии</b>${sizes(t).join(' · ')} см</p><p class="price"><span>от</span><strong>${money.format(from(t))} ₽</strong></p><button class="text" data-id="${t.id}">Подробнее →</button></div></article>`).join('');document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>openTree(trees.find(t=>t.id===b.dataset.id)));const more=document.querySelector('#more');more.style.display=list.length>6?'block':'none';more.innerHTML=all?'Свернуть каталог <span>↑</span>':`Показать ещё ${list.length-shown.length} модели <span>↓</span>`}
-      function openTree(t){const image=document.querySelector('#detail-img'),video=document.querySelector('#detail-video'),label=document.querySelector('#detail-label'),thumbs=document.querySelector('#detail-thumbs'),galleryLink=document.querySelector('#detail-gallery'),notice=document.querySelector('.notice'),media=t.gallery||[{src:t.image,label:'Изображение из текущего PDF'}];document.querySelector('#detail-name').textContent=t.name;document.querySelector('#detail-sub').textContent=t.sub;galleryLink.href=t.galleryUrl||'';galleryLink.style.display=t.gallery?'none':'inline-flex';notice.textContent=t.gallery?'✦ Листайте реальные фото модели: общий вид, хвоя, конструкция, подставка и видео.':'✦ Откройте реальную фотогалерею этой модели.';const showMedia=index=>{const item=media[index];label.textContent=item.label;if(item.type==='video'){image.hidden=true;video.hidden=false;video.src=item.src;video.load()}else{video.pause();video.removeAttribute('src');video.load();video.hidden=true;image.hidden=false;image.src=item.src;image.alt='Ёлка '+t.name}thumbs.innerHTML=media.map((entry,i)=>`<button class="gallery-thumb ${i===index?'active':''}${entry.type==='video'?' video':''}" type="button" data-media="${i}" aria-label="${entry.label}">${entry.type==='video'?'Видео':`<img src="${entry.src}" alt="">`}</button>`).join('');document.querySelectorAll('[data-media]').forEach(button=>button.onclick=()=>showMedia(Number(button.dataset.media)))};showMedia(0);const paint=v=>{document.querySelector('#detail-price').textContent=money.format(v.price)+' ₽';document.querySelector('#detail-heights').innerHTML=t.variations.map(x=>`<button class="height-option ${x.height===v.height?'active':''}" data-height="${x.height}">${x.height} см</button>`).join('');document.querySelector('#detail-specs').innerHTML=`<div><dt>Высота</dt><dd>${v.height} см</dd></div><div><dt>Диаметр</dt><dd>${v.diameter}</dd></div><div><dt>Хвоя</dt><dd>${t.needles}</dd></div><div><dt>Сборка</dt><dd>${t.assembly}</dd></div>${t.stand?`<div><dt>Подставка</dt><dd>${t.stand}</dd></div>`:''}<div><dt>Вес</dt><dd>${v.weight}</dd></div>`;document.querySelectorAll('[data-height]').forEach(b=>b.onclick=()=>paint(t.variations.find(x=>x.height===Number(b.dataset.height))))};paint(t.variations[0]);document.querySelector('#modal').classList.add('open')}
-      document.querySelector('#more').onclick=()=>{all=!all;render()};document.querySelector('.close').onclick=()=>document.querySelector('#modal').classList.remove('open');document.querySelector('#modal').onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')};render();
+
+      const money = new Intl.NumberFormat('ru-RU');
+      const heights = [['Все','Любая'],['до 150','до 150 см'],['180–210','180–210 см'],['от 230','от 230 см']];
+      const kinds = [['all','Все формы'],['lush','Пышные'],['slim','Узкие']];
+      const ui = {
+        height: 'Все', kind: 'all', all: false, activeTree: null, activeMediaIndex: 0, zoom: 1,
+        modal: document.querySelector('#modal'), lightbox: document.querySelector('#lightbox'), image: document.querySelector('#detail-img'), video: document.querySelector('#detail-video'),
+        label: document.querySelector('#detail-label'), counter: document.querySelector('#detail-counter'), thumbs: document.querySelector('#detail-thumbs'), fullscreen: document.querySelector('#fullscreen'),
+        previous: document.querySelector('#gallery-prev'), next: document.querySelector('#gallery-next'), lightboxImage: document.querySelector('#lightbox-img'), lightboxLabel: document.querySelector('#lightbox-label')
+      };
+
+      const sizes = tree => tree.variations.map(variation => variation.height);
+      const from = tree => Math.min(...tree.variations.map(variation => variation.price));
+      const matches = tree => (ui.kind === 'all' || tree.kind === ui.kind) && (ui.height === 'Все' || ui.height === 'до 150' && sizes(tree).some(size => size <= 150) || ui.height === '180–210' && sizes(tree).some(size => size >= 180 && size <= 210) || ui.height === 'от 230' && sizes(tree).some(size => size >= 230));
+      const gallery = () => ui.activeTree?.gallery || [{src:ui.activeTree.image,label:'Фото модели'}];
+      const activeItem = () => gallery()[ui.activeMediaIndex];
+
+      function renderPills() {
+        document.querySelector('#height-pills').innerHTML = heights.map(([value, label]) => `<button class="pill ${ui.height === value ? 'active' : ''}" data-height="${value}">${label}</button>`).join('');
+        document.querySelector('#kind-pills').innerHTML = kinds.map(([value, label]) => `<button class="pill ${ui.kind === value ? 'active' : ''}" data-kind="${value}">${label}</button>`).join('');
+        document.querySelectorAll('[data-height]').forEach(button => button.onclick = () => { ui.height = button.dataset.height; ui.all = false; render(); });
+        document.querySelectorAll('[data-kind]').forEach(button => button.onclick = () => { ui.kind = button.dataset.kind; ui.all = false; render(); });
+      }
+
+      function render() {
+        renderPills();
+        const list = trees.filter(matches);
+        const shown = ui.all ? list : list.slice(0, 6);
+        document.querySelector('#count').textContent = `Показано: ${shown.length} из ${list.length} моделей`;
+        document.querySelector('#products').innerHTML = shown.map(tree => `<article><button class="card-image" data-id="${tree.id}" aria-label="Открыть ${tree.name}"><img src="${tree.image}" alt="Ёлка ${tree.name}"><span class="photo-label">Открыть галерею <b>→</b></span>${tree.badge ? `<span class="badge">${tree.badge}</span>` : ''}</button><div class="info"><p class="type">${tree.sub}</p><h3>${tree.name}</h3><p class="sizes"><b>В наличии</b>${sizes(tree).join(' · ')} см</p><p class="price"><span>от</span><strong>${money.format(from(tree))} ₽</strong></p><button class="text" data-id="${tree.id}">Подробнее <b>→</b></button></div></article>`).join('');
+        document.querySelectorAll('[data-id]').forEach(button => button.onclick = () => openTree(trees.find(tree => tree.id === button.dataset.id)));
+        const more = document.querySelector('#more');
+        more.style.display = list.length > 6 ? 'block' : 'none';
+        more.innerHTML = ui.all ? 'Свернуть каталог <span>↑</span>' : `Показать ещё ${list.length - shown.length} модели <span>↓</span>`;
+      }
+
+      function paintVariation(variation) {
+        const tree = ui.activeTree;
+        document.querySelector('#detail-price').textContent = `${money.format(variation.price)} ₽`;
+        document.querySelector('#detail-heights').innerHTML = tree.variations.map(item => `<button class="height-option ${item.height === variation.height ? 'active' : ''}" data-variation="${item.height}">${item.height} см</button>`).join('');
+        document.querySelector('#detail-specs').innerHTML = `<div><dt>Высота</dt><dd>${variation.height} см</dd></div><div><dt>Диаметр</dt><dd>${variation.diameter}</dd></div><div><dt>Хвоя</dt><dd>${tree.needles}</dd></div><div><dt>Сборка</dt><dd>${tree.assembly}</dd></div>${tree.stand ? `<div><dt>Подставка</dt><dd>${tree.stand}</dd></div>` : ''}<div><dt>Вес</dt><dd>${variation.weight}</dd></div>`;
+        document.querySelectorAll('[data-variation]').forEach(button => button.onclick = () => paintVariation(tree.variations.find(item => item.height === Number(button.dataset.variation))));
+      }
+
+      function renderThumbs() {
+        const items = gallery();
+        ui.thumbs.className = items.length === 6 ? 'gallery-thumbs six' : 'gallery-thumbs';
+        ui.thumbs.innerHTML = items.map((item, index) => `<button class="gallery-thumb ${index === ui.activeMediaIndex ? 'active' : ''}${item.type === 'video' ? ' video' : ''}" type="button" data-media="${index}" aria-label="${item.label}">${item.type === 'video' ? 'Видео' : `<img src="${item.src}" alt="" style="object-position:${item.thumbPosition || '50% 50%'}">`}</button>`).join('');
+        document.querySelectorAll('[data-media]').forEach(button => button.onclick = () => showMedia(Number(button.dataset.media)));
+      }
+
+      function showMedia(index) {
+        const items = gallery();
+        ui.activeMediaIndex = index;
+        ui.zoom = 1;
+        const item = activeItem();
+        const isVideo = item.type === 'video';
+        const stage = document.querySelector('.detail-image');
+        stage.classList.remove('is-changing');
+        void stage.offsetWidth;
+        stage.classList.add('is-changing');
+        ui.label.textContent = item.label;
+        ui.counter.hidden = items.length <= 1;
+        ui.counter.textContent = `${index + 1} / ${items.length}`;
+        ui.previous.hidden = items.length <= 1;
+        ui.next.hidden = items.length <= 1;
+        ui.fullscreen.hidden = isVideo;
+        if (isVideo) {
+          ui.image.hidden = true;
+          ui.video.hidden = false;
+          ui.video.poster = item.poster || ui.activeTree.image;
+          ui.video.src = item.src;
+          ui.video.load();
+        } else {
+          ui.video.pause();
+          ui.video.removeAttribute('src');
+          ui.video.load();
+          ui.video.hidden = true;
+          ui.image.hidden = false;
+          ui.image.src = item.src;
+          ui.image.alt = `Ёлка ${ui.activeTree.name}`;
+        }
+        renderThumbs();
+        if (ui.lightbox.classList.contains('open')) renderLightbox();
+      }
+
+      function moveMedia(direction, imagesOnly = false) {
+        const items = gallery();
+        for (let step = 1; step <= items.length; step += 1) {
+          const nextIndex = (ui.activeMediaIndex + direction * step + items.length) % items.length;
+          if (!imagesOnly || items[nextIndex].type !== 'video') {
+            showMedia(nextIndex);
+            return;
+          }
+        }
+      }
+
+      function openTree(tree) {
+        ui.activeTree = tree;
+        ui.activeMediaIndex = 0;
+        document.querySelector('#detail-name').textContent = tree.name;
+        document.querySelector('#detail-sub').textContent = tree.sub;
+        const galleryLink = document.querySelector('#detail-gallery');
+        galleryLink.href = tree.galleryUrl || '';
+        galleryLink.style.display = tree.gallery ? 'none' : 'inline-flex';
+        document.querySelector('#detail-notice').textContent = tree.gallery ? '✦ Нажмите на фото, чтобы открыть его на весь экран. Стрелки листают галерею.' : '✦ Нажмите на фото, чтобы открыть его на весь экран.';
+        paintVariation(tree.variations[0]);
+        showMedia(0);
+        ui.modal.classList.add('open');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeTree() {
+        closeLightbox();
+        ui.video.pause();
+        ui.modal.classList.remove('open');
+        document.body.classList.remove('modal-open');
+      }
+
+      function renderLightbox() {
+        const item = activeItem();
+        ui.lightboxLabel.textContent = item.label;
+        ui.lightboxImage.src = item.src;
+        ui.lightboxImage.alt = `Ёлка ${ui.activeTree.name}`;
+        ui.lightboxImage.style.transform = `scale(${ui.zoom})`;
+        document.querySelector('#zoom-out').disabled = ui.zoom <= 1;
+        const hasImagesToBrowse = gallery().filter(item => item.type !== 'video').length > 1;
+        document.querySelector('#lightbox-prev').hidden = !hasImagesToBrowse;
+        document.querySelector('#lightbox-next').hidden = !hasImagesToBrowse;
+      }
+
+      function openLightbox() {
+        if (activeItem().type === 'video') return;
+        ui.zoom = 1;
+        renderLightbox();
+        ui.lightbox.classList.add('open');
+      }
+
+      function closeLightbox() {
+        ui.lightbox.classList.remove('open');
+        ui.zoom = 1;
+      }
+
+      document.querySelector('#more').onclick = () => { ui.all = !ui.all; render(); };
+      document.querySelector('.close').onclick = closeTree;
+      ui.modal.onclick = event => { if (event.target === event.currentTarget) closeTree(); };
+      ui.previous.onclick = () => moveMedia(-1);
+      ui.next.onclick = () => moveMedia(1);
+      ui.fullscreen.onclick = openLightbox;
+      document.querySelector('#lightbox-close').onclick = closeLightbox;
+      ui.lightbox.onclick = event => { if (event.target === event.currentTarget) closeLightbox(); };
+      document.querySelector('#zoom-in').onclick = () => { ui.zoom = Math.min(2.25, ui.zoom + .25); renderLightbox(); };
+      document.querySelector('#zoom-out').onclick = () => { ui.zoom = Math.max(1, ui.zoom - .25); renderLightbox(); };
+      document.querySelector('#lightbox-prev').onclick = () => moveMedia(-1, true);
+      document.querySelector('#lightbox-next').onclick = () => moveMedia(1, true);
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') { if (ui.lightbox.classList.contains('open')) closeLightbox(); else if (ui.modal.classList.contains('open')) closeTree(); }
+        if (!ui.lightbox.classList.contains('open')) return;
+        if (event.key === 'ArrowLeft') moveMedia(-1, true);
+        if (event.key === 'ArrowRight') moveMedia(1, true);
+      });
+      render();
     </script>
   </body>
 </html>
