@@ -55,7 +55,10 @@ export default defineConfig(async () => {
         name: "omit-private-catalog-source-assets",
         apply: "build",
         async closeBundle() {
-          await rm("dist/client/catalog-source", { recursive: true, force: true });
+          await Promise.all([
+            rm("dist/client/catalog-source", { recursive: true, force: true }),
+            rm("dist/client/catalog-live/tayga-motion-01.mov", { force: true }),
+          ]);
         },
       },
       cloudflare({

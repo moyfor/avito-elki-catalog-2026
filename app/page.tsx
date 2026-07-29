@@ -83,9 +83,9 @@ const trees: Tree[] = [
         label: "Железная складная подставка",
       },
       {
-        src: "/catalog-live/tayga-motion-01.mov",
+        src: "/catalog-live/tayga-motion-web.mov",
         alt: "Видео ёлки Тайга",
-        label: "Видео реальной модели",
+        label: "Видео реальной модели · 12 с",
         kind: "video",
       },
     ],
