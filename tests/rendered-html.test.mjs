@@ -22,9 +22,10 @@ test("server-renders the catalog shell", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Каталог искусственных елей \| В наличии<\/title>/);
+  assert.match(html, /<title>Ёлки Тут — каталог искусственных елей<\/title>/);
   assert.match(html, /Каталог остатков/);
-  assert.match(html, /Актуальные остатки/);
+  assert.match(html, /Ёлки, которые выглядят как настоящие/);
+  assert.match(html, /Смотреть ёлки/);
   assert.match(html, /Афродита Премиум/);
   assert.match(html, /Тайга/);
 });
@@ -37,7 +38,14 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(staticCatalog, /<title>Искусственные ели — каталог в наличии<\/title>/);
+  assert.match(staticCatalog, /<title>Ёлки Тут — каталог искусственных елей<\/title>/);
+  assert.match(staticCatalog, /<meta name="description" content="Ёлки Тут/);
+  assert.match(staticCatalog, /og:title" content="Ёлки Тут — каталог искусственных елей/);
+  assert.match(staticCatalog, /Ёлки, которые выглядят как настоящие/);
+  assert.match(staticCatalog, /Выберите модель и высоту/);
+  assert.match(staticCatalog, /Смотреть ёлки/);
+  assert.match(staticCatalog, /public\/catalog-live\/afrodita-hero\.jpg/);
+  assert.match(staticCatalog, /Искусственная ёлка Афродита Премиум в праздничном интерьере/);
   assert.match(staticCatalog, /id="gallery-prev"/);
   assert.match(staticCatalog, /id="gallery-next"/);
   assert.match(staticCatalog, /id="fullscreen"/);
@@ -48,7 +56,7 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /trapFocus/);
   assert.match(staticCatalog, /tayga-motion-web\.mov/);
   assert.match(staticCatalog, /Железная складная подставка/);
-  assert.match(staticCatalog, /Актуальные остатки/);
+  assert.match(staticCatalog, /Выберите свою ёлку/);
   assert.doesNotMatch(staticCatalog, /Тестовая версия/);
   assert.doesNotMatch(staticCatalog, /В следующей версии/);
 
@@ -58,7 +66,8 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(page, /MagnifyingGlassPlus/);
   assert.match(page, /tayga-motion-web\.mov/);
   assert.match(page, /Железная складная/);
-  assert.match(layout, /Каталог искусственных елей \| В наличии/);
+  assert.match(layout, /Ёлки Тут — каталог искусственных елей/);
+  assert.match(layout, /мобильный каталог искусственных елей/);
   assert.match(packageJson, /"@phosphor-icons\/react"/);
 });
 

@@ -279,7 +279,8 @@ export default function Home() {
   const visibleTrees = showAll ? filteredTrees : filteredTrees.slice(0, 6);
 
   function scrollToCatalog() {
-    document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("catalog")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
   }
 
   function openTree(tree: Tree, opener?: HTMLElement) {
@@ -374,56 +375,43 @@ export default function Home() {
 
   return (
     <main>
-      <section className="hero">
+      <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="shell hero-content">
           <nav className="topbar" aria-label="Главная навигация">
-            <a className="brand" href="#top" aria-label="Каталог елей">
-              <span className="brand-mark">Е</span>
-              <span>Ели<br />в наличии</span>
+            <a className="brand" href="#top" aria-label="Ёлки Тут — каталог искусственных елей">
+              <span className="brand-mark">Ё</span>
+              <span><strong>Ёлки Тут</strong><small>Каталог искусственных елей</small></span>
             </a>
-            <a className="nav-link" href="#catalog">Каталог</a>
-            <button className="outline-button" onClick={scrollToCatalog}>Подобрать ёлку</button>
           </nav>
 
-          <div className="hero-copy" id="top">
-            <p className="eyebrow">Каталог елей · сезон 2026</p>
-            <h1>Ёлка, с которой дома становится <em>празднично.</em></h1>
-            <p className="hero-text">
-              Смотрите спокойно: ростовки, цены, наличие, живые фото и видео
-              собраны в одном каталоге.
-            </p>
-            <div className="hero-actions">
-              <button className="primary-button" onClick={scrollToCatalog}>Смотреть каталог <span>↓</span></button>
-              <p>На обложке — настроение. В карточках — реальные фото конкретных моделей.</p>
+          <div className="hero-stage">
+            <div className="hero-copy">
+              <p className="eyebrow">Каталог искусственных елей</p>
+              <h1 id="hero-title">Ёлки, которые выглядят как настоящие</h1>
+              <p className="hero-text">
+                Выберите модель и высоту — цены, характеристики, реальные фото и видео
+                собраны в одном каталоге.
+              </p>
+              <div className="hero-actions">
+                <button className="primary-button" onClick={scrollToCatalog}>Смотреть ёлки <span>↓</span></button>
+                <p className="hero-trust">Реальные модели • Актуальные размеры • Помощь с выбором</p>
+              </div>
             </div>
+            <figure className="hero-visual">
+              <img src="/catalog-live/afrodita-hero.jpg" alt="Искусственная ёлка Афродита Премиум в праздничном интерьере" fetchPriority="high" decoding="async" />
+              <figcaption>Праздничный интерьерный образ. Реальные фото конкретных моделей — внутри карточек.</figcaption>
+            </figure>
           </div>
-
-          <div className="hero-image" aria-hidden="true" />
-
-          <div className="hero-note">
-            <span className="note-dot" />
-            <span>Актуальные остатки</span>
-            <span className="note-divider" />
-            <span>8 моделей из остатков</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="trust-strip">
-        <div className="shell trust-grid">
-          <p><strong>Ростовки в наличии</strong><span>показываем только доступные размеры</span></p>
-          <p><strong>Цена по высоте</strong><span>выбрали рост — сразу видно цену</span></p>
-          <p><strong>Живые материалы</strong><span>фото, видео, хвоя и комплектация в карточках</span></p>
         </div>
       </section>
 
       <section className="catalog-section shell" id="catalog">
         <div className="catalog-heading">
           <div>
-            <p className="eyebrow dark">Выберите свою</p>
-            <h2>Каталог елей</h2>
+            <p className="eyebrow dark">Каталог</p>
+            <h2>Выберите свою ёлку</h2>
           </div>
-          <p className="catalog-intro">Для сравнения откройте любую модель: там будут её размеры, фото, видео и детали комплектации.</p>
+          <p className="catalog-intro">Откройте модель, выберите высоту и посмотрите подробные фото.</p>
         </div>
 
         <div className="filters" aria-label="Фильтры каталога">
@@ -510,7 +498,7 @@ export default function Home() {
       </section>
 
       <footer className="shell footer">
-        <a className="brand footer-brand" href="#top"><span className="brand-mark">Е</span><span>Ели в наличии</span></a>
+        <a className="brand footer-brand" href="#top"><span className="brand-mark">Ё</span><span><strong>Ёлки Тут</strong><small>Каталог искусственных елей</small></span></a>
         <p>Каталог остатков прошлого сезона.<br />Наличие и окончательную цену уточняйте перед заказом.</p>
       </footer>
 
