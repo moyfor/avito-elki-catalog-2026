@@ -386,21 +386,23 @@ export default function Home() {
 
           <div className="hero-stage">
             <div className="hero-copy">
-              <p className="eyebrow">Каталог искусственных елей</p>
-              <h1 id="hero-title">Ёлки, которые выглядят как настоящие</h1>
+              <p className="eyebrow">Коллекция 2026</p>
+              <h1 id="hero-title">Ёлки, с которыми дома начинается праздник</h1>
               <p className="hero-text">
-                Выберите модель и высоту — цены, характеристики, реальные фото и видео
-                собраны в одном каталоге.
+                Реальные модели, актуальные размеры, цены, фото и видео — всё для быстрого выбора.
               </p>
               <div className="hero-actions">
-                <button className="primary-button" onClick={scrollToCatalog}>Смотреть ёлки <span>↓</span></button>
+                <button className="primary-button" onClick={scrollToCatalog}>Смотреть каталог <span>↓</span></button>
                 <p className="hero-trust">Реальные модели • Актуальные размеры • Помощь с выбором</p>
               </div>
             </div>
-            <figure className="hero-visual">
-              <img src="/catalog-live/afrodita-hero.jpg" alt="Искусственная ёлка Афродита Премиум в праздничном интерьере" fetchPriority="high" decoding="async" />
-              <figcaption>Праздничный интерьерный образ. Реальные фото конкретных моделей — внутри карточек.</figcaption>
-            </figure>
+            <div className="hero-ornament" aria-hidden="true">
+              <span className="ornament-ring" />
+              <span className="ornament-line one" />
+              <span className="ornament-line two" />
+              <span className="ornament-branch one" />
+              <span className="ornament-branch two" />
+            </div>
           </div>
         </div>
       </section>

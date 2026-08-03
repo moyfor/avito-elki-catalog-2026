@@ -24,8 +24,8 @@ test("server-renders the catalog shell", async () => {
   const html = await response.text();
   assert.match(html, /<title>Ёлки Тут — каталог искусственных елей<\/title>/);
   assert.match(html, /Каталог остатков/);
-  assert.match(html, /Ёлки, которые выглядят как настоящие/);
-  assert.match(html, /Смотреть ёлки/);
+  assert.match(html, /Ёлки, с которыми дома начинается праздник/);
+  assert.match(html, /Смотреть каталог/);
   assert.match(html, /Афродита Премиум/);
   assert.match(html, /Тайга/);
 });
@@ -41,11 +41,13 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /<title>Ёлки Тут — каталог искусственных елей<\/title>/);
   assert.match(staticCatalog, /<meta name="description" content="Ёлки Тут/);
   assert.match(staticCatalog, /og:title" content="Ёлки Тут — каталог искусственных елей/);
-  assert.match(staticCatalog, /Ёлки, которые выглядят как настоящие/);
-  assert.match(staticCatalog, /Выберите модель и высоту/);
-  assert.match(staticCatalog, /Смотреть ёлки/);
-  assert.match(staticCatalog, /public\/catalog-live\/afrodita-hero\.jpg/);
-  assert.match(staticCatalog, /Искусственная ёлка Афродита Премиум в праздничном интерьере/);
+  assert.match(staticCatalog, /Коллекция 2026/);
+  assert.match(staticCatalog, /Ёлки, с которыми дома начинается праздник/);
+  assert.match(staticCatalog, /Реальные модели, актуальные размеры, цены, фото и видео — всё для быстрого выбора\./);
+  assert.match(staticCatalog, /Смотреть каталог/);
+  assert.match(staticCatalog, /Реальные модели • Актуальные размеры • Помощь с выбором/);
+  assert.match(staticCatalog, /hero-ornament/);
+  assert.match(staticCatalog, /ornament-branch/);
   assert.match(staticCatalog, /id="gallery-prev"/);
   assert.match(staticCatalog, /id="gallery-next"/);
   assert.match(staticCatalog, /id="fullscreen"/);
@@ -59,11 +61,17 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /Выберите свою ёлку/);
   assert.doesNotMatch(staticCatalog, /Тестовая версия/);
   assert.doesNotMatch(staticCatalog, /В следующей версии/);
+  const firstScreen = staticCatalog.slice(0, staticCatalog.indexOf('<section class="catalog'));
+  assert.doesNotMatch(firstScreen, /afrodita-hero\.jpg/);
+  assert.doesNotMatch(firstScreen, /hero-christmas-mood-v2\.png/);
+  assert.doesNotMatch(firstScreen, /<img\b/);
 
   assert.match(page, /isLightboxOpen/);
   assert.match(page, /trapFocus/);
   assert.match(page, /aria-pressed/);
   assert.match(page, /MagnifyingGlassPlus/);
+  assert.match(page, /Ёлки, с которыми дома начинается праздник/);
+  assert.match(page, /hero-ornament/);
   assert.match(page, /tayga-motion-web\.mov/);
   assert.match(page, /Железная складная/);
   assert.match(layout, /Ёлки Тут — каталог искусственных елей/);
