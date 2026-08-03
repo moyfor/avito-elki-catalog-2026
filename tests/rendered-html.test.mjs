@@ -47,7 +47,7 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /Смотреть каталог/);
   assert.match(staticCatalog, /Реальные модели • Актуальные размеры • Помощь с выбором/);
   assert.match(staticCatalog, /hero-ornament/);
-  assert.match(staticCatalog, /ornament-branch/);
+  assert.match(staticCatalog, /ornament-line one/);
   assert.match(staticCatalog, /id="gallery-prev"/);
   assert.match(staticCatalog, /id="gallery-next"/);
   assert.match(staticCatalog, /id="fullscreen"/);
@@ -65,6 +65,8 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.doesNotMatch(firstScreen, /afrodita-hero\.jpg/);
   assert.doesNotMatch(firstScreen, /hero-christmas-mood-v2\.png/);
   assert.doesNotMatch(firstScreen, /<img\b/);
+  assert.doesNotMatch(firstScreen, /ornament-branch/);
+  assert.doesNotMatch(firstScreen, /ornament-ring/);
 
   assert.match(page, /isLightboxOpen/);
   assert.match(page, /trapFocus/);

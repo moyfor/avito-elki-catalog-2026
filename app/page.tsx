@@ -397,11 +397,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-ornament" aria-hidden="true">
-              <span className="ornament-ring" />
               <span className="ornament-line one" />
-              <span className="ornament-line two" />
-              <span className="ornament-branch one" />
-              <span className="ornament-branch two" />
             </div>
           </div>
         </div>
