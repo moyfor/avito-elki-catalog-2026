@@ -273,8 +273,8 @@ dd { margin: 0; text-align: right; font-weight: 700; }
   .brand-mark { width: 31px; height: 31px; font-size: 20px; }
   .brand strong { font-size: 14px; }
   .brand small { font-size: 10px; }
-  .hero-stage { min-height: 462px; padding: 34px 0 34px; text-align: left; place-items: stretch; }
-  .hero-copy { width: 100%; min-height: 100%; padding: 0; animation: none; }
+  .hero-stage { min-height: 0; padding: 34px 0 10px; text-align: left; place-items: stretch; }
+  .hero-copy { width: 100%; min-height: 0; padding: 0; animation: none; }
   .hero .eyebrow { margin-bottom: 16px; font-size: 10px; }
   .hero h1 { max-width: 350px; margin-bottom: 15px; font-size: clamp(36px, 9.9vw, 43px); line-height: .98; letter-spacing: -.043em; }
   .hero-text { max-width: 320px; font-size: 14px; line-height: 1.52; }
@@ -282,9 +282,8 @@ dd { margin: 0; text-align: right; font-weight: 700; }
   .primary-button { width: max-content; min-height: 50px; padding: 14px 18px; }
   .hero .primary-button { min-height: 42px; padding: 10px 17px; }
   .hero-trust { max-width: 330px; padding: 10px 0 0; border-top: 1px solid rgba(183,154,102,.36); border-left: 0; font-size: 11px; }
-  .hero-ornament { inset: 0; }
-  .ornament-line.one { right: -18px; bottom: 118px; width: 98px; opacity: .46; }
-  .catalog-section { padding-top: 42px; padding-bottom: 78px; }
+  .hero-ornament { display: none; }
+  .catalog-section { padding-top: 34px; padding-bottom: 78px; }
   .catalog-heading { gap: 12px; padding-bottom: 22px; }
   .catalog-section h2 { font-size: clamp(35px, 10vw, 42px); }
   .catalog-intro { max-width: 340px; font-size: 14px; line-height: 1.55; }
