@@ -235,7 +235,7 @@ dd { margin: 0; text-align: right; font-weight: 700; }
 .hero::before { background: repeating-linear-gradient(0deg, rgba(18,59,48,.014) 0 1px, transparent 1px 9px), repeating-linear-gradient(90deg, rgba(183,154,102,.012) 0 1px, transparent 1px 11px), linear-gradient(90deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 48%, rgba(255,255,255,.24) 100%); opacity: .72; }
 .hero::after { position: absolute; inset: 18px; content: ""; pointer-events: none; border: 1px solid rgba(183,154,102,.18); }
 .hero-content { width: min(var(--container-max), calc(100% - var(--container-gutter))); }
-.topbar { min-height: 70px; border-bottom: 0; }
+.topbar { min-height: 70px; padding-left: 28px; border-bottom: 0; }
 .topbar::after { position: absolute; bottom: 0; left: 0; width: 74px; content: ""; border-top: 1px solid rgba(183,154,102,.48); }
 .brand { min-height: 44px; text-transform: none; letter-spacing: 0; font-size: 13px; }
 .brand-mark { width: 34px; height: 34px; font-size: 21px; border-color: rgba(18,59,48,.5); }
@@ -244,21 +244,21 @@ dd { margin: 0; text-align: right; font-weight: 700; }
 .brand small { color: var(--color-muted); font-size: 11px; font-weight: 500; line-height: 1.15; }
 .nav-link, .outline-button { display: none; }
 .hero-stage { position: relative; display: grid; min-height: 506px; max-width: 980px; margin: 0 auto; padding: 58px 0 52px; align-items: stretch; text-align: left; border-top: 0; }
-.hero-copy { position: relative; z-index: 2; display: grid; width: min(100% - 92px, 760px); min-height: 100%; max-width: 760px; margin: 0 auto; padding: 0; border-top: 0; align-items: start; grid-template-rows: auto auto auto 1fr auto; animation: none; }
+.hero-copy { position: relative; z-index: 2; display: grid; width: min(100% - 56px, 800px); min-height: 100%; max-width: 800px; margin: 0 auto; padding: 0 0 0 28px; border-top: 0; align-items: start; grid-template-rows: auto auto auto 1fr auto; animation: none; }
 .hero .eyebrow { margin-bottom: 19px; color: var(--color-accent-gold); opacity: 1; }
-.hero h1 { max-width: 760px; margin-bottom: 20px; color: var(--ink); font-size: clamp(52px, 6vw, 80px); line-height: .91; letter-spacing: -.055em; text-wrap: balance; }
-.hero-text { max-width: 500px; color: var(--color-muted); font-size: 17px; line-height: 1.55; }
-.hero-actions { display: grid; width: 100%; grid-template-columns: auto minmax(220px, 1fr); gap: 24px; align-items: center; margin-top: 34px; }
+.hero h1 { max-width: 790px; margin-bottom: 20px; color: var(--ink); font-size: clamp(52px, 6vw, 80px); line-height: .91; letter-spacing: -.055em; text-wrap: balance; }
+.hero-text { max-width: 540px; color: var(--color-muted); font-size: 17px; line-height: 1.55; }
+.hero-actions { display: flex; width: 100%; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 34px; }
 .primary-button { min-height: 50px; padding: 15px 22px; color: var(--color-white); background: var(--ink); }
-.hero .primary-button { min-height: 42px; padding: 10px 18px; border-color: rgba(18,59,48,.24); border-radius: var(--radius-round); color: var(--ink); background: rgba(255,255,255,.38); gap: 10px; font-size: 13px; font-weight: 650; }
-.hero .primary-button:hover { border-color: rgba(18,59,48,.38); background: rgba(255,255,255,.58); }
+.hero .primary-button { min-height: 44px; padding: 11px 22px; border-color: rgba(18,59,48,.17); border-radius: var(--radius-round); color: var(--ink); background: rgba(255,255,255,.28); gap: 10px; font-size: 13px; font-weight: 600; }
+.hero .primary-button:hover { border-color: rgba(18,59,48,.28); background: rgba(255,255,255,.46); }
 .hero .primary-button span { font-size: 15px; }
-.hero-trust { max-width: 320px; margin: 0; padding-left: 18px; border-left: 1px solid rgba(183,154,102,.42); color: rgba(18,59,48,.66); font-size: 12px; line-height: 1.45; }
+.hero-trust { max-width: 360px; margin: 0; color: rgba(18,59,48,.58); font-size: 11px; line-height: 1.5; }
 .hero-note, .hero-image, .trust-strip { display: none; }
 .hero-ornament { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .ornament-line { position: absolute; display: block; height: 1px; background: linear-gradient(90deg, transparent, rgba(183,154,102,.5), transparent); transform-origin: left center; }
 .ornament-line.one { right: 8%; bottom: 18%; width: 132px; opacity: .58; transform: rotate(-2deg); }
-.catalog-section { padding-top: 66px; }
+.catalog-section { padding-top: 56px; }
 .catalog-heading { align-items: start; padding-bottom: 26px; }
 .catalog-intro { max-width: 420px; }
 
@@ -267,23 +267,23 @@ dd { margin: 0; text-align: right; font-weight: 700; }
   .hero::before { background: repeating-linear-gradient(0deg, rgba(18,59,48,.018) 0 1px, transparent 1px 8px), linear-gradient(180deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 58%); }
   .hero::after { inset: 10px; }
   .hero-content { width: min(100% - 32px, 620px); }
-  .topbar { min-height: 62px; padding: 0; }
+  .topbar { min-height: 62px; padding-left: 22px; }
   .topbar::after { width: 52px; }
   .brand { gap: 9px; }
   .brand-mark { width: 31px; height: 31px; font-size: 20px; }
   .brand strong { font-size: 14px; }
   .brand small { font-size: 10px; }
   .hero-stage { min-height: 0; padding: 34px 0 10px; text-align: left; place-items: stretch; }
-  .hero-copy { width: 100%; min-height: 0; padding: 0; animation: none; }
+  .hero-copy { width: 100%; min-height: 0; padding: 0 0 0 22px; animation: none; }
   .hero .eyebrow { margin-bottom: 16px; font-size: 10px; }
-  .hero h1 { max-width: 350px; margin-bottom: 15px; font-size: clamp(36px, 9.9vw, 43px); line-height: .98; letter-spacing: -.043em; }
-  .hero-text { max-width: 320px; font-size: 14px; line-height: 1.52; }
-  .hero-actions { grid-template-columns: 1fr; align-items: flex-start; gap: 12px; margin-top: 22px; }
+  .hero h1 { max-width: 100%; margin-bottom: 15px; font-size: clamp(36px, 9.9vw, 43px); line-height: .98; letter-spacing: -.043em; }
+  .hero-text { max-width: 100%; font-size: 14px; line-height: 1.52; }
+  .hero-actions { gap: 10px; margin-top: 22px; }
   .primary-button { width: max-content; min-height: 50px; padding: 14px 18px; }
-  .hero .primary-button { min-height: 42px; padding: 10px 17px; }
-  .hero-trust { max-width: 330px; padding: 10px 0 0; border-top: 1px solid rgba(183,154,102,.36); border-left: 0; font-size: 11px; }
+  .hero .primary-button { min-height: 44px; padding: 11px 20px; }
+  .hero-trust { max-width: 286px; font-size: 10px; line-height: 1.45; }
   .hero-ornament { display: none; }
-  .catalog-section { padding-top: 34px; padding-bottom: 78px; }
+  .catalog-section { padding-top: 44px; padding-bottom: 78px; }
   .catalog-heading { gap: 12px; padding-bottom: 22px; }
   .catalog-section h2 { font-size: clamp(35px, 10vw, 42px); }
   .catalog-intro { max-width: 340px; font-size: 14px; line-height: 1.55; }
