@@ -28,6 +28,8 @@ test("server-renders the catalog shell", async () => {
   assert.match(html, /Смотреть каталог/);
   assert.match(html, /Афродита Премиум/);
   assert.match(html, /Тайга/);
+  assert.match(html, /210[\s\S]*см/);
+  assert.match(html, /9[\s\u00A0]700 ₽/);
 });
 
 test("keeps the mobile gallery and full-screen photo controls in the deployable catalog", async () => {
@@ -59,8 +61,15 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /tayga-motion-web\.mov/);
   assert.match(staticCatalog, /Железная складная подставка/);
   assert.match(staticCatalog, /Выберите свою ёлку/);
+  assert.match(staticCatalog, /Все фото/);
+  assert.match(staticCatalog, /Открыть <b>→<\/b>/);
+  assert.match(staticCatalog, /190/);
+  assert.match(staticCatalog, /270/);
+  assert.match(staticCatalog, /Свайп и стрелки листают галерею/);
   assert.doesNotMatch(staticCatalog, /Тестовая версия/);
   assert.doesNotMatch(staticCatalog, /В следующей версии/);
+  assert.doesNotMatch(staticCatalog, /Подробнее/);
+  assert.doesNotMatch(staticCatalog, /180–210/);
   const firstScreen = staticCatalog.slice(0, staticCatalog.indexOf('<section class="catalog'));
   assert.doesNotMatch(firstScreen, /afrodita-hero\.jpg/);
   assert.doesNotMatch(firstScreen, /hero-christmas-mood-v2\.png/);
@@ -70,12 +79,17 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
 
   assert.match(page, /isLightboxOpen/);
   assert.match(page, /trapFocus/);
+  assert.match(page, /handleSwipeStart/);
+  assert.match(page, /handleSwipeEnd/);
   assert.match(page, /aria-pressed/);
   assert.match(page, /MagnifyingGlassPlus/);
   assert.match(page, /Ёлки, с которыми дома начинается праздник/);
   assert.match(page, /hero-ornament/);
   assert.match(page, /tayga-motion-web\.mov/);
   assert.match(page, /Железная складная/);
+  assert.match(page, /product-prices/);
+  assert.match(page, /Открыть <ArrowRight/);
+  assert.doesNotMatch(page, /Подробнее/);
   assert.match(layout, /Ёлки Тут — каталог искусственных елей/);
   assert.match(layout, /мобильный каталог искусственных елей/);
   assert.match(packageJson, /"@phosphor-icons\/react"/);

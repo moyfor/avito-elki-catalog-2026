@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MutableRefObject, type TouchEvent as ReactTouchEvent } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -18,6 +18,9 @@ type TreeVariation = {
   diameter: string;
   weight: string;
 };
+
+type HeightFilter = "Все" | number;
+type TouchPoint = { x: number; y: number };
 
 type GalleryItem = {
   src: string;
@@ -191,7 +194,7 @@ const trees: Tree[] = [
   },
 ];
 
-const heightOptions = ["Все", "до 150", "180–210", "от 230"];
+const heightOptions: HeightFilter[] = ["Все", ...Array.from(new Set(trees.flatMap((tree) => tree.variations.map((variation) => variation.height)))).sort((left, right) => left - right)];
 const kindOptions = [
   { id: "all", label: "Все формы" },
   { id: "lush", label: "Пышные" },
@@ -204,8 +207,39 @@ function formatPrice(value: number) {
   return `${price.format(value)} ₽`;
 }
 
-function lowestPrice(tree: Tree) {
-  return Math.min(...tree.variations.map((variation) => variation.price));
+function matchesHeightFilter(tree: Tree, height: HeightFilter) {
+  return height === "Все" || tree.variations.some((variation) => variation.height === height);
+}
+
+function getInitialVariation(tree: Tree, height: HeightFilter) {
+  return tree.variations.find((variation) => height !== "Все" && variation.height === height) ?? tree.variations[0];
+}
+
+function handleSwipeStart(event: ReactTouchEvent<HTMLElement>, ref: MutableRefObject<TouchPoint | null>) {
+  const touch = event.touches[0];
+  ref.current = { x: touch.clientX, y: touch.clientY };
+}
+
+function handleSwipeEnd(
+  event: ReactTouchEvent<HTMLElement>,
+  ref: MutableRefObject<TouchPoint | null>,
+  onSwipe: (direction: 1 | -1) => void,
+) {
+  const start = ref.current;
+  ref.current = null;
+
+  if (!start) return false;
+
+  const touch = event.changedTouches[0];
+  const deltaX = touch.clientX - start.x;
+  const deltaY = touch.clientY - start.y;
+
+  if (Math.abs(deltaX) < 44 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.15) {
+    return false;
+  }
+
+  onSwipe(deltaX < 0 ? 1 : -1);
+  return true;
 }
 
 const focusableSelector =
@@ -246,7 +280,7 @@ function trapFocus(event: KeyboardEvent, container: HTMLElement) {
 }
 
 export default function Home() {
-  const [height, setHeight] = useState("Все");
+  const [height, setHeight] = useState<HeightFilter>("Все");
   const [kind, setKind] = useState("all");
   const [showAll, setShowAll] = useState(false);
   const [activeTree, setActiveTree] = useState<Tree | null>(null);
@@ -258,6 +292,9 @@ export default function Home() {
   const lightboxRef = useRef<HTMLElement | null>(null);
   const lastFocusedElementRef = useRef<HTMLElement | null>(null);
   const lightboxReturnRef = useRef<HTMLElement | null>(null);
+  const modalSwipeStartRef = useRef<TouchPoint | null>(null);
+  const lightboxSwipeStartRef = useRef<TouchPoint | null>(null);
+  const suppressLightboxOpenUntilRef = useRef(0);
 
   const activeVariation = activeTree?.variations.find((variation) => variation.height === activeHeight) ?? activeTree?.variations[0];
   const activeMedia = activeTree?.gallery?.[activeMediaIndex];
@@ -266,13 +303,7 @@ export default function Home() {
   const filteredTrees = useMemo(() => {
     return trees.filter((tree) => {
       const matchesKind = kind === "all" || tree.kind === kind;
-      const matchesHeight =
-        height === "Все" ||
-        (height === "до 150" && tree.variations.some((variation) => variation.height <= 150)) ||
-        (height === "180–210" && tree.variations.some((variation) => variation.height >= 180 && variation.height <= 210)) ||
-        (height === "от 230" && tree.variations.some((variation) => variation.height >= 230));
-
-      return matchesKind && matchesHeight;
+      return matchesKind && matchesHeightFilter(tree, height);
     });
   }, [height, kind]);
 
@@ -286,7 +317,7 @@ export default function Home() {
   function openTree(tree: Tree, opener?: HTMLElement) {
     lastFocusedElementRef.current = opener ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setActiveTree(tree);
-    setActiveHeight(tree.variations[0].height);
+    setActiveHeight(getInitialVariation(tree, height).height);
     setActiveMediaIndex(0);
     setIsLightboxOpen(false);
     setLightboxZoom(1);
@@ -364,9 +395,14 @@ export default function Home() {
         }
       }
 
-      if (!isLightboxOpen) return;
-      if (event.key === "ArrowLeft") moveMedia(-1, true);
-      if (event.key === "ArrowRight") moveMedia(1, true);
+      if (isLightboxOpen) {
+        if (event.key === "ArrowLeft") moveMedia(-1, true);
+        if (event.key === "ArrowRight") moveMedia(1, true);
+        return;
+      }
+
+      if (event.key === "ArrowLeft") moveMedia(-1);
+      if (event.key === "ArrowRight") moveMedia(1);
     }
 
     window.addEventListener("keydown", handleKeyDown);
@@ -420,10 +456,10 @@ export default function Home() {
                 <button
                   key={option}
                   className={height === option ? "filter-pill active" : "filter-pill"}
-                  onClick={() => setHeight(option)}
+                  onClick={() => { setHeight(option); setShowAll(false); }}
                   aria-pressed={height === option}
                 >
-                  {option === "Все" ? "Любая" : `${option} см`}
+                  {option}
                 </button>
               ))}
             </div>
@@ -435,7 +471,7 @@ export default function Home() {
                 <button
                   key={option.id}
                   className={kind === option.id ? "filter-pill active" : "filter-pill"}
-                  onClick={() => setKind(option.id)}
+                  onClick={() => { setKind(option.id); setShowAll(false); }}
                   aria-pressed={kind === option.id}
                 >
                   {option.label}
@@ -453,18 +489,23 @@ export default function Home() {
               <article className="product-card" key={tree.id}>
                 <button className="product-image" onClick={(event) => openTree(tree, event.currentTarget)} aria-label={`Открыть ${tree.name}`}>
                   <img src={tree.image} alt={`Ёлка ${tree.name}`} style={{ objectPosition: tree.imagePosition }} />
-                  <span className="photo-label">Открыть галерею <ArrowRight weight="bold" aria-hidden="true" /></span>
+                  <span className="photo-label">Все фото <ArrowRight weight="bold" aria-hidden="true" /></span>
                   {tree.badge && <span className="badge">{tree.badge}</span>}
                 </button>
                 <div className="product-info">
                   <p className="product-type">{tree.subtitle}</p>
-                  <h3>{tree.name}</h3>
-                  <p className="size-row"><span>В наличии</span>{tree.variations.map((variation) => variation.height).join(" · ")} см</p>
-                  <div className="price-row">
-                    <span>от</span>
-                    <strong>{formatPrice(lowestPrice(tree))}</strong>
+                  <h3 className="product-name">{tree.name}</h3>
+                  <p className="product-facts">{tree.needles} · {tree.assembly}</p>
+                  <div className="product-prices" aria-label={`Размеры и цены модели ${tree.name}`}>
+                    {tree.variations.map((variation) => (
+                      <div className={height === variation.height ? "product-price-item active" : "product-price-item"} key={variation.height}>
+                        <span className="product-price-size">{variation.height} см</span>
+                        <span className="product-price-rule" aria-hidden="true" />
+                        <strong>{formatPrice(variation.price)}</strong>
+                      </div>
+                    ))}
                   </div>
-                  <button className="text-button" onClick={(event) => openTree(tree, event.currentTarget)}>Подробнее <ArrowRight weight="bold" aria-hidden="true" /></button>
+                  <button className="text-button" onClick={(event) => openTree(tree, event.currentTarget)}>Открыть <ArrowRight weight="bold" aria-hidden="true" /></button>
                 </div>
               </article>
             ))}
@@ -472,7 +513,7 @@ export default function Home() {
         ) : (
           <div className="empty-state">
             <p>В этой тестовой подборке пока нет подходящей модели.</p>
-            <button className="text-button" onClick={() => { setHeight("Все"); setKind("all"); }}>Сбросить фильтры <span>→</span></button>
+            <button className="text-button" onClick={() => { setHeight("Все"); setKind("all"); setShowAll(false); }}>Сбросить фильтры <span>→</span></button>
           </div>
         )}
 
@@ -502,18 +543,30 @@ export default function Home() {
 
       {activeTree && activeVariation && (
         <>
-          <div className="modal-backdrop" role="presentation" onMouseDown={closeTree}>
-            <section ref={modalRef} className="product-modal" role="dialog" aria-modal="true" aria-label={`Модель ${activeTree.name}`} tabIndex={-1} onMouseDown={(event) => event.stopPropagation()}>
+          <div className="modal-backdrop" role="presentation" onClick={closeTree}>
+            <section ref={modalRef} className="product-modal" role="dialog" aria-modal="true" aria-label={`Модель ${activeTree.name}`} tabIndex={-1} onClick={(event) => event.stopPropagation()}>
               <button className="close-button" type="button" onClick={closeTree} aria-label="Закрыть карточку модели"><X weight="bold" aria-hidden="true" /></button>
               <div className="modal-gallery">
-                <div className="modal-photo">
+                <div
+                  className="modal-photo"
+                  onTouchStart={(event) => handleSwipeStart(event, modalSwipeStartRef)}
+                  onTouchEnd={(event) => {
+                    const swiped = handleSwipeEnd(event, modalSwipeStartRef, (direction) => moveMedia(direction));
+                    if (swiped) suppressLightboxOpenUntilRef.current = Date.now() + 320;
+                  }}
+                >
                   {activeMedia?.kind === "video" ? (
                     <video controls playsInline preload="metadata" src={activeMedia.src} aria-label={activeMedia.alt} />
                   ) : (
                     <img
+                      className="modal-photo-image"
                       src={activeMedia?.src ?? activeTree.image}
                       alt={activeMedia?.alt ?? `Ёлка ${activeTree.name}`}
                       style={{ objectPosition: activeMedia ? "center center" : activeTree.imagePosition }}
+                      onClick={(event) => {
+                        if (Date.now() < suppressLightboxOpenUntilRef.current) return;
+                        openLightbox(event.currentTarget);
+                      }}
                     />
                   )}
                   {galleryLength > 1 && (
@@ -575,7 +628,7 @@ export default function Home() {
                   {activeTree.stand && <div><dt>Подставка</dt><dd>{activeTree.stand}</dd></div>}
                   <div><dt>Вес</dt><dd>{activeVariation.weight}</dd></div>
                 </dl>
-                <div className="modal-notice"><span>✦</span>{activeTree.gallery ? "Нажмите на фото, чтобы открыть его на весь экран. Стрелки листают галерею." : "Нажмите на фото, чтобы открыть его на весь экран."}</div>
+                <div className="modal-notice"><span>✦</span>{activeTree.gallery ? "Нажмите на фото, чтобы открыть его на весь экран. Свайп и стрелки листают галерею." : "Нажмите на фото, чтобы открыть его на весь экран."}</div>
                 {!activeTree.gallery && activeTree.galleryUrl && <a className="gallery-link" href={activeTree.galleryUrl} target="_blank" rel="noreferrer">Открыть фотогалерею <ArrowRight weight="bold" aria-hidden="true" /></a>}
                 <a className="primary-button modal-button" href="tel:+79650298353">Уточнить наличие <ArrowRight weight="bold" aria-hidden="true" /></a>
               </div>
@@ -583,8 +636,8 @@ export default function Home() {
           </div>
 
           {isLightboxOpen && activeMedia?.kind !== "video" && (
-            <div className="lightbox-backdrop" role="presentation" onMouseDown={() => closeLightbox()}>
-              <section ref={lightboxRef} className="lightbox" role="dialog" aria-modal="true" aria-label={`Фото модели ${activeTree.name}`} tabIndex={-1} onMouseDown={(event) => event.stopPropagation()}>
+            <div className="lightbox-backdrop" role="presentation" onClick={() => closeLightbox()}>
+              <section ref={lightboxRef} className="lightbox" role="dialog" aria-modal="true" aria-label={`Фото модели ${activeTree.name}`} tabIndex={-1} onClick={(event) => event.stopPropagation()}>
                 <div className="lightbox-topbar">
                   <p>{activeMedia?.label ?? "Фото модели"}</p>
                   <div className="lightbox-actions">
@@ -593,12 +646,16 @@ export default function Home() {
                     <button type="button" onClick={() => closeLightbox()} aria-label="Закрыть просмотр фото"><X weight="bold" aria-hidden="true" /></button>
                   </div>
                 </div>
-                <div className="lightbox-stage">
+                <div
+                  className="lightbox-stage"
+                  onTouchStart={(event) => handleSwipeStart(event, lightboxSwipeStartRef)}
+                  onTouchEnd={(event) => handleSwipeEnd(event, lightboxSwipeStartRef, (direction) => moveMedia(direction, true))}
+                >
                   {galleryLength > 1 && <button className="lightbox-nav lightbox-nav-prev" type="button" onClick={() => moveMedia(-1, true)} aria-label="Предыдущее фото"><ArrowLeft weight="bold" aria-hidden="true" /></button>}
                   <img src={activeMedia?.src ?? activeTree.image} alt={activeMedia?.alt ?? `Ёлка ${activeTree.name}`} style={{ transform: `scale(${lightboxZoom})` }} />
                   {galleryLength > 1 && <button className="lightbox-nav lightbox-nav-next" type="button" onClick={() => moveMedia(1, true)} aria-label="Следующее фото"><ArrowRight weight="bold" aria-hidden="true" /></button>}
                 </div>
-                <p className="lightbox-hint">Используйте +/− для масштаба. Стрелки листают фото.</p>
+                <p className="lightbox-hint">Используйте +/− для масштаба. Свайп и стрелки листают фото.</p>
               </section>
             </div>
           )}

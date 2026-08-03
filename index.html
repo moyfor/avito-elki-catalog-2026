@@ -67,24 +67,30 @@
       .pill.active, .pill:hover { border-color: var(--pine); color: var(--color-white); background: var(--pine); }
       .pill:active, .height-option:active { transform: scale(.97); }
       .count { margin: 0 0 25px; font-size: 12px; opacity: .58; }
-      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 20px; }
-      .card-image { position: relative; width: 100%; height: 405px; padding: 0; overflow: hidden; border: 0; background: var(--color-surface-muted); text-align: left; transition: transform var(--duration-fast) var(--ease-out); }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; align-items: stretch; }
+      .product-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100%; }
+      .card-image { position: relative; width: 100%; height: 348px; padding: 0; overflow: hidden; border: 0; background: var(--color-surface-muted); text-align: left; transition: transform var(--duration-fast) var(--ease-out); }
       .card-image::after { position: absolute; inset: 0; pointer-events: none; content: ""; background: linear-gradient(0deg, rgba(5,36,28,.55), transparent 42%); }
       .card-image img { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform var(--duration-slow) var(--ease-out); }
       @media (hover: hover) and (pointer: fine) { .card-image:hover img { transform: scale(1.025); } }
       .card-image:active { transform: scale(.99); }
       .photo-label, .badge { position: absolute; z-index: 1; font-size: 11px; font-weight: 700; }
-      .photo-label { bottom: 15px; left: 16px; display: inline-flex; min-height: 44px; align-items: center; gap: 6px; color: var(--color-white); }
+      .photo-label { bottom: 14px; left: 14px; display: inline-flex; min-height: 36px; align-items: center; gap: 6px; color: var(--color-white); }
       .badge { top: 14px; left: 14px; padding: 7px 9px; color: var(--ink); background: rgba(255,255,255,.92); text-transform: uppercase; letter-spacing: .05em; }
-      .info { padding: 17px 4px 0; }
-      .type { margin: 0 0 8px; color: var(--pine); font-size: 12px; }
-      .info h3 { margin: 0 0 15px; font: 400 29px var(--serif); letter-spacing: -.035em; }
-      .sizes { margin: 0 0 14px; color: var(--color-muted); font-size: 12px; }
-      .sizes b { margin-right: 7px; color: var(--ink); }
-      .price { display: flex; align-items: baseline; gap: 6px; margin: 0 0 18px; }
-      .price span { font-size: 12px; opacity: .58; }
-      .price strong { font: 400 22px var(--serif); }
-      .text { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; padding: 0; border: 0; color: var(--pine); background: transparent; font-size: var(--text-md); font-weight: 700; transition: transform var(--duration-press) var(--ease-out); }
+      .info { height: 100%; display: grid; align-content: start; grid-template-rows: auto auto auto 1fr auto; padding: 14px 4px 0; }
+      .type { margin: 0 0 6px; color: var(--pine); font-size: 12px; }
+      .info h3 { margin: 0 0 10px; font: 400 29px var(--serif); letter-spacing: -.035em; }
+      .product-name { min-height: 2.2em; }
+      .facts { min-height: 36px; margin: 0 0 12px; color: rgba(18,59,48,.7); font-size: 12px; line-height: 1.45; }
+      .price-list { display: grid; gap: 8px; min-height: 104px; margin: 0 0 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .price-item { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 10px; color: rgba(18,59,48,.7); font-size: 12px; }
+      .price-item.active { color: var(--pine); }
+      .price-size { color: var(--ink); font-weight: 700; white-space: nowrap; }
+      .price-item.active .price-size { color: var(--pine); }
+      .price-rule { align-self: center; height: 1px; background: rgba(18,59,48,.14); }
+      .price-item strong { color: var(--ink); font: 400 20px var(--serif); white-space: nowrap; }
+      .price-item.active strong { color: var(--pine); }
+      .text { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; margin-top: auto; padding: 0; border: 0; color: var(--pine); background: transparent; font-size: var(--text-md); font-weight: 700; transition: transform var(--duration-press) var(--ease-out); }
       .text:active { transform: scale(.97); }
       .more { display: block; width: 100%; margin-top: 47px; padding: 17px; border: 1px solid var(--line); color: var(--ink); background: transparent; font-size: 14px; }
 
@@ -102,8 +108,9 @@
       .close { position: absolute; z-index: 5; top: 12px; right: 13px; display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: var(--radius-round); color: var(--ink); background: rgba(255,255,255,.94); box-shadow: var(--shadow-soft); font-size: 26px; line-height: 1; transition: transform var(--duration-fast) var(--ease-out); }
       .close:active { transform: scale(.94); }
       .detail-media { display: flex; min-width: 0; flex-direction: column; align-self: start; background: #e7ece4; }
-      .detail-image { position: relative; min-height: 0; flex: 0 0 auto; overflow: hidden; background: #e7ece4; aspect-ratio: 3 / 4; }
+      .detail-image { position: relative; min-height: 0; flex: 0 0 auto; overflow: hidden; background: #e7ece4; aspect-ratio: 3 / 4; touch-action: pan-y; }
       .detail-image img, .detail-image video { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+      .detail-image img { cursor: zoom-in; }
       .detail-image video { background: var(--color-pine-deep); }
       .gallery-control, .fullscreen { position: absolute; z-index: 2; border: 0; color: var(--color-white); background: rgba(7,31,25,.68); transition: transform var(--duration-fast) var(--ease-out), background-color var(--duration-fast) ease; }
       .gallery-control { top: 50%; width: 44px; height: 44px; border-radius: var(--radius-round); transform: translateY(-50%); font-size: 26px; line-height: 1; }
@@ -149,7 +156,7 @@
       .lightbox-actions button:hover, .lightbox-nav:hover { background: rgba(255,255,255,.2); }
       .lightbox-actions button:active, .lightbox-nav:active { transform: scale(.94); }
       .lightbox-actions button:disabled { cursor: default; opacity: .35; }
-      .lightbox-stage { position: relative; display: grid; min-height: 0; place-items: center; overflow: hidden; }
+      .lightbox-stage { position: relative; display: grid; min-height: 0; place-items: center; overflow: hidden; touch-action: pan-y; }
       .lightbox-stage img { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center; transition: transform 220ms var(--ease-out); }
       .lightbox-nav { position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); }
       .lightbox-nav:active { transform: translateY(-50%) scale(.94); }
@@ -180,12 +187,14 @@
         .catalog-head { align-items: start; flex-direction: column; gap: 22px; padding-bottom: 26px; }
         .filters { gap: 21px; }
         .pill, .height-option { min-height: 44px; }
-        .grid { gap: 26px; }
-        .card-image { height: auto; aspect-ratio: 3 / 4; }
-        .info { padding: 14px 6px 0; }
+        .grid { gap: 24px; }
+        .card-image { height: 286px; aspect-ratio: auto; }
+        .info { padding: 12px 6px 0; }
         .type { margin-bottom: 6px; }
-        .info h3 { margin-bottom: 12px; }
-        .price { margin-bottom: 14px; }
+        .product-name { min-height: 2.2em; }
+        .facts { min-height: 0; margin-bottom: 10px; }
+        .price-list { min-height: 104px; gap: 7px; margin-bottom: 14px; }
+        .price-item strong { font-size: 18px; }
         .callout { padding: 62px 0; }
         .callout .shell { gap: 25px; }
         .light { width: max-content; }
@@ -421,8 +430,8 @@
     <div class="lightbox" id="lightbox" role="presentation">
       <section class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Просмотр фото на весь экран" tabindex="-1">
         <div class="lightbox-topbar"><p id="lightbox-label">Фото модели</p><div class="lightbox-actions"><button id="zoom-out" type="button" aria-label="Уменьшить фото" disabled>−</button><button id="zoom-in" type="button" aria-label="Увеличить фото">+</button><button id="lightbox-close" type="button" aria-label="Закрыть просмотр">×</button></div></div>
-        <div class="lightbox-stage"><button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Предыдущее фото">‹</button><img id="lightbox-img" alt=""><button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Следующее фото">›</button></div>
-        <p class="lightbox-hint">Используйте +/− для масштаба. Стрелки листают фото.</p>
+        <div class="lightbox-stage" id="lightbox-stage"><button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Предыдущее фото">‹</button><img id="lightbox-img" alt=""><button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Следующее фото">›</button></div>
+        <p class="lightbox-hint">Используйте +/− для масштаба. Свайп и стрелки листают фото.</p>
       </section>
     </div>
 
@@ -439,26 +448,28 @@
       ];
 
       const money = new Intl.NumberFormat('ru-RU');
-      const heights = [['Все','Любая'],['до 150','до 150 см'],['180–210','180–210 см'],['от 230','от 230 см']];
+      const heights = ['Все', ...Array.from(new Set(trees.flatMap(tree => tree.variations.map(variation => variation.height)))).sort((left, right) => left - right)];
       const kinds = [['all','Все формы'],['lush','Пышные'],['slim','Узкие']];
       const ui = {
         height: 'Все', kind: 'all', all: false, activeTree: null, activeMediaIndex: 0, zoom: 1,
         modal: document.querySelector('#modal'), lightbox: document.querySelector('#lightbox'), image: document.querySelector('#detail-img'), video: document.querySelector('#detail-video'),
         detailDialog: document.querySelector('.detail'), lightboxPanel: document.querySelector('.lightbox-panel'), lastFocused: null, lightboxReturn: null,
         label: document.querySelector('#detail-label'), counter: document.querySelector('#detail-counter'), thumbs: document.querySelector('#detail-thumbs'), fullscreen: document.querySelector('#fullscreen'),
-        previous: document.querySelector('#gallery-prev'), next: document.querySelector('#gallery-next'), lightboxImage: document.querySelector('#lightbox-img'), lightboxLabel: document.querySelector('#lightbox-label')
+        previous: document.querySelector('#gallery-prev'), next: document.querySelector('#gallery-next'), lightboxImage: document.querySelector('#lightbox-img'), lightboxLabel: document.querySelector('#lightbox-label'),
+        stage: document.querySelector('.detail-image'), lightboxStage: document.querySelector('#lightbox-stage'),
+        touchStart: null, lightboxTouchStart: null, suppressLightboxOpenUntil: 0
       };
       const focusableSelector = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
       const sizes = tree => tree.variations.map(variation => variation.height);
-      const from = tree => Math.min(...tree.variations.map(variation => variation.price));
-      const matches = tree => (ui.kind === 'all' || tree.kind === ui.kind) && (ui.height === 'Все' || ui.height === 'до 150' && sizes(tree).some(size => size <= 150) || ui.height === '180–210' && sizes(tree).some(size => size >= 180 && size <= 210) || ui.height === 'от 230' && sizes(tree).some(size => size >= 230));
+      const matches = tree => (ui.kind === 'all' || tree.kind === ui.kind) && (ui.height === 'Все' || sizes(tree).includes(ui.height));
       const gallery = () => ui.activeTree?.gallery || [{src:ui.activeTree.image,label:'Фото модели'}];
       const activeItem = () => gallery()[ui.activeMediaIndex];
       const getFocusable = container => [...container.querySelectorAll(focusableSelector)].filter(element => {
         const style = getComputedStyle(element);
         return !element.hidden && style.display !== 'none' && style.visibility !== 'hidden';
       });
+      const selectedVariation = tree => tree.variations.find(variation => ui.height !== 'Все' && variation.height === ui.height) || tree.variations[0];
 
       function trapFocus(event, container) {
         const items = getFocusable(container);
@@ -483,10 +494,32 @@
         }
       }
 
+      function recordTouchStart(key, event) {
+        const touch = event.touches[0];
+        ui[key] = { x: touch.clientX, y: touch.clientY };
+      }
+
+      function handleSwipeEnd(key, event, onSwipe) {
+        const start = ui[key];
+        ui[key] = null;
+        if (!start) return false;
+
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - start.x;
+        const deltaY = touch.clientY - start.y;
+
+        if (Math.abs(deltaX) < 44 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.15) {
+          return false;
+        }
+
+        onSwipe(deltaX < 0 ? 1 : -1);
+        return true;
+      }
+
       function renderPills() {
-        document.querySelector('#height-pills').innerHTML = heights.map(([value, label]) => `<button class="pill ${ui.height === value ? 'active' : ''}" data-height="${value}" aria-pressed="${ui.height === value}">${label}</button>`).join('');
+        document.querySelector('#height-pills').innerHTML = heights.map(value => `<button class="pill ${ui.height === value ? 'active' : ''}" data-height="${value}" aria-pressed="${ui.height === value}">${value}</button>`).join('');
         document.querySelector('#kind-pills').innerHTML = kinds.map(([value, label]) => `<button class="pill ${ui.kind === value ? 'active' : ''}" data-kind="${value}" aria-pressed="${ui.kind === value}">${label}</button>`).join('');
-        document.querySelectorAll('[data-height]').forEach(button => button.onclick = () => { ui.height = button.dataset.height; ui.all = false; render(); });
+        document.querySelectorAll('[data-height]').forEach(button => button.onclick = () => { ui.height = button.dataset.height === 'Все' ? 'Все' : Number(button.dataset.height); ui.all = false; render(); });
         document.querySelectorAll('[data-kind]').forEach(button => button.onclick = () => { ui.kind = button.dataset.kind; ui.all = false; render(); });
       }
 
@@ -495,7 +528,7 @@
         const list = trees.filter(matches);
         const shown = ui.all ? list : list.slice(0, 6);
         document.querySelector('#count').textContent = `Показано: ${shown.length} из ${list.length} моделей`;
-        document.querySelector('#products').innerHTML = shown.map(tree => `<article><button class="card-image" data-id="${tree.id}" aria-label="Открыть ${tree.name}"><img src="${tree.image}" alt="Ёлка ${tree.name}"><span class="photo-label">Открыть галерею <b>→</b></span>${tree.badge ? `<span class="badge">${tree.badge}</span>` : ''}</button><div class="info"><p class="type">${tree.sub}</p><h3>${tree.name}</h3><p class="sizes"><b>В наличии</b>${sizes(tree).join(' · ')} см</p><p class="price"><span>от</span><strong>${money.format(from(tree))} ₽</strong></p><button class="text" data-id="${tree.id}">Подробнее <b>→</b></button></div></article>`).join('');
+        document.querySelector('#products').innerHTML = shown.map(tree => `<article class="product-card"><button class="card-image" data-id="${tree.id}" aria-label="Открыть ${tree.name}"><img src="${tree.image}" alt="Ёлка ${tree.name}"><span class="photo-label">Все фото <b>→</b></span>${tree.badge ? `<span class="badge">${tree.badge}</span>` : ''}</button><div class="info"><p class="type">${tree.sub}</p><h3 class="product-name">${tree.name}</h3><p class="facts">${tree.needles} · ${tree.assembly}</p><div class="price-list" aria-label="Размеры и цены модели ${tree.name}">${tree.variations.map(variation => `<div class="price-item ${ui.height === variation.height ? 'active' : ''}"><span class="price-size">${variation.height} см</span><span class="price-rule" aria-hidden="true"></span><strong>${money.format(variation.price)} ₽</strong></div>`).join('')}</div><button class="text" data-id="${tree.id}">Открыть <b>→</b></button></div></article>`).join('');
         document.querySelectorAll('[data-id]').forEach(button => button.onclick = () => openTree(trees.find(tree => tree.id === button.dataset.id), button));
         const more = document.querySelector('#more');
         more.style.display = list.length > 6 ? 'block' : 'none';
@@ -572,8 +605,8 @@
         const galleryLink = document.querySelector('#detail-gallery');
         galleryLink.href = tree.galleryUrl || '';
         galleryLink.style.display = tree.gallery ? 'none' : 'inline-flex';
-        document.querySelector('#detail-notice').textContent = tree.gallery ? '✦ Нажмите на фото, чтобы открыть его на весь экран. Стрелки листают галерею.' : '✦ Нажмите на фото, чтобы открыть его на весь экран.';
-        paintVariation(tree.variations[0]);
+        document.querySelector('#detail-notice').textContent = tree.gallery ? '✦ Нажмите на фото, чтобы открыть его на весь экран. Свайп и стрелки листают галерею.' : '✦ Нажмите на фото, чтобы открыть его на весь экран.';
+        paintVariation(selectedVariation(tree));
         showMedia(0);
         ui.modal.classList.add('open');
         document.body.classList.add('modal-open');
@@ -624,9 +657,20 @@
       ui.modal.onclick = event => { if (event.target === event.currentTarget) closeTree(); };
       ui.previous.onclick = () => moveMedia(-1);
       ui.next.onclick = () => moveMedia(1);
+      ui.image.onclick = () => {
+        if (Date.now() < ui.suppressLightboxOpenUntil) return;
+        openLightbox(ui.image);
+      };
+      ui.stage.ontouchstart = event => recordTouchStart('touchStart', event);
+      ui.stage.ontouchend = event => {
+        const swiped = handleSwipeEnd('touchStart', event, direction => moveMedia(direction));
+        if (swiped) ui.suppressLightboxOpenUntil = Date.now() + 320;
+      };
       ui.fullscreen.onclick = () => openLightbox(ui.fullscreen);
       document.querySelector('#lightbox-close').onclick = closeLightbox;
       ui.lightbox.onclick = event => { if (event.target === event.currentTarget) closeLightbox(); };
+      ui.lightboxStage.ontouchstart = event => recordTouchStart('lightboxTouchStart', event);
+      ui.lightboxStage.ontouchend = event => handleSwipeEnd('lightboxTouchStart', event, direction => moveMedia(direction, true));
       document.querySelector('#zoom-in').onclick = () => { ui.zoom = Math.min(2.25, ui.zoom + .25); renderLightbox(); };
       document.querySelector('#zoom-out').onclick = () => { ui.zoom = Math.max(1, ui.zoom - .25); renderLightbox(); };
       document.querySelector('#lightbox-prev').onclick = () => moveMedia(-1, true);
@@ -635,9 +679,14 @@
         if (event.key === 'Escape') { if (ui.lightbox.classList.contains('open')) closeLightbox(); else if (ui.modal.classList.contains('open')) closeTree(); }
         if (event.key === 'Tab' && ui.lightbox.classList.contains('open')) { trapFocus(event, ui.lightboxPanel); return; }
         if (event.key === 'Tab' && ui.modal.classList.contains('open')) { trapFocus(event, ui.detailDialog); return; }
-        if (!ui.lightbox.classList.contains('open')) return;
-        if (event.key === 'ArrowLeft') moveMedia(-1, true);
-        if (event.key === 'ArrowRight') moveMedia(1, true);
+        if (ui.lightbox.classList.contains('open')) {
+          if (event.key === 'ArrowLeft') moveMedia(-1, true);
+          if (event.key === 'ArrowRight') moveMedia(1, true);
+          return;
+        }
+        if (!ui.modal.classList.contains('open')) return;
+        if (event.key === 'ArrowLeft') moveMedia(-1);
+        if (event.key === 'ArrowRight') moveMedia(1);
       });
       render();
     </script>
