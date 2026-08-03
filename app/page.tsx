@@ -318,15 +318,15 @@ export default function Home() {
           </nav>
 
           <div className="hero-copy" id="top">
-            <p className="eyebrow">Каталог остатков · сезон 2026</p>
-            <h1>Выберите ёлку,<br />которую приятно <em>видеть дома.</em></h1>
+            <p className="eyebrow">Каталог елей · сезон 2026</p>
+            <h1>Ёлка, с которой дома становится <em>празднично.</em></h1>
             <p className="hero-text">
-              Выберите высоту — и сразу увидите её цену, диаметр и наличие.
-              Смотрите спокойно, без обязательной переписки.
+              Смотрите спокойно: ростовки, цены, наличие, живые фото и видео
+              собраны в одном каталоге.
             </p>
             <div className="hero-actions">
               <button className="primary-button" onClick={scrollToCatalog}>Смотреть каталог <span>↓</span></button>
-              <p>Откройте модель, посмотрите реальные фото, видео и детали комплектации.</p>
+              <p>На обложке — настроение. В карточках — реальные фото конкретных моделей.</p>
             </div>
           </div>
 
@@ -343,9 +343,9 @@ export default function Home() {
 
       <section className="trust-strip">
         <div className="shell trust-grid">
-          <p><strong>Доступные ростовки</strong><span>скрываем то, чего уже нет</span></p>
-          <p><strong>Цена по выбранной высоте</strong><span>без путаницы с «от»</span></p>
-          <p><strong>Реальные фотогалереи</strong><span>связаны с карточками моделей</span></p>
+          <p><strong>Ростовки в наличии</strong><span>показываем только доступные размеры</span></p>
+          <p><strong>Цена по высоте</strong><span>выбрали рост — сразу видно цену</span></p>
+          <p><strong>Живые материалы</strong><span>фото, видео, хвоя и комплектация в карточках</span></p>
         </div>
       </section>
 
