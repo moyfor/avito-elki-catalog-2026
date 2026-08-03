@@ -1,0 +1,234 @@
+{
+  "brand": "Ёлки Тут",
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-03",
+  "purpose": "Internal media registry for preparing real product photos and videos before publishing them in the static Avito catalog.",
+  "publishedCatalog": {
+    "entry": "index.html",
+    "designTokens": "styles/design-tokens.css",
+    "currentFallbackPolicy": "Current public paths in index.html and app/page.tsx stay unchanged until a new approved material is manually wired in."
+  },
+  "processingStatuses": [
+    "published_fallback",
+    "source_received",
+    "retouching",
+    "needs_review",
+    "approved",
+    "rejected"
+  ],
+  "localFolderPattern": "catalog-media/products/<productId>/{source,work,approved}/",
+  "sourceSafety": {
+    "rawSourcesAreIgnoredByGit": true,
+    "rawSourcesAllowedFolder": "catalog-media/products/<productId>/source/",
+    "publicBuyerReadyFolder": "public/catalog-live/ or public/catalog/",
+    "publicBuyerReadyRequiresIntentionalGitAdd": true,
+    "note": "Do not place raw unprocessed files in public. Only approved buyer-ready assets may be moved to public and intentionally tracked."
+  },
+  "products": [
+    {
+      "productId": "afrodita",
+      "name": "Афродита Премиум",
+      "localFolders": {
+        "source": "catalog-media/products/afrodita/source/",
+        "work": "catalog-media/products/afrodita/work/",
+        "approved": "catalog-media/products/afrodita/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog-live/afrodita-hero.jpg",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Афродита Премиум, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "tayga",
+      "name": "Тайга",
+      "localFolders": {
+        "source": "catalog-media/products/tayga/source/",
+        "work": "catalog-media/products/tayga/work/",
+        "approved": "catalog-media/products/tayga/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog-live/tayga-studio-v1.png",
+          "caption": "Текущий fallback: главное фото карточки и галереи",
+          "alt": "Ёлка Тайга, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        },
+        {
+          "type": "image",
+          "role": "gallery-needles",
+          "localPath": "public/catalog-live/tayga-angle-02.jpg",
+          "caption": "Реальная хвоя крупным планом",
+          "alt": "Хвоя ёлки Тайга крупным планом",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        },
+        {
+          "type": "image",
+          "role": "gallery-needles",
+          "localPath": "public/catalog-live/tayga-needles.jpg",
+          "caption": "Фактура веток и иголок",
+          "alt": "Фактура веток и иголок ёлки Тайга",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        },
+        {
+          "type": "image",
+          "role": "gallery-construction",
+          "localPath": "public/catalog-live/tayga-detail-02.jpg",
+          "caption": "Каркас и крепления",
+          "alt": "Каркас и крепления ёлки Тайга",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        },
+        {
+          "type": "image",
+          "role": "gallery-stand",
+          "localPath": "public/catalog-live/tayga-stand.jpg",
+          "caption": "Железная складная подставка",
+          "alt": "Железная складная подставка ёлки Тайга",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        },
+        {
+          "type": "video",
+          "role": "video-overview",
+          "localPath": "public/catalog-live/tayga-motion-web.mov",
+          "caption": "Видео реальной модели",
+          "alt": "Видео ёлки Тайга",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "krasavitsa",
+      "name": "Красавица светлая",
+      "localFolders": {
+        "source": "catalog-media/products/krasavitsa/source/",
+        "work": "catalog-media/products/krasavitsa/work/",
+        "approved": "catalog-media/products/krasavitsa/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog-live/krasavitsa-svetlaya-main.jpg",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Красавица светлая, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "lady",
+      "name": "Леди",
+      "localFolders": {
+        "source": "catalog-media/products/lady/source/",
+        "work": "catalog-media/products/lady/work/",
+        "approved": "catalog-media/products/lady/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog/lady.png",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Леди, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "victoria",
+      "name": "Виктория Премиум",
+      "localFolders": {
+        "source": "catalog-media/products/victoria/source/",
+        "work": "catalog-media/products/victoria/work/",
+        "approved": "catalog-media/products/victoria/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog/victoria.png",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Виктория Премиум, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "baikal",
+      "name": "Байкал",
+      "localFolders": {
+        "source": "catalog-media/products/baikal/source/",
+        "work": "catalog-media/products/baikal/work/",
+        "approved": "catalog-media/products/baikal/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog-live/baikal-main.jpg",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Байкал, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "prezidentskaya",
+      "name": "Президентская",
+      "localFolders": {
+        "source": "catalog-media/products/prezidentskaya/source/",
+        "work": "catalog-media/products/prezidentskaya/work/",
+        "approved": "catalog-media/products/prezidentskaya/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog/prezidentskaya.png",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Президентская, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    },
+    {
+      "productId": "voronezhskaya",
+      "name": "Воронежская",
+      "localFolders": {
+        "source": "catalog-media/products/voronezhskaya/source/",
+        "work": "catalog-media/products/voronezhskaya/work/",
+        "approved": "catalog-media/products/voronezhskaya/approved/"
+      },
+      "media": [
+        {
+          "type": "image",
+          "role": "card-primary",
+          "localPath": "public/catalog-live/voronezhskaya-main.jpg",
+          "caption": "Текущий fallback: главное фото карточки",
+          "alt": "Ёлка Воронежская, общий вид",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        }
+      ]
+    }
+  ]
+}

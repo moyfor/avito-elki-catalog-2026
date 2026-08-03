@@ -1,85 +1,5 @@
+@import "../styles/design-tokens.css";
 @import "tailwindcss";
-
-:root {
-  /* Design system · colors */
-  --color-pine: #123B30;
-  --color-pine-deep: #092D23;
-  --color-paper: #F4F1EA;
-  --color-text: #202522;
-  --color-muted: #66706A;
-  --color-accent-soft: #DCE8CE;
-  --color-accent-gold: #B79A66;
-  --color-white: #FFFFFF;
-  --color-border: rgba(18, 59, 48, 0.14);
-  --color-surface: #FAF8F2;
-  --color-surface-muted: #ECEFE7;
-  --color-overlay-dark: rgba(7, 31, 25, 0.72);
-
-  /* Design system · typography */
-  --font-heading: Georgia, "Times New Roman", serif;
-  --font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-ui: var(--font-body);
-  --text-xs: 11px;
-  --text-sm: 12px;
-  --text-md: 13px;
-  --text-base: 15px;
-  --text-body: 16px;
-  --text-lead: 18px;
-  --text-price: 30px;
-  --text-card-title: 31px;
-  --text-h1: clamp(48px, 5vw, 68px);
-  --text-h2: clamp(40px, 5vw, 62px);
-  --text-h2-compact: clamp(36px, 4vw, 53px);
-  --leading-tight: 0.96;
-  --leading-snug: 1.15;
-  --leading-body: 1.55;
-  --leading-relaxed: 1.65;
-
-  /* Design system · layout */
-  --container-max: 1180px;
-  --container-gutter: 48px;
-  --container-gutter-mobile: 32px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-20: 80px;
-  --space-24: 96px;
-
-  /* Design system · shape and depth */
-  --radius-none: 0;
-  --radius-xs: 2px;
-  --radius-sm: 6px;
-  --radius-round: 999px;
-  --shadow-focus: 0 0 0 4px rgba(220, 232, 206, 0.32);
-  --shadow-soft: 0 18px 48px rgba(6, 32, 24, 0.10);
-  --shadow-modal: 0 28px 80px rgba(2, 18, 13, 0.28);
-
-  /* Design system · motion */
-  --duration-press: 140ms;
-  --duration-fast: 180ms;
-  --duration-base: 220ms;
-  --duration-slow: 300ms;
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-
-  /* Legacy aliases while the catalog is being refactored gradually. */
-  --ink: var(--color-pine);
-  --ink-deep: var(--color-pine-deep);
-  --pine: #285E4A;
-  --mist: var(--color-surface-muted);
-  --paper: var(--color-paper);
-  --warm: #F0EEE6;
-  --line: var(--color-border);
-  --serif: var(--font-heading);
-  --sans: var(--font-body);
-}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -251,7 +171,7 @@ dd { margin: 0; text-align: right; font-weight: 700; }
   .brand { font-size: 10px; }
   .brand-mark { width: 29px; height: 29px; font-size: 20px; }
   .nav-link { display: none; }
-  .outline-button { min-height: 42px; margin-left: auto; padding: 9px 12px; font-size: 11px; }
+  .outline-button { min-height: 44px; margin-left: auto; padding: 9px 12px; font-size: 11px; }
   .hero-copy { order: 2; min-height: 416px; max-width: none; margin: 0; padding: 39px 24px 30px; border-top: 0; }
   .eyebrow { margin-bottom: 14px; font-size: 10px; letter-spacing: .13em; }
   h1 { max-width: 340px; font-size: clamp(38px, 10.8vw, 45px); line-height: .98; letter-spacing: -.038em; margin-bottom: 18px; }
@@ -285,10 +205,10 @@ dd { margin: 0; text-align: right; font-weight: 700; }
   .modal-gallery { order: 1; }
   .modal-content { order: 2; padding: 31px 22px 28px; }
   .modal-photo { min-height: 0; height: min(46dvh, 400px); aspect-ratio: auto; }
-  .gallery-control { width: 38px; height: 38px; }
+  .gallery-control { width: 44px; height: 44px; }
   .gallery-control-prev { left: 10px; }
   .gallery-control-next { right: 10px; }
-  .open-lightbox { right: 10px; bottom: 10px; min-height: 32px; }
+  .open-lightbox { right: 10px; bottom: 10px; min-width: 44px; min-height: 44px; }
   .open-lightbox span { display: none; }
   .photo-meta { bottom: 10px; left: 12px; right: 58px; }
   .photo-meta span { max-width: 215px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -303,7 +223,7 @@ dd { margin: 0; text-align: right; font-weight: 700; }
   .lightbox { height: 100%; }
   .lightbox-topbar { padding-bottom: 10px; }
   .lightbox-topbar p { max-width: 45vw; }
-  .lightbox-actions button, .lightbox-nav { width: 38px; height: 38px; }
+  .lightbox-actions button, .lightbox-nav { width: 44px; height: 44px; }
   .lightbox-nav-prev { left: 0; }
   .lightbox-nav-next { right: 0; }
   .lightbox-hint { padding-top: 10px; font-size: 11px; }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -208,6 +208,43 @@ function lowestPrice(tree: Tree) {
   return Math.min(...tree.variations.map((variation) => variation.price));
 }
 
+const focusableSelector =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function getFocusableElements(container: HTMLElement) {
+  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelector)).filter((element) => {
+    const style = window.getComputedStyle(element);
+    return !element.hidden && style.display !== "none" && style.visibility !== "hidden";
+  });
+}
+
+function trapFocus(event: KeyboardEvent, container: HTMLElement) {
+  const focusable = getFocusableElements(container);
+
+  if (!focusable.length) {
+    event.preventDefault();
+    container.focus({ preventScroll: true });
+    return;
+  }
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (!container.contains(document.activeElement)) {
+    event.preventDefault();
+    first.focus({ preventScroll: true });
+    return;
+  }
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus({ preventScroll: true });
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus({ preventScroll: true });
+  }
+}
+
 export default function Home() {
   const [height, setHeight] = useState("Все");
   const [kind, setKind] = useState("all");
@@ -217,6 +254,10 @@ export default function Home() {
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxZoom, setLightboxZoom] = useState(1);
+  const modalRef = useRef<HTMLElement | null>(null);
+  const lightboxRef = useRef<HTMLElement | null>(null);
+  const lastFocusedElementRef = useRef<HTMLElement | null>(null);
+  const lightboxReturnRef = useRef<HTMLElement | null>(null);
 
   const activeVariation = activeTree?.variations.find((variation) => variation.height === activeHeight) ?? activeTree?.variations[0];
   const activeMedia = activeTree?.gallery?.[activeMediaIndex];
@@ -241,7 +282,8 @@ export default function Home() {
     document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
   }
 
-  function openTree(tree: Tree) {
+  function openTree(tree: Tree, opener?: HTMLElement) {
+    lastFocusedElementRef.current = opener ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setActiveTree(tree);
     setActiveHeight(tree.variations[0].height);
     setActiveMediaIndex(0);
@@ -250,11 +292,15 @@ export default function Home() {
   }
 
   function closeTree() {
+    const opener = lastFocusedElementRef.current;
     setActiveTree(null);
     setActiveHeight(null);
     setActiveMediaIndex(0);
     setIsLightboxOpen(false);
     setLightboxZoom(1);
+    lightboxReturnRef.current = null;
+    lastFocusedElementRef.current = null;
+    requestAnimationFrame(() => opener?.isConnected && opener.focus({ preventScroll: true }));
   }
 
   function setMedia(index: number) {
@@ -275,16 +321,30 @@ export default function Home() {
     }
   }
 
-  function openLightbox() {
+  function openLightbox(opener?: HTMLElement) {
     if (activeMedia?.kind === "video") return;
+    lightboxReturnRef.current = opener ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setLightboxZoom(1);
     setIsLightboxOpen(true);
   }
 
-  function closeLightbox() {
+  function closeLightbox(restoreFocus = true) {
+    const returnTo = lightboxReturnRef.current;
     setIsLightboxOpen(false);
     setLightboxZoom(1);
+    lightboxReturnRef.current = null;
+    if (restoreFocus) requestAnimationFrame(() => returnTo?.isConnected && returnTo.focus({ preventScroll: true }));
   }
+
+  useEffect(() => {
+    if (!activeTree || isLightboxOpen) return;
+    requestAnimationFrame(() => modalRef.current?.focus({ preventScroll: true }));
+  }, [activeTree, isLightboxOpen]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    requestAnimationFrame(() => lightboxRef.current?.focus({ preventScroll: true }));
+  }, [isLightboxOpen]);
 
   useEffect(() => {
     if (!activeTree) return;
@@ -293,6 +353,14 @@ export default function Home() {
       if (event.key === "Escape") {
         if (isLightboxOpen) closeLightbox();
         else closeTree();
+      }
+
+      if (event.key === "Tab") {
+        const activeFocusArea = isLightboxOpen ? lightboxRef.current : modalRef.current;
+        if (activeFocusArea) {
+          trapFocus(event, activeFocusArea);
+          return;
+        }
       }
 
       if (!isLightboxOpen) return;
@@ -367,6 +435,7 @@ export default function Home() {
                   key={option}
                   className={height === option ? "filter-pill active" : "filter-pill"}
                   onClick={() => setHeight(option)}
+                  aria-pressed={height === option}
                 >
                   {option === "Все" ? "Любая" : `${option} см`}
                 </button>
@@ -381,6 +450,7 @@ export default function Home() {
                   key={option.id}
                   className={kind === option.id ? "filter-pill active" : "filter-pill"}
                   onClick={() => setKind(option.id)}
+                  aria-pressed={kind === option.id}
                 >
                   {option.label}
                 </button>
@@ -395,7 +465,7 @@ export default function Home() {
           <div className="product-grid">
             {visibleTrees.map((tree) => (
               <article className="product-card" key={tree.id}>
-                <button className="product-image" onClick={() => openTree(tree)} aria-label={`Открыть ${tree.name}`}>
+                <button className="product-image" onClick={(event) => openTree(tree, event.currentTarget)} aria-label={`Открыть ${tree.name}`}>
                   <img src={tree.image} alt={`Ёлка ${tree.name}`} style={{ objectPosition: tree.imagePosition }} />
                   <span className="photo-label">Открыть галерею <ArrowRight weight="bold" aria-hidden="true" /></span>
                   {tree.badge && <span className="badge">{tree.badge}</span>}
@@ -408,7 +478,7 @@ export default function Home() {
                     <span>от</span>
                     <strong>{formatPrice(lowestPrice(tree))}</strong>
                   </div>
-                  <button className="text-button" onClick={() => openTree(tree)}>Подробнее <ArrowRight weight="bold" aria-hidden="true" /></button>
+                  <button className="text-button" onClick={(event) => openTree(tree, event.currentTarget)}>Подробнее <ArrowRight weight="bold" aria-hidden="true" /></button>
                 </div>
               </article>
             ))}
@@ -447,7 +517,7 @@ export default function Home() {
       {activeTree && activeVariation && (
         <>
           <div className="modal-backdrop" role="presentation" onMouseDown={closeTree}>
-            <section className="product-modal" role="dialog" aria-modal="true" aria-label={`Модель ${activeTree.name}`} onMouseDown={(event) => event.stopPropagation()}>
+            <section ref={modalRef} className="product-modal" role="dialog" aria-modal="true" aria-label={`Модель ${activeTree.name}`} tabIndex={-1} onMouseDown={(event) => event.stopPropagation()}>
               <button className="close-button" type="button" onClick={closeTree} aria-label="Закрыть карточку модели"><X weight="bold" aria-hidden="true" /></button>
               <div className="modal-gallery">
                 <div className="modal-photo">
@@ -467,7 +537,7 @@ export default function Home() {
                     </>
                   )}
                   {activeMedia?.kind !== "video" && (
-                    <button className="open-lightbox" type="button" onClick={openLightbox} aria-label="Открыть фото на весь экран">
+                    <button className="open-lightbox" type="button" onClick={(event) => openLightbox(event.currentTarget)} aria-label="Открыть фото на весь экран">
                       <ArrowsOutSimple weight="bold" aria-hidden="true" />
                       <span>На весь экран</span>
                     </button>
@@ -505,6 +575,7 @@ export default function Home() {
                       className={activeVariation.height === variation.height ? "height-option active" : "height-option"}
                       key={variation.height}
                       onClick={() => setActiveHeight(variation.height)}
+                      aria-pressed={activeVariation.height === variation.height}
                     >
                       {variation.height} см
                     </button>
@@ -526,14 +597,14 @@ export default function Home() {
           </div>
 
           {isLightboxOpen && activeMedia?.kind !== "video" && (
-            <div className="lightbox-backdrop" role="presentation" onMouseDown={closeLightbox}>
-              <section className="lightbox" role="dialog" aria-modal="true" aria-label={`Фото модели ${activeTree.name}`} onMouseDown={(event) => event.stopPropagation()}>
+            <div className="lightbox-backdrop" role="presentation" onMouseDown={() => closeLightbox()}>
+              <section ref={lightboxRef} className="lightbox" role="dialog" aria-modal="true" aria-label={`Фото модели ${activeTree.name}`} tabIndex={-1} onMouseDown={(event) => event.stopPropagation()}>
                 <div className="lightbox-topbar">
                   <p>{activeMedia?.label ?? "Фото модели"}</p>
                   <div className="lightbox-actions">
                     <button type="button" onClick={() => setLightboxZoom((value) => Math.max(1, value - 0.25))} aria-label="Уменьшить фото" disabled={lightboxZoom === 1}><MagnifyingGlassMinus weight="bold" aria-hidden="true" /></button>
                     <button type="button" onClick={() => setLightboxZoom((value) => Math.min(2.25, value + 0.25))} aria-label="Увеличить фото"><MagnifyingGlassPlus weight="bold" aria-hidden="true" /></button>
-                    <button type="button" onClick={closeLightbox} aria-label="Закрыть просмотр фото"><X weight="bold" aria-hidden="true" /></button>
+                    <button type="button" onClick={() => closeLightbox()} aria-label="Закрыть просмотр фото"><X weight="bold" aria-hidden="true" /></button>
                   </div>
                 </div>
                 <div className="lightbox-stage">

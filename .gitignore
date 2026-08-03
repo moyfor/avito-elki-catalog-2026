@@ -49,3 +49,9 @@ next-env.d.ts
 /public/catalog-live/
 /research/design-audit-*/
 /research/media-contact-sheets/
+
+# Ёлки Тут: raw/source media stays local and must not be published through GitHub Pages.
+/catalog-media/products/*/source/*
+!/catalog-media/products/*/source/.gitkeep
+/catalog-media/products/*/work/*
+!/catalog-media/products/*/work/.gitkeep
