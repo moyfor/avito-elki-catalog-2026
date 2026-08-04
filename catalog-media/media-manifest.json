@@ -111,19 +111,19 @@
           "title": "Ветка",
           "alt": "Ветка ёлки Тайга крупным планом",
           "description": "Крупный план ветки для оценки сборки и фактуры.",
-          "source": "public/catalog-live/tayga-needles.jpg",
+          "source": "public/catalog-live/tayga/03_branch.jpg",
           "localPath": "public/catalog-live/tayga/03_branch.jpg",
           "status": "published",
           "caption": "Ветка",
           "selectedOriginal": {
-            "filename": "IMG_9856.jpg",
-            "relativePath": "/Фото/IMG_9856.jpg",
-            "downloadUrl": "https://downloader.disk.yandex.ru/disk/fbc5725d3331586c29aabf113fe2d4c9a44588d2068c25c4c43516efe8fa24d7/6a71ff69/d6md3ammbi0yk5mFAZqiZfgDKgIZ6EcfvttV13jd7volUR-hy7J_Y_8EcRH97WQ0EcOSPE7ZCIEOaWmUnglEBQ%3D%3D?uid=0&filename=IMG_9856.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2762432&hid=f543241ee5f5253f7891f18be96f2a04&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=ed17225f4beb1d6237d2f4042cc63aaa",
-            "selectionReason": "Лучше всего показывает форму ветвей в живом объёме: видна длина лап и плотность раскладки без отвлекающих деталей.",
+            "filename": "IMG_9857.jpg",
+            "relativePath": "/Фото/IMG_9857.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/b7ba25c168af59f517549e539c5ae9ef351881dfbf140f679e6a11ef6c3909b6/6a71ff69/d6md3ammbi0yk5mFAZqiZZFvMxZ89OmgAu7OVjYS8Y_UFN2EnTljcN2hzVXR8lhtcAh3uYhsrCzEAmg7gGhrvQ%3D%3D?uid=0&filename=IMG_9857.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2850799&hid=39763acb1514824dcf285982b033e6d0&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=01b0935584bd03707d3703a281c9da15",
+            "selectionReason": "Утверждённый третий слайд: крупный план реальной ветки с рукой для масштаба, показывает форму лапы и фактуру хвои без генеративной подмены.",
             "selectedAt": "2026-08-04"
           },
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         },
         {
           "type": "image",

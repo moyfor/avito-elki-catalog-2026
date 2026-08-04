@@ -138,7 +138,7 @@ const trees: Tree[] = [
         role: "03_branch",
         title: "Ветка",
         description: "Крупный план ветки для оценки сборки и фактуры.",
-        source: "/catalog-live/tayga-needles.jpg",
+        source: "/catalog-live/tayga/03_branch.jpg",
         status: "published",
         src: "/catalog-live/tayga/03_branch.jpg",
         alt: "Ветка ёлки Тайга крупным планом",
