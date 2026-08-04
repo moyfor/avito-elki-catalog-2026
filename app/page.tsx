@@ -21,12 +21,28 @@ type TreeVariation = {
 
 type HeightFilter = "Все" | number;
 type TouchPoint = { x: number; y: number };
+type LightboxPan = { x: number; y: number };
+type LightboxTouchState =
+  | { mode: "swipe"; x: number; y: number }
+  | { mode: "pan"; x: number; y: number; pan: LightboxPan }
+  | { mode: "pinch"; distance: number; center: TouchPoint; zoom: number; pan: LightboxPan };
+type GallerySlot =
+  | "primary"
+  | "overall"
+  | "angle-45"
+  | "needles-macro"
+  | "branch-macro"
+  | "stand"
+  | "branch-mount"
+  | "video";
 
 type GalleryItem = {
+  slot?: GallerySlot;
   src: string;
   alt: string;
   label: string;
   kind?: "image" | "video";
+  thumbPosition?: string;
 };
 
 type Tree = {
@@ -85,34 +101,59 @@ const trees: Tree[] = [
     imagePosition: "center center",
     gallery: [
       {
+        slot: "primary",
         src: "/catalog-live/tayga-studio-v1.png",
-        alt: "Ёлка Тайга в интерьере",
-        label: "Общий вид модели",
+        alt: "Ёлка Тайга, главная фотография",
+        label: "Главная фотография",
+        thumbPosition: "50% 45%",
       },
       {
+        slot: "overall",
+        src: "/catalog-live/tayga-studio-v1.png",
+        alt: "Ёлка Тайга, общий вид",
+        label: "Общий вид",
+        thumbPosition: "50% 45%",
+      },
+      {
+        slot: "angle-45",
         src: "/catalog-live/tayga-angle-02.jpg",
-        alt: "Детали хвои ёлки Тайга",
-        label: "Реальная хвоя крупным планом",
+        alt: "Ёлка Тайга, ракурс 45 градусов",
+        label: "Ракурс 45°",
+        thumbPosition: "82% 50%",
       },
       {
+        slot: "needles-macro",
+        src: "/catalog-live/tayga-angle-02.jpg",
+        alt: "Хвоя ёлки Тайга крупным планом",
+        label: "Макро хвои",
+        thumbPosition: "82% 50%",
+      },
+      {
+        slot: "branch-macro",
         src: "/catalog-live/tayga-needles.jpg",
-        alt: "Фактура хвои ёлки Тайга",
-        label: "Фактура веток и иголок",
+        alt: "Ветка ёлки Тайга крупным планом",
+        label: "Макро ветки",
+        thumbPosition: "48% 50%",
       },
       {
-        src: "/catalog-live/tayga-detail-02.jpg",
-        alt: "Внутренняя конструкция ёлки Тайга",
-        label: "Каркас и крепления",
-      },
-      {
+        slot: "stand",
         src: "/catalog-live/tayga-stand.jpg",
         alt: "Железная складная подставка ёлки Тайга",
-        label: "Железная складная подставка",
+        label: "Подставка",
+        thumbPosition: "76% 54%",
       },
       {
+        slot: "branch-mount",
+        src: "/catalog-live/tayga-detail-02.jpg",
+        alt: "Крепление ветвей ёлки Тайга",
+        label: "Крепление ветвей",
+        thumbPosition: "48% 42%",
+      },
+      {
+        slot: "video",
         src: "/catalog-live/tayga-motion-web.mov",
         alt: "Видео ёлки Тайга",
-        label: "Видео реальной модели · 12 с",
+        label: "Видео",
         kind: "video",
       },
     ],
@@ -456,11 +497,8 @@ const trees: Tree[] = [
 ];
 
 const heightOptions: HeightFilter[] = ["Все", ...Array.from(new Set(trees.flatMap((tree) => tree.variations.map((variation) => variation.height)))).sort((left, right) => left - right)];
-const kindOptions = [
-  { id: "all", label: "Все формы" },
-  { id: "lush", label: "Пышные" },
-  { id: "slim", label: "Узкие" },
-];
+const LIGHTBOX_MIN_ZOOM = 1;
+const LIGHTBOX_MAX_ZOOM = 2.75;
 
 const price = new Intl.NumberFormat("ru-RU");
 
@@ -511,6 +549,27 @@ function handleSwipeEnd(
   return true;
 }
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function getTouchDistance(touches: TouchList) {
+  const first = touches[0];
+  const second = touches[1];
+  if (!first || !second) return 0;
+  return Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+}
+
+function getTouchCenter(touches: TouchList): TouchPoint {
+  const first = touches[0];
+  const second = touches[1];
+  if (!first || !second) return { x: 0, y: 0 };
+  return {
+    x: (first.clientX + second.clientX) / 2,
+    y: (first.clientY + second.clientY) / 2,
+  };
+}
+
 const focusableSelector =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -550,19 +609,22 @@ function trapFocus(event: KeyboardEvent, container: HTMLElement) {
 
 export default function Home() {
   const [height, setHeight] = useState<HeightFilter>("Все");
-  const [kind, setKind] = useState("all");
   const [showAll, setShowAll] = useState(false);
   const [activeTree, setActiveTree] = useState<Tree | null>(null);
   const [activeHeight, setActiveHeight] = useState<number | null>(null);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxZoom, setLightboxZoom] = useState(1);
+  const [lightboxPan, setLightboxPan] = useState<LightboxPan>({ x: 0, y: 0 });
+  const [isLightboxGesturing, setIsLightboxGesturing] = useState(false);
   const modalRef = useRef<HTMLElement | null>(null);
   const lightboxRef = useRef<HTMLElement | null>(null);
+  const lightboxStageRef = useRef<HTMLDivElement | null>(null);
   const lastFocusedElementRef = useRef<HTMLElement | null>(null);
   const lightboxReturnRef = useRef<HTMLElement | null>(null);
   const modalSwipeStartRef = useRef<TouchPoint | null>(null);
-  const lightboxSwipeStartRef = useRef<TouchPoint | null>(null);
+  const lightboxTouchStateRef = useRef<LightboxTouchState | null>(null);
+  const lightboxTransformRef = useRef({ zoom: 1, pan: { x: 0, y: 0 } });
   const suppressLightboxOpenUntilRef = useRef(0);
 
   const activeVariation = activeTree?.variations.find((variation) => variation.height === activeHeight) ?? activeTree?.variations[0];
@@ -570,11 +632,8 @@ export default function Home() {
   const galleryLength = activeTree?.gallery?.length ?? 0;
 
   const filteredTrees = useMemo(() => {
-    return trees.filter((tree) => {
-      const matchesKind = kind === "all" || tree.kind === kind;
-      return matchesKind && matchesHeightFilter(tree, height);
-    });
-  }, [height, kind]);
+    return trees.filter((tree) => matchesHeightFilter(tree, height));
+  }, [height]);
 
   const visibleTrees = showAll ? filteredTrees : filteredTrees.slice(0, 6);
 
@@ -583,13 +642,41 @@ export default function Home() {
     document.getElementById("catalog")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
   }
 
+  function clampLightboxPan(pan: LightboxPan, zoom: number) {
+    const stage = lightboxStageRef.current;
+    if (zoom <= 1 || !stage) return { x: 0, y: 0 };
+
+    const maxX = (stage.clientWidth * (zoom - 1)) / 2;
+    const maxY = (stage.clientHeight * (zoom - 1)) / 2;
+    return {
+      x: clamp(pan.x, -maxX, maxX),
+      y: clamp(pan.y, -maxY, maxY),
+    };
+  }
+
+  function applyLightboxTransform(zoom: number, pan: LightboxPan = lightboxTransformRef.current.pan) {
+    const nextZoom = clamp(zoom, LIGHTBOX_MIN_ZOOM, LIGHTBOX_MAX_ZOOM);
+    const nextPan = clampLightboxPan(pan, nextZoom);
+    lightboxTransformRef.current = { zoom: nextZoom, pan: nextPan };
+    setLightboxZoom(nextZoom);
+    setLightboxPan(nextPan);
+  }
+
+  function resetLightboxTransform() {
+    lightboxTouchStateRef.current = null;
+    lightboxTransformRef.current = { zoom: 1, pan: { x: 0, y: 0 } };
+    setLightboxZoom(1);
+    setLightboxPan({ x: 0, y: 0 });
+    setIsLightboxGesturing(false);
+  }
+
   function openTree(tree: Tree, opener?: HTMLElement) {
     lastFocusedElementRef.current = opener ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setActiveTree(tree);
     setActiveHeight(getInitialVariation(tree, height).height);
     setActiveMediaIndex(0);
     setIsLightboxOpen(false);
-    setLightboxZoom(1);
+    resetLightboxTransform();
   }
 
   function closeTree() {
@@ -598,7 +685,7 @@ export default function Home() {
     setActiveHeight(null);
     setActiveMediaIndex(0);
     setIsLightboxOpen(false);
-    setLightboxZoom(1);
+    resetLightboxTransform();
     lightboxReturnRef.current = null;
     lastFocusedElementRef.current = null;
     requestAnimationFrame(() => opener?.isConnected && opener.focus({ preventScroll: true }));
@@ -606,7 +693,7 @@ export default function Home() {
 
   function setMedia(index: number) {
     setActiveMediaIndex(index);
-    setLightboxZoom(1);
+    resetLightboxTransform();
   }
 
   function moveMedia(direction: 1 | -1, imagesOnly = false) {
@@ -625,16 +712,121 @@ export default function Home() {
   function openLightbox(opener?: HTMLElement) {
     if (activeMedia?.kind === "video") return;
     lightboxReturnRef.current = opener ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
-    setLightboxZoom(1);
+    resetLightboxTransform();
     setIsLightboxOpen(true);
   }
 
   function closeLightbox(restoreFocus = true) {
     const returnTo = lightboxReturnRef.current;
     setIsLightboxOpen(false);
-    setLightboxZoom(1);
+    resetLightboxTransform();
     lightboxReturnRef.current = null;
     if (restoreFocus) requestAnimationFrame(() => returnTo?.isConnected && returnTo.focus({ preventScroll: true }));
+  }
+
+  function handleLightboxTouchStart(event: ReactTouchEvent<HTMLDivElement>) {
+    if (event.touches.length >= 2) {
+      const distance = getTouchDistance(event.touches);
+      lightboxTouchStateRef.current = {
+        mode: "pinch",
+        distance,
+        center: getTouchCenter(event.touches),
+        zoom: lightboxTransformRef.current.zoom,
+        pan: lightboxTransformRef.current.pan,
+      };
+      setIsLightboxGesturing(true);
+      event.preventDefault();
+      return;
+    }
+
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    if (lightboxTransformRef.current.zoom > 1) {
+      lightboxTouchStateRef.current = {
+        mode: "pan",
+        x: touch.clientX,
+        y: touch.clientY,
+        pan: lightboxTransformRef.current.pan,
+      };
+      setIsLightboxGesturing(true);
+      event.preventDefault();
+      return;
+    }
+
+    lightboxTouchStateRef.current = { mode: "swipe", x: touch.clientX, y: touch.clientY };
+  }
+
+  function handleLightboxTouchMove(event: ReactTouchEvent<HTMLDivElement>) {
+    const gesture = lightboxTouchStateRef.current;
+    if (!gesture) return;
+
+    if (event.touches.length >= 2) {
+      const distance = getTouchDistance(event.touches);
+      const center = getTouchCenter(event.touches);
+      const pinch = gesture.mode === "pinch"
+        ? gesture
+        : {
+          mode: "pinch" as const,
+          distance,
+          center,
+          zoom: lightboxTransformRef.current.zoom,
+          pan: lightboxTransformRef.current.pan,
+        };
+
+      lightboxTouchStateRef.current = pinch;
+      const nextZoom = pinch.distance > 0 ? pinch.zoom * (distance / pinch.distance) : pinch.zoom;
+      applyLightboxTransform(nextZoom, {
+        x: pinch.pan.x + center.x - pinch.center.x,
+        y: pinch.pan.y + center.y - pinch.center.y,
+      });
+      setIsLightboxGesturing(true);
+      event.preventDefault();
+      return;
+    }
+
+    if (gesture.mode !== "pan") return;
+
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    applyLightboxTransform(lightboxTransformRef.current.zoom, {
+      x: gesture.pan.x + touch.clientX - gesture.x,
+      y: gesture.pan.y + touch.clientY - gesture.y,
+    });
+    event.preventDefault();
+  }
+
+  function handleLightboxTouchEnd(event: ReactTouchEvent<HTMLDivElement>) {
+    const gesture = lightboxTouchStateRef.current;
+    if (!gesture) return;
+
+    if (gesture.mode === "swipe") {
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - gesture.x;
+      const deltaY = touch.clientY - gesture.y;
+      lightboxTouchStateRef.current = null;
+
+      if (Math.abs(deltaX) >= 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.15) {
+        moveMedia(deltaX < 0 ? 1 : -1, true);
+      }
+      return;
+    }
+
+    if (event.touches.length === 1 && lightboxTransformRef.current.zoom > 1) {
+      const touch = event.touches[0];
+      lightboxTouchStateRef.current = {
+        mode: "pan",
+        x: touch.clientX,
+        y: touch.clientY,
+        pan: lightboxTransformRef.current.pan,
+      };
+      return;
+    }
+
+    lightboxTouchStateRef.current = null;
+    setIsLightboxGesturing(false);
+    if (lightboxTransformRef.current.zoom <= 1) applyLightboxTransform(1, { x: 0, y: 0 });
   }
 
   useEffect(() => {
@@ -733,21 +925,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="filter-group">
-            <span className="filter-label">Форма</span>
-            <div className="filter-pills">
-              {kindOptions.map((option) => (
-                <button
-                  key={option.id}
-                  className={kind === option.id ? "filter-pill active" : "filter-pill"}
-                  onClick={() => { setKind(option.id); setShowAll(false); }}
-                  aria-pressed={kind === option.id}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
 
         <p className="result-count">Показано: {visibleTrees.length} из {filteredTrees.length} моделей</p>
@@ -790,7 +967,7 @@ export default function Home() {
         ) : (
           <div className="empty-state">
             <p>В этой тестовой подборке пока нет подходящей модели.</p>
-            <button className="text-button" onClick={() => { setHeight("Все"); setKind("all"); setShowAll(false); }}>Сбросить фильтры <span>→</span></button>
+            <button className="text-button" onClick={() => { setHeight("Все"); setShowAll(false); }}>Сбросить фильтры <span>→</span></button>
           </div>
         )}
 
@@ -867,14 +1044,14 @@ export default function Home() {
                   <div className={activeTree.gallery.length === 6 ? "gallery-thumbnails has-six" : "gallery-thumbnails"} aria-label="Фотогалерея модели">
                     {activeTree.gallery.map((item, index) => (
                       <button
-                        key={item.src}
+                        key={item.slot ?? item.src}
                         type="button"
                         className={activeMediaIndex === index ? "gallery-thumbnail active" : "gallery-thumbnail"}
                         onClick={() => setMedia(index)}
                         aria-label={item.label}
                         aria-pressed={activeMediaIndex === index}
                       >
-                        {item.kind === "video" ? <span><Play weight="fill" aria-hidden="true" /></span> : <img src={item.src} alt="" />}
+                        {item.kind === "video" ? <span><Play weight="fill" aria-hidden="true" /></span> : <img src={item.src} alt="" style={{ objectPosition: item.thumbPosition ?? "50% 50%" }} />}
                       </button>
                     ))}
                   </div>
@@ -918,21 +1095,29 @@ export default function Home() {
                 <div className="lightbox-topbar">
                   <p>{activeMedia?.label ?? "Фото модели"}</p>
                   <div className="lightbox-actions">
-                    <button type="button" onClick={() => setLightboxZoom((value) => Math.max(1, value - 0.25))} aria-label="Уменьшить фото" disabled={lightboxZoom === 1}><MagnifyingGlassMinus weight="bold" aria-hidden="true" /></button>
-                    <button type="button" onClick={() => setLightboxZoom((value) => Math.min(2.25, value + 0.25))} aria-label="Увеличить фото"><MagnifyingGlassPlus weight="bold" aria-hidden="true" /></button>
+                    <button type="button" onClick={() => applyLightboxTransform(lightboxZoom - 0.25)} aria-label="Уменьшить фото" disabled={lightboxZoom === 1}><MagnifyingGlassMinus weight="bold" aria-hidden="true" /></button>
+                    <button type="button" onClick={() => applyLightboxTransform(lightboxZoom + 0.25)} aria-label="Увеличить фото"><MagnifyingGlassPlus weight="bold" aria-hidden="true" /></button>
                     <button type="button" onClick={() => closeLightbox()} aria-label="Закрыть просмотр фото"><X weight="bold" aria-hidden="true" /></button>
                   </div>
                 </div>
                 <div
-                  className="lightbox-stage"
-                  onTouchStart={(event) => handleSwipeStart(event, lightboxSwipeStartRef)}
-                  onTouchEnd={(event) => handleSwipeEnd(event, lightboxSwipeStartRef, (direction) => moveMedia(direction, true))}
+                  ref={lightboxStageRef}
+                  className={`lightbox-stage${lightboxZoom > 1 ? " is-zoomed" : ""}${isLightboxGesturing ? " is-gesturing" : ""}`}
+                  onTouchStart={handleLightboxTouchStart}
+                  onTouchMove={handleLightboxTouchMove}
+                  onTouchEnd={handleLightboxTouchEnd}
+                  onTouchCancel={handleLightboxTouchEnd}
                 >
                   {galleryLength > 1 && <button className="lightbox-nav lightbox-nav-prev" type="button" onClick={() => moveMedia(-1, true)} aria-label="Предыдущее фото"><ArrowLeft weight="bold" aria-hidden="true" /></button>}
-                  <img src={activeMedia?.src ?? activeTree.image} alt={activeMedia?.alt ?? `Ёлка ${activeTree.name}`} style={{ transform: `scale(${lightboxZoom})` }} />
+                  <img
+                    src={activeMedia?.src ?? activeTree.image}
+                    alt={activeMedia?.alt ?? `Ёлка ${activeTree.name}`}
+                    draggable={false}
+                    style={{ transform: `translate3d(${lightboxPan.x}px, ${lightboxPan.y}px, 0) scale(${lightboxZoom})` }}
+                  />
                   {galleryLength > 1 && <button className="lightbox-nav lightbox-nav-next" type="button" onClick={() => moveMedia(1, true)} aria-label="Следующее фото"><ArrowRight weight="bold" aria-hidden="true" /></button>}
                 </div>
-                <p className="lightbox-hint">Используйте +/− для масштаба. Свайп и стрелки листают фото.</p>
+                <p className="lightbox-hint">Свайп листает фото. Двумя пальцами можно увеличить и двигать изображение.</p>
               </section>
             </div>
           )}

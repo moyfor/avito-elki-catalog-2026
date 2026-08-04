@@ -55,16 +55,22 @@ catalog-media/
 Примеры:
 
 - `tayga__card-primary__v01.webp`
-- `tayga__gallery-needles__v01.webp`
+- `tayga__gallery-overall__v01.webp`
+- `tayga__gallery-angle-45__v01.webp`
+- `tayga__gallery-needles-macro__v01.webp`
+- `tayga__gallery-branch-macro__v01.webp`
+- `tayga__gallery-branch-mount__v01.webp`
 - `tayga__video-overview__v01.mp4`
 
 Роли:
 
 - `card-primary` — главное фото карточки;
 - `gallery-overall` — общий вид;
-- `gallery-needles` — хвоя крупным планом;
+- `gallery-angle-45` — ракурс 45 градусов;
+- `gallery-needles-macro` — хвоя крупным планом;
+- `gallery-branch-macro` — ветка крупным планом;
 - `gallery-stand` — подставка;
-- `gallery-construction` — конструкция/крепления;
+- `gallery-branch-mount` — крепление ветвей;
 - `video-overview` — короткое видео модели.
 
 ## Форматы и размеры
