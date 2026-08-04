@@ -58,7 +58,9 @@ type Tree = {
   assembly: string;
   stand?: string;
   image: string;
+  cardImage?: string;
   imagePosition: string;
+  cardTone?: "studio";
   gallery?: GalleryItem[];
   galleryUrl?: string;
   kind: "lush" | "slim";
@@ -103,7 +105,9 @@ const trees: Tree[] = [
     assembly: "Шарнирная сборка",
     stand: "Железная складная",
     image: "/catalog-live/tayga/01_main.webp",
+    cardImage: "/catalog-live/tayga/01_main_card.webp",
     imagePosition: "center center",
+    cardTone: "studio",
     gallery: [
       {
         slot: "01_main",
@@ -966,8 +970,8 @@ export default function Home() {
           <div className="product-grid">
             {visibleTrees.map((tree) => (
               <article className="product-card" key={tree.id}>
-                <button className="product-image" onClick={(event) => openTree(tree, event.currentTarget)} aria-label={`Открыть ${tree.name}`}>
-                  <img src={tree.image} alt={`Ёлка ${tree.name}`} style={{ objectPosition: tree.imagePosition }} />
+                <button className={tree.cardTone === "studio" ? "product-image product-image-studio" : "product-image"} onClick={(event) => openTree(tree, event.currentTarget)} aria-label={`Открыть ${tree.name}`}>
+                  <img src={tree.cardImage ?? tree.image} alt={`Ёлка ${tree.name}`} style={{ objectPosition: tree.imagePosition }} />
                   <span className="photo-label">{tree.gallery || tree.galleryUrl ? "Все фото" : "Открыть"} <ArrowRight weight="bold" aria-hidden="true" /></span>
                   {tree.badge && <span className="badge">{tree.badge}</span>}
                 </button>
