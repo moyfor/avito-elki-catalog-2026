@@ -6,7 +6,7 @@
   "publishedCatalog": {
     "entry": "index.html",
     "designTokens": "styles/design-tokens.css",
-    "currentFallbackPolicy": "Current public paths in index.html and app/page.tsx stay unchanged until a new approved material is manually wired in."
+    "currentFallbackPolicy": "Current public paths stay unchanged until a new approved material is manually wired in. Tayga uses stable slot paths in public/catalog-live/tayga/ so each slot can be replaced without code changes."
   },
   "processingStatuses": [
     "published_fallback",
@@ -15,6 +15,12 @@
     "needs_review",
     "approved",
     "rejected"
+  ],
+  "slotStatuses": [
+    "source",
+    "processing",
+    "approved",
+    "published"
   ],
   "localFolderPattern": "catalog-media/products/<productId>/{source,work,approved}/",
   "sourceSafety": {
@@ -56,81 +62,92 @@
       "media": [
         {
           "type": "image",
-          "role": "card-primary",
-          "localPath": "public/catalog-live/tayga-studio-v1.png",
-          "futurePath": "public/catalog-live/tayga__card-primary__v01.webp",
-          "caption": "Главная фотография",
+          "role": "01_main",
+          "title": "Главная фотография",
           "alt": "Ёлка Тайга, главная фотография",
+          "description": "Основное фото модели Тайга для карточки и начала галереи.",
+          "source": "public/catalog-live/tayga-studio-v1.png",
+          "localPath": "public/catalog-live/tayga/01_main.png",
+          "status": "published",
+          "caption": "Главная фотография",
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
         {
           "type": "image",
-          "role": "gallery-overall",
-          "localPath": "public/catalog-live/tayga-studio-v1.png",
-          "futurePath": "public/catalog-live/tayga__gallery-overall__v01.webp",
-          "caption": "Общий вид",
-          "alt": "Ёлка Тайга, общий вид",
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
-        },
-        {
-          "type": "image",
-          "role": "gallery-angle-45",
-          "localPath": "public/catalog-live/tayga-angle-02.jpg",
-          "futurePath": "public/catalog-live/tayga__gallery-angle-45__v01.webp",
-          "caption": "Ракурс 45°",
+          "role": "02_angle",
+          "title": "Ракурс 45°",
           "alt": "Ёлка Тайга, ракурс 45 градусов",
+          "description": "Ракурс для оценки силуэта, объёма и формы модели.",
+          "source": "public/catalog-live/tayga-angle-02.jpg",
+          "localPath": "public/catalog-live/tayga/02_angle.jpg",
+          "status": "published",
+          "caption": "Ракурс 45°",
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
         {
           "type": "image",
-          "role": "gallery-needles-macro",
-          "localPath": "public/catalog-live/tayga-angle-02.jpg",
-          "futurePath": "public/catalog-live/tayga__gallery-needles-macro__v01.webp",
-          "caption": "Макро хвои",
-          "alt": "Хвоя ёлки Тайга крупным планом",
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
-        },
-        {
-          "type": "image",
-          "role": "gallery-branch-macro",
-          "localPath": "public/catalog-live/tayga-needles.jpg",
-          "futurePath": "public/catalog-live/tayga__gallery-branch-macro__v01.webp",
-          "caption": "Макро ветки",
+          "role": "03_branch",
+          "title": "Ветка",
           "alt": "Ветка ёлки Тайга крупным планом",
+          "description": "Крупный план ветки для оценки сборки и фактуры.",
+          "source": "public/catalog-live/tayga-needles.jpg",
+          "localPath": "public/catalog-live/tayga/03_branch.jpg",
+          "status": "published",
+          "caption": "Ветка",
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
         {
           "type": "image",
-          "role": "gallery-stand",
-          "localPath": "public/catalog-live/tayga-stand.jpg",
-          "futurePath": "public/catalog-live/tayga__gallery-stand__v01.webp",
-          "caption": "Подставка",
+          "role": "04_needles",
+          "title": "Хвоя",
+          "alt": "Хвоя ёлки Тайга крупным планом",
+          "description": "Макро хвои для оценки материала, цвета и смешанного типа веток.",
+          "source": "public/catalog-live/tayga-angle-02.jpg",
+          "localPath": "public/catalog-live/tayga/04_needles.jpg",
+          "status": "published",
+          "caption": "Хвоя",
+          "processingStatus": "published_fallback",
+          "productTruthConfirmed": false
+        },
+        {
+          "type": "image",
+          "role": "05_stand",
+          "title": "Подставка",
           "alt": "Железная складная подставка ёлки Тайга",
+          "description": "Фото комплектной железной складной подставки.",
+          "source": "public/catalog-live/tayga-stand.jpg",
+          "localPath": "public/catalog-live/tayga/05_stand.jpg",
+          "status": "published",
+          "caption": "Подставка",
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
         {
           "type": "image",
-          "role": "gallery-branch-mount",
-          "localPath": "public/catalog-live/tayga-detail-02.jpg",
-          "futurePath": "public/catalog-live/tayga__gallery-branch-mount__v01.webp",
-          "caption": "Крепление ветвей",
+          "role": "06_construction",
+          "title": "Крепление ветвей",
           "alt": "Крепление ветвей ёлки Тайга",
+          "description": "Деталь конструкции и крепления ветвей.",
+          "source": "public/catalog-live/tayga-detail-02.jpg",
+          "localPath": "public/catalog-live/tayga/06_construction.jpg",
+          "status": "published",
+          "caption": "Крепление ветвей",
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
         {
           "type": "video",
-          "role": "video-overview",
-          "localPath": "public/catalog-live/tayga-motion-web.mov",
-          "futurePath": "public/catalog-live/tayga__video-overview__v01.mp4",
-          "caption": "Видео",
+          "role": "07_video",
+          "title": "Видео",
           "alt": "Видео ёлки Тайга",
+          "description": "Видео реальной модели Тайга.",
+          "source": "public/catalog-live/tayga-motion-web.mov",
+          "localPath": "public/catalog-live/tayga/07_video.mov",
+          "status": "published",
+          "caption": "Видео",
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         }

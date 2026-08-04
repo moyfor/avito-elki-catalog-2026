@@ -27,17 +27,22 @@ type LightboxTouchState =
   | { mode: "pan"; x: number; y: number; pan: LightboxPan }
   | { mode: "pinch"; distance: number; center: TouchPoint; zoom: number; pan: LightboxPan };
 type GallerySlot =
-  | "primary"
-  | "overall"
-  | "angle-45"
-  | "needles-macro"
-  | "branch-macro"
-  | "stand"
-  | "branch-mount"
-  | "video";
+  | "01_main"
+  | "02_angle"
+  | "03_branch"
+  | "04_needles"
+  | "05_stand"
+  | "06_construction"
+  | "07_video";
+type GalleryStatus = "source" | "processing" | "approved" | "published";
 
 type GalleryItem = {
   slot?: GallerySlot;
+  role?: GallerySlot;
+  title?: string;
+  description?: string;
+  source?: string;
+  status?: GalleryStatus;
   src: string;
   alt: string;
   label: string;
@@ -97,61 +102,89 @@ const trees: Tree[] = [
     needles: "Литые ветки + ПВХ",
     assembly: "Шарнирная сборка",
     stand: "Железная складная",
-    image: "/catalog-live/tayga-studio-v1.png",
+    image: "/catalog-live/tayga/01_main.png",
     imagePosition: "center center",
     gallery: [
       {
-        slot: "primary",
-        src: "/catalog-live/tayga-studio-v1.png",
+        slot: "01_main",
+        role: "01_main",
+        title: "Главная фотография",
+        description: "Основное фото модели Тайга для карточки и начала галереи.",
+        source: "/catalog-live/tayga-studio-v1.png",
+        status: "published",
+        src: "/catalog-live/tayga/01_main.png",
         alt: "Ёлка Тайга, главная фотография",
         label: "Главная фотография",
         thumbPosition: "50% 45%",
       },
       {
-        slot: "overall",
-        src: "/catalog-live/tayga-studio-v1.png",
-        alt: "Ёлка Тайга, общий вид",
-        label: "Общий вид",
-        thumbPosition: "50% 45%",
-      },
-      {
-        slot: "angle-45",
-        src: "/catalog-live/tayga-angle-02.jpg",
+        slot: "02_angle",
+        role: "02_angle",
+        title: "Ракурс 45°",
+        description: "Ракурс для оценки силуэта, объёма и формы модели.",
+        source: "/catalog-live/tayga-angle-02.jpg",
+        status: "published",
+        src: "/catalog-live/tayga/02_angle.jpg",
         alt: "Ёлка Тайга, ракурс 45 градусов",
         label: "Ракурс 45°",
         thumbPosition: "82% 50%",
       },
       {
-        slot: "needles-macro",
-        src: "/catalog-live/tayga-angle-02.jpg",
-        alt: "Хвоя ёлки Тайга крупным планом",
-        label: "Макро хвои",
-        thumbPosition: "82% 50%",
-      },
-      {
-        slot: "branch-macro",
-        src: "/catalog-live/tayga-needles.jpg",
+        slot: "03_branch",
+        role: "03_branch",
+        title: "Ветка",
+        description: "Крупный план ветки для оценки сборки и фактуры.",
+        source: "/catalog-live/tayga-needles.jpg",
+        status: "published",
+        src: "/catalog-live/tayga/03_branch.jpg",
         alt: "Ветка ёлки Тайга крупным планом",
-        label: "Макро ветки",
+        label: "Ветка",
         thumbPosition: "48% 50%",
       },
       {
-        slot: "stand",
-        src: "/catalog-live/tayga-stand.jpg",
+        slot: "04_needles",
+        role: "04_needles",
+        title: "Хвоя",
+        description: "Макро хвои для оценки материала, цвета и смешанного типа веток.",
+        source: "/catalog-live/tayga-angle-02.jpg",
+        status: "published",
+        src: "/catalog-live/tayga/04_needles.jpg",
+        alt: "Хвоя ёлки Тайга крупным планом",
+        label: "Хвоя",
+        thumbPosition: "82% 50%",
+      },
+      {
+        slot: "05_stand",
+        role: "05_stand",
+        title: "Подставка",
+        description: "Фото комплектной железной складной подставки.",
+        source: "/catalog-live/tayga-stand.jpg",
+        status: "published",
+        src: "/catalog-live/tayga/05_stand.jpg",
         alt: "Железная складная подставка ёлки Тайга",
         label: "Подставка",
         thumbPosition: "76% 54%",
       },
       {
-        slot: "branch-mount",
-        src: "/catalog-live/tayga-detail-02.jpg",
+        slot: "06_construction",
+        role: "06_construction",
+        title: "Крепление ветвей",
+        description: "Деталь конструкции и крепления ветвей.",
+        source: "/catalog-live/tayga-detail-02.jpg",
+        status: "published",
+        src: "/catalog-live/tayga/06_construction.jpg",
         alt: "Крепление ветвей ёлки Тайга",
         label: "Крепление ветвей",
         thumbPosition: "48% 42%",
       },
       {
-        slot: "video",
-        src: "/catalog-live/tayga-motion-web.mov",
+        slot: "07_video",
+        role: "07_video",
+        title: "Видео",
+        description: "Видео реальной модели Тайга.",
+        source: "/catalog-live/tayga-motion-web.mov",
+        status: "published",
+        src: "/catalog-live/tayga/07_video.mov",
         alt: "Видео ёлки Тайга",
         label: "Видео",
         kind: "video",

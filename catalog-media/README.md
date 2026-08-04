@@ -54,24 +54,25 @@ catalog-media/
 
 Примеры:
 
-- `tayga__card-primary__v01.webp`
-- `tayga__gallery-overall__v01.webp`
-- `tayga__gallery-angle-45__v01.webp`
-- `tayga__gallery-needles-macro__v01.webp`
-- `tayga__gallery-branch-macro__v01.webp`
-- `tayga__gallery-branch-mount__v01.webp`
-- `tayga__video-overview__v01.mp4`
+- `public/catalog-live/tayga/01_main.png`
+- `public/catalog-live/tayga/02_angle.jpg`
+- `public/catalog-live/tayga/03_branch.jpg`
+- `public/catalog-live/tayga/04_needles.jpg`
+- `public/catalog-live/tayga/05_stand.jpg`
+- `public/catalog-live/tayga/06_construction.jpg`
+- `public/catalog-live/tayga/07_video.mov`
 
 Роли:
 
-- `card-primary` — главное фото карточки;
-- `gallery-overall` — общий вид;
-- `gallery-angle-45` — ракурс 45 градусов;
-- `gallery-needles-macro` — хвоя крупным планом;
-- `gallery-branch-macro` — ветка крупным планом;
-- `gallery-stand` — подставка;
-- `gallery-branch-mount` — крепление ветвей;
-- `video-overview` — короткое видео модели.
+- `01_main` — главное фото;
+- `02_angle` — ракурс 45 градусов;
+- `03_branch` — ветка крупным планом;
+- `04_needles` — хвоя крупным планом;
+- `05_stand` — подставка;
+- `06_construction` — конструкция/крепление ветвей;
+- `07_video` — короткое видео модели.
+
+Для модели `tayga` код каталога смотрит на стабильные пути выше. Когда новый материал утверждён, замените нужный файл по тому же пути и обновите его `status` в `media-manifest.json`; менять код не нужно.
 
 ## Форматы и размеры
 
@@ -100,6 +101,13 @@ Alt-текст должен описывать реальный товар и р
 ## Статусы обработки
 
 Используем статусы в `media-manifest.json`:
+
+- `source` — исходник получен;
+- `processing` — материал в работе;
+- `approved` — материал подтверждён;
+- `published` — материал опубликован в каталоге.
+
+Старое служебное поле `processingStatus` оставлено для совместимости существующих проверок проекта:
 
 - `published_fallback` — текущий опубликованный материал, работает как fallback;
 - `source_received` — исходник получен, но не обработан;
