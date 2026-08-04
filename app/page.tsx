@@ -126,7 +126,7 @@ const trees: Tree[] = [
         role: "02_angle",
         title: "Ракурс 45°",
         description: "Ракурс для оценки силуэта, объёма и формы модели.",
-        source: "/catalog-live/tayga-angle-02.jpg",
+        source: "/catalog-live/tayga/02_angle.jpg",
         status: "published",
         src: "/catalog-live/tayga/02_angle.jpg",
         alt: "Ёлка Тайга, ракурс 45 градусов",

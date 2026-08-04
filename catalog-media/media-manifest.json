@@ -91,19 +91,19 @@
           "title": "Ракурс 45°",
           "alt": "Ёлка Тайга, ракурс 45 градусов",
           "description": "Ракурс для оценки силуэта, объёма и формы модели.",
-          "source": "public/catalog-live/tayga-angle-02.jpg",
+          "source": "public/catalog-live/tayga/02_angle.jpg",
           "localPath": "public/catalog-live/tayga/02_angle.jpg",
           "status": "published",
           "caption": "Ракурс 45°",
           "selectedOriginal": {
-            "filename": "IMG_9854.jpg",
-            "relativePath": "/Фото/IMG_9854.jpg",
-            "downloadUrl": "https://downloader.disk.yandex.ru/disk/0af5e4b39384a0163fe564e2f89186d58180a4719f484033a427c598bc0cf03a/6a71ff69/d6md3ammbi0yk5mFAZqiZUgRLC6Wl7nGBMGfuafgrr-gyPUzWKNKF2M0PPLYaZiF2l1ShQBujOboqSIvpqT7Ig%3D%3D?uid=0&filename=IMG_9854.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2561449&hid=03fe8a07174c99e7a09a0827e78a2b4a&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=c3c6616466ab5d90fc548c583d04ef4e",
-            "selectionReason": "Лучший доступный второй общий план: ёлка чуть развёрнута, видно боковой объём и посадку ветвей, при этом силуэт остаётся цельным.",
+            "filename": "IMG_9856.jpg",
+            "relativePath": "/Фото/IMG_9856.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/fbc5725d3331586c29aabf113fe2d4c9a44588d2068c25c4c43516efe8fa24d7/6a71ff69/d6md3ammbi0yk5mFAZqiZfgDKgIZ6EcfvttV13jd7volUR-hy7J_Y_8EcRH97WQ0EcOSPE7ZCIEOaWmUnglEBQ%3D%3D?uid=0&filename=IMG_9856.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2762432&hid=f543241ee5f5253f7891f18be96f2a04&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=ed17225f4beb1d6237d2f4042cc63aaa",
+            "selectionReason": "Утверждённый второй слайд: боковой фрагмент кроны показывает объём, глубину и раскладку ветвей, не дублируя главный кадр в полный рост.",
             "selectedAt": "2026-08-04"
           },
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         },
         {
           "type": "image",
