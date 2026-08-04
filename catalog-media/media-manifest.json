@@ -6,7 +6,18 @@
   "publishedCatalog": {
     "entry": "index.html",
     "designTokens": "styles/design-tokens.css",
-    "currentFallbackPolicy": "Current public paths stay unchanged until a new approved material is manually wired in. Tayga uses stable slot paths in public/catalog-live/tayga/ so each slot can be replaced without code changes."
+    "currentFallbackPolicy": "Current public paths stay unchanged until a new approved material is manually wired in. Published models use stable slot paths in public/catalog-live/<productId>/ so each slot can be replaced without code changes.",
+    "studioBackground": {
+      "id": "studio-bg-v1",
+      "localPath": "catalog-media/backgrounds/studio-bg-v1.png",
+      "colors": [
+        "#f1f0eb",
+        "#ece9e3",
+        "#e7e4dd",
+        "#bbb8b0"
+      ],
+      "usage": "Approved product images should use this exact catalog studio background so every model shares one visual style."
+    }
   },
   "processingStatuses": [
     "published_fallback",
@@ -42,12 +53,117 @@
       "media": [
         {
           "type": "image",
-          "role": "card-primary",
-          "localPath": "public/catalog-live/afrodita-hero.jpg",
-          "caption": "Текущий fallback: главное фото карточки",
-          "alt": "Ёлка Афродита Премиум, общий вид",
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "role": "01_main",
+          "title": "Главная фотография",
+          "alt": "Ёлка Афродита Премиум, главная фотография",
+          "description": "Основное фото модели Афродита Премиум на едином студийном фоне каталога.",
+          "source": "public/catalog-live/afrodita/01_main.jpg",
+          "localPath": "public/catalog-live/afrodita/01_main.jpg",
+          "status": "published",
+          "caption": "Главная фотография",
+          "selectedOriginal": {
+            "filename": "IMG_8545.jpg",
+            "selectionReason": "Чистый фронтальный силуэт без интерьерного декора, лучше всего подходит для честной студийной обложки модели.",
+            "selectedAt": "2026-08-04"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "02_angle",
+          "title": "Объём кроны",
+          "alt": "Ёлка Афродита Премиум, объём кроны",
+          "description": "Кадр для оценки раскрытия ветвей и общего объёма модели.",
+          "source": "public/catalog-live/afrodita/02_volume.jpg",
+          "localPath": "public/catalog-live/afrodita/02_volume.jpg",
+          "status": "published",
+          "caption": "Объём кроны",
+          "selectedOriginal": {
+            "filename": "IMG_8568.jpg",
+            "selectionReason": "Показывает раскрытие кроны и не дублирует главный кадр в полный рост.",
+            "selectedAt": "2026-08-04"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "03_branch",
+          "title": "Ветка",
+          "alt": "Ветка ёлки Афродита Премиум крупным планом",
+          "description": "Крупный план ветвей для оценки формы и плотности хвои.",
+          "source": "public/catalog-live/afrodita/03_branch.jpg",
+          "localPath": "public/catalog-live/afrodita/03_branch.jpg",
+          "status": "published",
+          "caption": "Ветка",
+          "selectedOriginal": {
+            "filename": "IMG_8572.jpg",
+            "selectionReason": "Средний крупный план с глубиной, хорошо показывает форму ветвей без превращения кадра в макро хвои.",
+            "selectedAt": "2026-08-04"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "04_needles",
+          "title": "Хвоя",
+          "alt": "Хвоя ёлки Афродита Премиум крупным планом",
+          "description": "Макро хвои для оценки литых веток, цвета и фактуры.",
+          "source": "public/catalog-live/afrodita/04_needles.jpg",
+          "localPath": "public/catalog-live/afrodita/04_needles.jpg",
+          "status": "published",
+          "caption": "Хвоя",
+          "selectedOriginal": {
+            "filename": "IMG_8535.jpg",
+            "selectionReason": "Более плотный макро-фрагмент хвои, визуально отличается от слайда ветки.",
+            "selectedAt": "2026-08-04"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "06_construction",
+          "title": "Крепление ветвей",
+          "alt": "Крепление ветвей ёлки Афродита Премиум",
+          "description": "Технический кадр шарнирного крепления ветвей.",
+          "source": "public/catalog-live/afrodita/05_construction.jpg",
+          "localPath": "public/catalog-live/afrodita/05_construction.jpg",
+          "status": "published",
+          "caption": "Крепление ветвей",
+          "selectedOriginal": {
+            "filename": "IMG_8566.jpg",
+            "selectionReason": "Читаемо показывает шарнирный механизм и конструкцию ветвей.",
+            "selectedAt": "2026-08-04"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "05_stand",
+          "title": "Подставка",
+          "alt": "Металлическая подставка ёлки Афродита Премиум",
+          "description": "Фото комплектной металлической подставки.",
+          "source": "public/catalog-live/afrodita/06_stand.jpg",
+          "localPath": "public/catalog-live/afrodita/06_stand.jpg",
+          "status": "published",
+          "caption": "Подставка",
+          "selectedOriginal": {
+            "filename": "IMG_8545.jpg",
+            "selectionReason": "Нижняя часть исходника позволяет показать комплектную металлическую подставку в конце галереи.",
+            "selectedAt": "2026-08-04"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         }
       ]
     },
