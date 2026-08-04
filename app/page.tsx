@@ -102,7 +102,7 @@ const trees: Tree[] = [
     needles: "Литые ветки + ПВХ",
     assembly: "Шарнирная сборка",
     stand: "Железная складная",
-    image: "/catalog-live/tayga/01_main_source.png",
+    image: "/catalog-live/tayga/01_main.webp",
     imagePosition: "center center",
     gallery: [
       {
@@ -110,9 +110,9 @@ const trees: Tree[] = [
         role: "01_main",
         title: "Главная фотография",
         description: "Основное фото модели Тайга для карточки и начала галереи.",
-        source: "/catalog-live/tayga/01_main_source.png",
+        source: "/catalog-live/tayga/01_main.webp",
         status: "published",
-        src: "/catalog-live/tayga/01_main_source.png",
+        src: "/catalog-live/tayga/01_main.webp",
         alt: "Ёлка Тайга, главная фотография",
         label: "Главная фотография",
         thumbPosition: "50% 45%",

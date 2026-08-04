@@ -71,8 +71,8 @@
           "title": "Главная фотография",
           "alt": "Ёлка Тайга, главная фотография",
           "description": "Основное фото модели Тайга для карточки и начала галереи.",
-          "source": "public/catalog-live/tayga/01_main_source.png",
-          "localPath": "public/catalog-live/tayga/01_main_source.png",
+          "source": "public/catalog-live/tayga/01_main.webp",
+          "localPath": "public/catalog-live/tayga/01_main.webp",
           "status": "published",
           "caption": "Главная фотография",
           "selectedOriginal": {
@@ -82,8 +82,8 @@
             "selectionReason": "Самый собранный общий вид: читается полный силуэт, равномерный объём и уверенная вертикаль, поэтому кадр подходит для первой точки входа.",
             "selectedAt": "2026-08-04"
           },
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         },
         {
           "type": "image",
