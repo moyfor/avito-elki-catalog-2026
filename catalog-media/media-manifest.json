@@ -131,7 +131,7 @@
           "title": "Хвоя",
           "alt": "Хвоя ёлки Тайга крупным планом",
           "description": "Макро хвои для оценки материала, цвета и смешанного типа веток.",
-          "source": "public/catalog-live/tayga-angle-02.jpg",
+          "source": "public/catalog-live/tayga/04_needles.jpg",
           "localPath": "public/catalog-live/tayga/04_needles.jpg",
           "status": "published",
           "caption": "Хвоя",
@@ -139,31 +139,11 @@
             "filename": "IMG_9857.jpg",
             "relativePath": "/Фото/IMG_9857.jpg",
             "downloadUrl": "https://downloader.disk.yandex.ru/disk/b7ba25c168af59f517549e539c5ae9ef351881dfbf140f679e6a11ef6c3909b6/6a71ff69/d6md3ammbi0yk5mFAZqiZZFvMxZ89OmgAu7OVjYS8Y_UFN2EnTljcN2hzVXR8lhtcAh3uYhsrCzEAmg7gGhrvQ%3D%3D?uid=0&filename=IMG_9857.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2850799&hid=39763acb1514824dcf285982b033e6d0&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=01b0935584bd03707d3703a281c9da15",
-            "selectionReason": "Самое понятное макро хвои: хорошо читается фактура, цвет и масштаб относительно руки.",
+            "selectionReason": "Утверждённый четвёртый слайд: более плотный макро-фрагмент хвои, визуально отличается от кадра ветки с рукой и показывает материал ближе.",
             "selectedAt": "2026-08-04"
           },
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
-        },
-        {
-          "type": "image",
-          "role": "05_stand",
-          "title": "Подставка",
-          "alt": "Железная складная подставка ёлки Тайга",
-          "description": "Фото комплектной железной складной подставки.",
-          "source": "public/catalog-live/tayga-stand.jpg",
-          "localPath": "public/catalog-live/tayga/05_stand.jpg",
-          "status": "published",
-          "caption": "Подставка",
-          "selectedOriginal": {
-            "filename": "IMG_9859.jpg",
-            "relativePath": "/Фото/IMG_9859.jpg",
-            "downloadUrl": "https://downloader.disk.yandex.ru/disk/6982cfe7a979e673c5b7ab5b66e8fedc2706e51266640aa52ffb9d246859d1e3/6a71ff69/d6md3ammbi0yk5mFAZqiZQeXlLQKHKCh6h0uCauQninQEup99gOCTtxU1kcqtYZY8j4bYJzXOZRQj13wDXXh7Q%3D%3D?uid=0&filename=IMG_9859.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=1903192&hid=ae07e9748dd59641089df86e95b06f6e&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=a9da4d55971cf11b2272f8e2f1013487",
-            "selectionReason": "Самый ясный кадр основания: хорошо видны металлическая подставка, центральный узел и посадка ствола.",
-            "selectedAt": "2026-08-04"
-          },
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         },
         {
           "type": "image",
@@ -171,7 +151,7 @@
           "title": "Крепление ветвей",
           "alt": "Крепление ветвей ёлки Тайга",
           "description": "Деталь конструкции и крепления ветвей.",
-          "source": "public/catalog-live/tayga-detail-02.jpg",
+          "source": "public/catalog-live/tayga/06_construction.jpg",
           "localPath": "public/catalog-live/tayga/06_construction.jpg",
           "status": "published",
           "caption": "Крепление ветвей",
@@ -179,11 +159,31 @@
             "filename": "IMG_9858.jpg",
             "relativePath": "/Фото/IMG_9858.jpg",
             "downloadUrl": "https://downloader.disk.yandex.ru/disk/34e346d254c4d23b1236a95dbf04d6026ce9a0be2c5ddf6ff142615a7c2ae558/6a71ff69/d6md3ammbi0yk5mFAZqiZQ_eLLUbsxtsPtd-sQICKJOZNIKChK19iEGceiU1Sw_Fxo_Ook9CtwZJaRIMhMwcEg%3D%3D?uid=0&filename=IMG_9858.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2215987&hid=2926274f8eb0afd4da119ae3a08dde28&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=12d3026701537ce29e643042b459d4de",
-            "selectionReason": "Единственный кадр, где читается внутренняя конструкция и крепление ветвей к стволу; поэтому оставлен как эталонный источник для этого слота.",
+            "selectionReason": "Утверждённый пятый слайд: технический кадр внутренней конструкции и крепления ветвей перед финальным кадром подставки.",
             "selectedAt": "2026-08-04"
           },
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "05_stand",
+          "title": "Подставка",
+          "alt": "Железная складная подставка ёлки Тайга",
+          "description": "Фото комплектной железной складной подставки.",
+          "source": "public/catalog-live/tayga/05_stand.jpg",
+          "localPath": "public/catalog-live/tayga/05_stand.jpg",
+          "status": "published",
+          "caption": "Подставка",
+          "selectedOriginal": {
+            "filename": "IMG_9859.jpg",
+            "relativePath": "/Фото/IMG_9859.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/6982cfe7a979e673c5b7ab5b66e8fedc2706e51266640aa52ffb9d246859d1e3/6a71ff69/d6md3ammbi0yk5mFAZqiZQeXlLQKHKCh6h0uCauQninQEup99gOCTtxU1kcqtYZY8j4bYJzXOZRQj13wDXXh7Q%3D%3D?uid=0&filename=IMG_9859.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=1903192&hid=ae07e9748dd59641089df86e95b06f6e&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=a9da4d55971cf11b2272f8e2f1013487",
+            "selectionReason": "Утверждённый последний технический слайд: очищенный кадр металлической складной подставки без корзины, лишнего шума и тяжёлых теней.",
+            "selectedAt": "2026-08-04"
+          },
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         },
         {
           "type": "video",
