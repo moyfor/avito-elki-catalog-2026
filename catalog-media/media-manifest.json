@@ -1,7 +1,7 @@
 {
   "brand": "Ёлки Тут",
   "schemaVersion": 1,
-  "updatedAt": "2026-08-03",
+  "updatedAt": "2026-08-04",
   "purpose": "Internal media registry for preparing real product photos and videos before publishing them in the static Avito catalog.",
   "publishedCatalog": {
     "entry": "index.html",
@@ -54,6 +54,11 @@
     {
       "productId": "tayga",
       "name": "Тайга",
+      "sourceGallery": {
+        "provider": "yandex_disk_public",
+        "url": "https://disk.yandex.ru/d/206VvEUPu84xXg",
+        "reviewedAt": "2026-08-04"
+      },
       "localFolders": {
         "source": "catalog-media/products/tayga/source/",
         "work": "catalog-media/products/tayga/work/",
@@ -70,6 +75,13 @@
           "localPath": "public/catalog-live/tayga/01_main_source.png",
           "status": "published",
           "caption": "Главная фотография",
+          "selectedOriginal": {
+            "filename": "IMG_9853.jpg",
+            "relativePath": "/Фото/IMG_9853.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/e2c26c0e83157de186b1879bb3cecc8ba95d0b3d9452dc640da3fa4e1a7b2661/6a71ff69/d6md3ammbi0yk5mFAZqiZSJC48T7jxw-BCmkPXpsLOQV82_jyZVV5Vk0Yp2-Fex7CYb5mCsm7Vwvmx0Xp82s1w%3D%3D?uid=0&filename=IMG_9853.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2428861&hid=2d66f72b0ad75a075c3f03ff532d67c5&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=4c811fc4d2c6729cfa090c6e09c077e3",
+            "selectionReason": "Самый собранный общий вид: читается полный силуэт, равномерный объём и уверенная вертикаль, поэтому кадр подходит для первой точки входа.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
@@ -83,6 +95,13 @@
           "localPath": "public/catalog-live/tayga/02_angle.jpg",
           "status": "published",
           "caption": "Ракурс 45°",
+          "selectedOriginal": {
+            "filename": "IMG_9854.jpg",
+            "relativePath": "/Фото/IMG_9854.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/0af5e4b39384a0163fe564e2f89186d58180a4719f484033a427c598bc0cf03a/6a71ff69/d6md3ammbi0yk5mFAZqiZUgRLC6Wl7nGBMGfuafgrr-gyPUzWKNKF2M0PPLYaZiF2l1ShQBujOboqSIvpqT7Ig%3D%3D?uid=0&filename=IMG_9854.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2561449&hid=03fe8a07174c99e7a09a0827e78a2b4a&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=c3c6616466ab5d90fc548c583d04ef4e",
+            "selectionReason": "Лучший доступный второй общий план: ёлка чуть развёрнута, видно боковой объём и посадку ветвей, при этом силуэт остаётся цельным.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
@@ -96,6 +115,13 @@
           "localPath": "public/catalog-live/tayga/03_branch.jpg",
           "status": "published",
           "caption": "Ветка",
+          "selectedOriginal": {
+            "filename": "IMG_9856.jpg",
+            "relativePath": "/Фото/IMG_9856.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/fbc5725d3331586c29aabf113fe2d4c9a44588d2068c25c4c43516efe8fa24d7/6a71ff69/d6md3ammbi0yk5mFAZqiZfgDKgIZ6EcfvttV13jd7volUR-hy7J_Y_8EcRH97WQ0EcOSPE7ZCIEOaWmUnglEBQ%3D%3D?uid=0&filename=IMG_9856.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2762432&hid=f543241ee5f5253f7891f18be96f2a04&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=ed17225f4beb1d6237d2f4042cc63aaa",
+            "selectionReason": "Лучше всего показывает форму ветвей в живом объёме: видна длина лап и плотность раскладки без отвлекающих деталей.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
@@ -109,6 +135,13 @@
           "localPath": "public/catalog-live/tayga/04_needles.jpg",
           "status": "published",
           "caption": "Хвоя",
+          "selectedOriginal": {
+            "filename": "IMG_9857.jpg",
+            "relativePath": "/Фото/IMG_9857.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/b7ba25c168af59f517549e539c5ae9ef351881dfbf140f679e6a11ef6c3909b6/6a71ff69/d6md3ammbi0yk5mFAZqiZZFvMxZ89OmgAu7OVjYS8Y_UFN2EnTljcN2hzVXR8lhtcAh3uYhsrCzEAmg7gGhrvQ%3D%3D?uid=0&filename=IMG_9857.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2850799&hid=39763acb1514824dcf285982b033e6d0&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=01b0935584bd03707d3703a281c9da15",
+            "selectionReason": "Самое понятное макро хвои: хорошо читается фактура, цвет и масштаб относительно руки.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
@@ -122,6 +155,13 @@
           "localPath": "public/catalog-live/tayga/05_stand.jpg",
           "status": "published",
           "caption": "Подставка",
+          "selectedOriginal": {
+            "filename": "IMG_9859.jpg",
+            "relativePath": "/Фото/IMG_9859.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/6982cfe7a979e673c5b7ab5b66e8fedc2706e51266640aa52ffb9d246859d1e3/6a71ff69/d6md3ammbi0yk5mFAZqiZQeXlLQKHKCh6h0uCauQninQEup99gOCTtxU1kcqtYZY8j4bYJzXOZRQj13wDXXh7Q%3D%3D?uid=0&filename=IMG_9859.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=1903192&hid=ae07e9748dd59641089df86e95b06f6e&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=a9da4d55971cf11b2272f8e2f1013487",
+            "selectionReason": "Самый ясный кадр основания: хорошо видны металлическая подставка, центральный узел и посадка ствола.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
@@ -135,6 +175,13 @@
           "localPath": "public/catalog-live/tayga/06_construction.jpg",
           "status": "published",
           "caption": "Крепление ветвей",
+          "selectedOriginal": {
+            "filename": "IMG_9858.jpg",
+            "relativePath": "/Фото/IMG_9858.jpg",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/34e346d254c4d23b1236a95dbf04d6026ce9a0be2c5ddf6ff142615a7c2ae558/6a71ff69/d6md3ammbi0yk5mFAZqiZQ_eLLUbsxtsPtd-sQICKJOZNIKChK19iEGceiU1Sw_Fxo_Ook9CtwZJaRIMhMwcEg%3D%3D?uid=0&filename=IMG_9858.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&fsize=2215987&hid=2926274f8eb0afd4da119ae3a08dde28&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=12d3026701537ce29e643042b459d4de",
+            "selectionReason": "Единственный кадр, где читается внутренняя конструкция и крепление ветвей к стволу; поэтому оставлен как эталонный источник для этого слота.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         },
@@ -148,6 +195,13 @@
           "localPath": "public/catalog-live/tayga/07_video.mov",
           "status": "published",
           "caption": "Видео",
+          "selectedOriginal": {
+            "filename": "IMG_9860.mov",
+            "relativePath": "/Видео/IMG_9860.mov",
+            "downloadUrl": "https://downloader.disk.yandex.ru/disk/5c984ed46fffd755ae062b6b6c6ab104a31a87c49398a71539419746804d4933/6a71ff69/d6md3ammbi0yk5mFAZqiZVxQ7-LNB1O9ySj8wagYqVx3nP3816uRKblaSXyR_87-if2Ql_rXrndo0IpwaTsAcA%3D%3D?uid=0&filename=IMG_9860.mov&disposition=attachment&hash=&limit=0&content_type=video%2Fquicktime&owner_uid=0&fsize=37843631&hid=70ab1d5b1675b570fd33b62f3d717638&media_type=video&tknv=v3&is_direct_zip_experiment=1&etag=80cf92cf99b2ca7fe172966814f4653b",
+            "selectionReason": "Единственное исходное видео модели, фиксируем его как обязательный последний элемент галереи.",
+            "selectedAt": "2026-08-04"
+          },
           "processingStatus": "published_fallback",
           "productTruthConfirmed": false
         }
