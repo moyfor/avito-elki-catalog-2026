@@ -69,7 +69,7 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /Дворянская заснеженная/);
   assert.match(staticCatalog, /190/);
   assert.match(staticCatalog, /270/);
-  assert.match(staticCatalog, /300/);
+  assert.match(staticCatalog, /250/);
   assert.match(staticCatalog, /Свайп и стрелки листают галерею/);
   assert.doesNotMatch(staticCatalog, /Тестовая версия/);
   assert.doesNotMatch(staticCatalog, /В следующей версии/);

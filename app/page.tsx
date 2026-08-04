@@ -71,8 +71,6 @@ const trees: Tree[] = [
     kind: "lush",
     badge: "Премиум",
     variations: [
-      variation(150, 23990, 23990, "85 см", "—"),
-      variation(210, 29990, 29990, "135 см", "—"),
       variation(240, 18900, 34990, "150 см", "—"),
     ],
   },
@@ -121,13 +119,8 @@ const trees: Tree[] = [
     kind: "lush",
     badge: "Топ продаж",
     variations: [
-      variation(120, 9750, 9750, "90 см", "—"),
-      variation(150, 8990, 8990, "105 см", "—"),
-      variation(180, 12490, 12490, "130 см", "—"),
       variation(210, 9700, 16900, "—", "—"),
       variation(240, 13900, 23490, "155 см", "—"),
-      variation(270, 31000, 31000, "—", "—"),
-      variation(300, 33000, 33000, "—", "—"),
     ],
   },
   {
@@ -159,11 +152,7 @@ const trees: Tree[] = [
     kind: "lush",
     badge: "Топ продаж",
     variations: [
-      variation(120, 7750, 7750, "80 см", "—"),
-      variation(150, 9990, 9990, "95 см", "—"),
-      variation(180, 12490, 12490, "114 см", "—"),
       variation(210, 12800, 16900, "128 см", "—"),
-      variation(240, 23490, 23490, "126 см", "—"),
       variation(270, 24500, 31000, "130 см", "—"),
     ],
   },
@@ -180,9 +169,7 @@ const trees: Tree[] = [
     kind: "lush",
     badge: "Премиум",
     variations: [
-      variation(180, 23990, 23990, "115 см", "10,9 кг"),
       variation(210, 16800, 29990, "135 см", "16,9 кг"),
-      variation(240, 34990, 34990, "150 см", "22,3 кг"),
     ],
   },
   {
@@ -197,11 +184,7 @@ const trees: Tree[] = [
     galleryUrl: "https://disk.yandex.ru/d/_VFuToIuu2lbJQ",
     kind: "lush",
     variations: [
-      variation(210, 33990, 33990, "130 см", "15,9 кг"),
       variation(230, 25800, 39990, "145 см", "22,7 кг"),
-      variation(250, 47990, 47990, "155 см", "27,2 кг"),
-      variation(270, 58990, 58990, "—", "—"),
-      variation(300, 69990, 69990, "—", "—"),
     ],
   },
   {
@@ -217,11 +200,8 @@ const trees: Tree[] = [
     kind: "lush",
     badge: "Премиум",
     variations: [
-      variation(180, 27990, 27990, "125 см", "13,1 кг"),
       variation(210, 22200, 36990, "140 см", "16,1 кг"),
       variation(230, 27400, 37990, "155 см", "21,5 кг"),
-      variation(270, 57490, 57490, "—", "32,5 кг"),
-      variation(300, 79990, 79990, "—", "46,8 кг"),
     ],
   },
   {
@@ -236,10 +216,7 @@ const trees: Tree[] = [
     galleryUrl: "https://disk.yandex.ru/d/IBMP6CuH_U4xSw",
     kind: "lush",
     variations: [
-      variation(210, 33990, 33990, "145 см", "16,2 кг"),
       variation(230, 30300, 45990, "155 см", "26,4 кг"),
-      variation(270, 45990, 45990, "—", "—"),
-      variation(300, 45990, 45990, "—", "—"),
     ],
   },
   {
@@ -264,11 +241,7 @@ const trees: Tree[] = [
     image: placeholderCatalogImage,
     imagePosition: placeholderCatalogPosition,
     kind: "slim",
-    variations: [
-      variation(180, 27990, 27990, "105 см", "13 кг"),
-      variation(210, 36990, 36990, "110 см", "16,6 кг"),
-      variation(240, 27700, 37990, "115 см", "20,2 кг"),
-    ],
+    variations: [variation(240, 27700, 37990, "115 см", "20,2 кг")],
   },
   {
     id: "koroleva-karpat-uzkaya",
@@ -312,7 +285,6 @@ const trees: Tree[] = [
     kind: "lush",
     variations: [
       variation(180, 9900, 36990, "—", "—"),
-      variation(210, 37990, 37990, "—", "—"),
     ],
   },
   {
@@ -325,14 +297,7 @@ const trees: Tree[] = [
     image: placeholderCatalogImage,
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
-    variations: [
-      variation(180, 23990, 23990, "115 см", "11,6 кг"),
-      variation(210, 33990, 33990, "125 см", "14,5 кг"),
-      variation(230, 39990, 39990, "135 см", "19,1 кг"),
-      variation(250, 32200, 48990, "145 см", "24,1 кг"),
-      variation(270, 58990, 58990, "—", "29,9 кг"),
-      variation(300, 69990, 69990, "—", "39,9 кг"),
-    ],
+    variations: [variation(250, 32200, 48990, "145 см", "24,1 кг")],
   },
   {
     id: "dvoryanskaya-golubaya",
@@ -344,11 +309,7 @@ const trees: Tree[] = [
     image: placeholderCatalogImage,
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
-    variations: [
-      variation(180, 23990, 23990, "110 см", "11,6 кг"),
-      variation(210, 33990, 33990, "125 см", "14,4 кг"),
-      variation(230, 24400, 39990, "135 см", "19,7 кг"),
-    ],
+    variations: [variation(230, 24400, 39990, "135 см", "19,7 кг")],
   },
   {
     id: "taezhnaya-lux",
@@ -378,7 +339,6 @@ const trees: Tree[] = [
     kind: "lush",
     badge: "Топ продаж",
     variations: [
-      variation(190, 21490, 21490, "130 см", "10,9 кг"),
       variation(220, 15900, 26490, "140 см", "16,9 кг"),
     ],
   },
@@ -393,11 +353,7 @@ const trees: Tree[] = [
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
     badge: "Топ продаж",
-    variations: [
-      variation(180, 29590, 29590, "118 см", "10,9 кг"),
-      variation(210, 39490, 39490, "134 см", "16,9 кг"),
-      variation(240, 25500, 52490, "146 см", "16,9 кг"),
-    ],
+    variations: [variation(240, 25500, 52490, "146 см", "16,9 кг")],
   },
   {
     id: "imperatorskaya-svetlaya",
@@ -427,7 +383,6 @@ const trees: Tree[] = [
     badge: "Премиум",
     variations: [
       variation(180, 10500, 23990, "120 см", "—"),
-      variation(210, 29990, 29990, "165 см", "—"),
       variation(240, 17300, 34990, "190 см", "—"),
     ],
   },
@@ -442,11 +397,7 @@ const trees: Tree[] = [
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
     badge: "Премиум",
-    variations: [
-      variation(180, 23990, 23990, "110 см", "—"),
-      variation(210, 29990, 29990, "122 см", "—"),
-      variation(240, 19800, 34990, "135 см", "—"),
-    ],
+    variations: [variation(240, 19800, 34990, "135 см", "—")],
   },
   {
     id: "sibir-tyomnaya",
@@ -458,10 +409,7 @@ const trees: Tree[] = [
     image: placeholderCatalogImage,
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
-    variations: [
-      variation(220, 29990, 29990, "150 см", "—"),
-      variation(270, 24900, 41990, "170 см", "—"),
-    ],
+    variations: [variation(270, 24900, 41990, "170 см", "—")],
   },
   {
     id: "lyusiya-snezhnaya",
@@ -474,10 +422,7 @@ const trees: Tree[] = [
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
     badge: "Топ продаж",
-    variations: [
-      variation(180, 10450, 22900, "110 см", "12,5 кг"),
-      variation(210, 34490, 34490, "120 см", "17 кг"),
-    ],
+    variations: [variation(180, 10450, 22900, "110 см", "12,5 кг")],
   },
   {
     id: "lyusiya-snezhnaya-s-girlyandoy",
@@ -490,10 +435,7 @@ const trees: Tree[] = [
     imagePosition: placeholderCatalogPosition,
     kind: "lush",
     badge: "Топ продаж",
-    variations: [
-      variation(180, 13950, 22900, "110 см", "12,5 кг"),
-      variation(210, 34490, 34490, "120 см", "17 кг"),
-    ],
+    variations: [variation(180, 13950, 22900, "110 см", "12,5 кг")],
   },
   {
     id: "dvoryanskaya-zasnezhennaya",
