@@ -64,8 +64,12 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /Все фото/);
   assert.match(staticCatalog, /В наличии/);
   assert.match(staticCatalog, /Открыть модель <b>→<\/b>/);
+  assert.match(staticCatalog, /Крымская зелёная узкая/);
+  assert.match(staticCatalog, /Люсия снежная/);
+  assert.match(staticCatalog, /Дворянская заснеженная/);
   assert.match(staticCatalog, /190/);
   assert.match(staticCatalog, /270/);
+  assert.match(staticCatalog, /300/);
   assert.match(staticCatalog, /Свайп и стрелки листают галерею/);
   assert.doesNotMatch(staticCatalog, /Тестовая версия/);
   assert.doesNotMatch(staticCatalog, /В следующей версии/);
@@ -90,6 +94,8 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(page, /Железная складная/);
   assert.match(page, /product-availability/);
   assert.match(page, /product-prices/);
+  assert.match(page, /placeholderCatalogImage/);
+  assert.match(page, /Крымская зелёная узкая/);
   assert.match(page, /Открыть модель <ArrowRight/);
   assert.doesNotMatch(page, /Подробнее/);
   assert.match(layout, /Ёлки Тут — каталог искусственных елей/);
