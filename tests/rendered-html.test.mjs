@@ -62,7 +62,8 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(staticCatalog, /Железная складная подставка/);
   assert.match(staticCatalog, /Выберите свою ёлку/);
   assert.match(staticCatalog, /Все фото/);
-  assert.match(staticCatalog, /Открыть <b>→<\/b>/);
+  assert.match(staticCatalog, /В наличии/);
+  assert.match(staticCatalog, /Открыть модель <b>→<\/b>/);
   assert.match(staticCatalog, /190/);
   assert.match(staticCatalog, /270/);
   assert.match(staticCatalog, /Свайп и стрелки листают галерею/);
@@ -87,8 +88,9 @@ test("keeps the mobile gallery and full-screen photo controls in the deployable 
   assert.match(page, /hero-ornament/);
   assert.match(page, /tayga-motion-web\.mov/);
   assert.match(page, /Железная складная/);
+  assert.match(page, /product-availability/);
   assert.match(page, /product-prices/);
-  assert.match(page, /Открыть <ArrowRight/);
+  assert.match(page, /Открыть модель <ArrowRight/);
   assert.doesNotMatch(page, /Подробнее/);
   assert.match(layout, /Ёлки Тут — каталог искусственных елей/);
   assert.match(layout, /мобильный каталог искусственных елей/);

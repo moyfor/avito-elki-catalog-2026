@@ -67,8 +67,8 @@
       .pill.active, .pill:hover { border-color: var(--pine); color: var(--color-white); background: var(--pine); }
       .pill:active, .height-option:active { transform: scale(.97); }
       .count { margin: 0 0 25px; font-size: 12px; opacity: .58; }
-      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; align-items: stretch; }
-      .product-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100%; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 20px; align-items: stretch; }
+      .product-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100%; min-height: 675px; }
       .card-image { position: relative; width: 100%; height: 348px; padding: 0; overflow: hidden; border: 0; background: var(--color-surface-muted); text-align: left; transition: transform var(--duration-fast) var(--ease-out); }
       .card-image::after { position: absolute; inset: 0; pointer-events: none; content: ""; background: linear-gradient(0deg, rgba(5,36,28,.55), transparent 42%); }
       .card-image img { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform var(--duration-slow) var(--ease-out); }
@@ -77,22 +77,40 @@
       .photo-label, .badge { position: absolute; z-index: 1; font-size: 11px; font-weight: 700; }
       .photo-label { bottom: 14px; left: 14px; display: inline-flex; min-height: 36px; align-items: center; gap: 6px; color: var(--color-white); }
       .badge { top: 14px; left: 14px; padding: 7px 9px; color: var(--ink); background: rgba(255,255,255,.92); text-transform: uppercase; letter-spacing: .05em; }
-      .info { height: 100%; display: grid; align-content: start; grid-template-rows: auto auto auto 1fr auto; padding: 14px 4px 0; }
-      .type { margin: 0 0 6px; color: var(--pine); font-size: 12px; }
+      .info { height: 100%; display: grid; align-content: start; grid-template-rows: auto 1fr auto; padding: 16px 0 0; }
+      .copy { display: grid; gap: 8px; }
+      .type { margin: 0; color: var(--color-muted); font-size: 16px; line-height: 1.5; }
       .info h3 { margin: 0 0 10px; font: 400 29px var(--serif); letter-spacing: -.035em; }
-      .product-name { min-height: 2.2em; }
-      .facts { min-height: 36px; margin: 0 0 12px; color: rgba(18,59,48,.7); font-size: 12px; line-height: 1.45; }
-      .price-list { display: grid; gap: 8px; min-height: 104px; margin: 0 0 16px; padding-top: 12px; border-top: 1px solid var(--line); }
-      .price-item { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 10px; color: rgba(18,59,48,.7); font-size: 12px; }
+      .product-name { min-height: 2.2em; margin: 0; }
+      .facts { min-height: 0; margin: 0; color: rgba(18,59,48,.7); font-size: 12px; line-height: 1.45; }
+      .pricing { display: grid; gap: 10px; margin: 18px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+      .availability { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; min-height: 17px; }
+      .availability-label { color: var(--pine); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+      .availability-value { color: rgba(18,59,48,.64); font-size: 12px; white-space: nowrap; }
+      .price-list { display: grid; gap: 8px; min-height: 110px; margin: 0 0 18px; }
+      .price-item { display: grid; grid-template-columns: 78px minmax(0, 1fr) minmax(96px, auto); align-items: center; gap: 10px; color: rgba(18,59,48,.7); font-size: 13px; }
       .price-item.active { color: var(--pine); }
       .price-size { color: var(--ink); font-weight: 700; white-space: nowrap; }
       .price-item.active .price-size { color: var(--pine); }
       .price-rule { align-self: center; height: 1px; background: rgba(18,59,48,.14); }
-      .price-item strong { color: var(--ink); font: 400 20px var(--serif); white-space: nowrap; }
+      .price-item strong { justify-self: end; color: var(--ink); font: 400 22px var(--serif); white-space: nowrap; text-align: right; }
       .price-item.active strong { color: var(--pine); }
       .text { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; margin-top: auto; padding: 0; border: 0; color: var(--pine); background: transparent; font-size: var(--text-md); font-weight: 700; transition: transform var(--duration-press) var(--ease-out); }
       .text:active { transform: scale(.97); }
+      .product-open { display: inline-flex; width: 100%; min-height: 48px; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding: 0 15px; border: 1px solid var(--line); color: var(--ink); background: transparent; font-size: var(--text-md); font-weight: 700; transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-fast) ease, background-color var(--duration-fast) ease; }
+      .product-open:hover { border-color: rgba(18,59,48,.28); background: rgba(255,255,255,.4); }
+      .product-open:active { transform: scale(.97); }
       .more { display: block; width: 100%; margin-top: 47px; padding: 17px; border: 1px solid var(--line); color: var(--ink); background: transparent; font-size: 14px; }
+
+      @media (min-width: 1024px) {
+        .product-card { min-height: 751px; }
+      }
+
+      @media (min-width: 1440px) {
+        .product-card { min-height: 747px; }
+        .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 18px; }
+        .card-image { height: 320px; }
+      }
 
       .callout { padding: 80px 0; color: var(--color-white); background: var(--ink); }
       .callout .shell { display: grid; grid-template-columns: 1.25fr .7fr auto; align-items: center; gap: 42px; }
@@ -189,12 +207,17 @@
         .pill, .height-option { min-height: 44px; }
         .grid { gap: 24px; }
         .card-image { height: 286px; aspect-ratio: auto; }
-        .info { padding: 12px 6px 0; }
-        .type { margin-bottom: 6px; }
+        .info { padding: 12px 0 0; }
+        .copy { gap: 7px; }
+        .type { font-size: 15px; }
         .product-name { min-height: 2.2em; }
-        .facts { min-height: 0; margin-bottom: 10px; }
-        .price-list { min-height: 104px; gap: 7px; margin-bottom: 14px; }
+        .pricing { gap: 8px; margin-top: 14px; padding-top: 10px; }
+        .availability-label { font-size: 10px; }
+        .availability-value { font-size: 11px; }
+        .price-list { min-height: 112px; gap: 7px; margin-bottom: 14px; }
+        .price-item { grid-template-columns: 70px minmax(0, 1fr) minmax(88px, auto); gap: 8px; font-size: 12px; }
         .price-item strong { font-size: 18px; }
+        .product-open { min-height: 46px; padding: 0 14px; }
         .callout { padding: 62px 0; }
         .callout .shell { gap: 25px; }
         .light { width: max-content; }
@@ -484,6 +507,15 @@
       const money = new Intl.NumberFormat('ru-RU');
       const heights = ['Все', ...Array.from(new Set(trees.flatMap(tree => tree.variations.map(variation => variation.height)))).sort((left, right) => left - right)];
       const kinds = [['all','Все формы'],['lush','Пышные'],['slim','Узкие']];
+
+      function sizeCount(value) {
+        const mod10 = value % 10;
+        const mod100 = value % 100;
+        if (mod10 === 1 && mod100 !== 11) return `${value} размер`;
+        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${value} размера`;
+        return `${value} размеров`;
+      }
+
       const ui = {
         height: 'Все', kind: 'all', all: false, activeTree: null, activeMediaIndex: 0, zoom: 1,
         modal: document.querySelector('#modal'), lightbox: document.querySelector('#lightbox'), image: document.querySelector('#detail-img'), video: document.querySelector('#detail-video'),
@@ -562,7 +594,7 @@
         const list = trees.filter(matches);
         const shown = ui.all ? list : list.slice(0, 6);
         document.querySelector('#count').textContent = `Показано: ${shown.length} из ${list.length} моделей`;
-        document.querySelector('#products').innerHTML = shown.map(tree => `<article class="product-card"><button class="card-image" data-id="${tree.id}" aria-label="Открыть ${tree.name}"><img src="${tree.image}" alt="Ёлка ${tree.name}"><span class="photo-label">Все фото <b>→</b></span>${tree.badge ? `<span class="badge">${tree.badge}</span>` : ''}</button><div class="info"><p class="type">${tree.sub}</p><h3 class="product-name">${tree.name}</h3><p class="facts">${tree.needles} · ${tree.assembly}</p><div class="price-list" aria-label="Размеры и цены модели ${tree.name}">${tree.variations.map(variation => `<div class="price-item ${ui.height === variation.height ? 'active' : ''}"><span class="price-size">${variation.height} см</span><span class="price-rule" aria-hidden="true"></span><strong>${money.format(variation.price)} ₽</strong></div>`).join('')}</div><button class="text" data-id="${tree.id}">Открыть <b>→</b></button></div></article>`).join('');
+        document.querySelector('#products').innerHTML = shown.map(tree => `<article class="product-card"><button class="card-image" data-id="${tree.id}" aria-label="Открыть ${tree.name}"><img src="${tree.image}" alt="Ёлка ${tree.name}"><span class="photo-label">Все фото <b>→</b></span>${tree.badge ? `<span class="badge">${tree.badge}</span>` : ''}</button><div class="info"><div class="copy"><h3 class="product-name">${tree.name}</h3><p class="type">${tree.sub}</p><p class="facts">${tree.needles} · ${tree.assembly}</p></div><div class="pricing"><div class="availability" aria-label="В наличии ${sizeCount(tree.variations.length)}"><span class="availability-label">В наличии</span><span class="availability-value">${sizeCount(tree.variations.length)}</span></div><div class="price-list" aria-label="Размеры и цены модели ${tree.name}">${tree.variations.map(variation => `<div class="price-item ${ui.height === variation.height ? 'active' : ''}"><span class="price-size">${variation.height} см</span><span class="price-rule" aria-hidden="true"></span><strong>${money.format(variation.price)} ₽</strong></div>`).join('')}</div></div><button class="product-open" data-id="${tree.id}">Открыть модель <b>→</b></button></div></article>`).join('');
         document.querySelectorAll('[data-id]').forEach(button => button.onclick = () => openTree(trees.find(tree => tree.id === button.dataset.id), button));
         const more = document.querySelector('#more');
         more.style.display = list.length > 6 ? 'block' : 'none';

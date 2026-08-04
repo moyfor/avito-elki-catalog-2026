@@ -207,6 +207,14 @@ function formatPrice(value: number) {
   return `${price.format(value)} ₽`;
 }
 
+function formatSizeCount(value: number) {
+  const mod10 = value % 10;
+  const mod100 = value % 100;
+  if (mod10 === 1 && mod100 !== 11) return `${value} размер`;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${value} размера`;
+  return `${value} размеров`;
+}
+
 function matchesHeightFilter(tree: Tree, height: HeightFilter) {
   return height === "Все" || tree.variations.some((variation) => variation.height === height);
 }
@@ -493,19 +501,27 @@ export default function Home() {
                   {tree.badge && <span className="badge">{tree.badge}</span>}
                 </button>
                 <div className="product-info">
-                  <p className="product-type">{tree.subtitle}</p>
-                  <h3 className="product-name">{tree.name}</h3>
-                  <p className="product-facts">{tree.needles} · {tree.assembly}</p>
-                  <div className="product-prices" aria-label={`Размеры и цены модели ${tree.name}`}>
-                    {tree.variations.map((variation) => (
-                      <div className={height === variation.height ? "product-price-item active" : "product-price-item"} key={variation.height}>
-                        <span className="product-price-size">{variation.height} см</span>
-                        <span className="product-price-rule" aria-hidden="true" />
-                        <strong>{formatPrice(variation.price)}</strong>
-                      </div>
-                    ))}
+                  <div className="product-copy">
+                    <h3 className="product-name">{tree.name}</h3>
+                    <p className="product-type">{tree.subtitle}</p>
+                    <p className="product-facts">{tree.needles} · {tree.assembly}</p>
                   </div>
-                  <button className="text-button" onClick={(event) => openTree(tree, event.currentTarget)}>Открыть <ArrowRight weight="bold" aria-hidden="true" /></button>
+                  <div className="product-pricing">
+                    <div className="product-availability" aria-label={`В наличии ${formatSizeCount(tree.variations.length)}`}>
+                      <span className="product-availability-label">В наличии</span>
+                      <span className="product-availability-value">{formatSizeCount(tree.variations.length)}</span>
+                    </div>
+                    <div className="product-prices" aria-label={`Размеры и цены модели ${tree.name}`}>
+                      {tree.variations.map((variation) => (
+                        <div className={height === variation.height ? "product-price-item active" : "product-price-item"} key={variation.height}>
+                          <span className="product-price-size">{variation.height} см</span>
+                          <span className="product-price-rule" aria-hidden="true" />
+                          <strong>{formatPrice(variation.price)}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <button className="product-open-button" onClick={(event) => openTree(tree, event.currentTarget)}>Открыть модель <ArrowRight weight="bold" aria-hidden="true" /></button>
                 </div>
               </article>
             ))}
