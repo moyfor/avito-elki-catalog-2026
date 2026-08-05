@@ -337,19 +337,20 @@
           "role": "01_main",
           "title": "Главная фотография",
           "alt": "Ёлка Красавица светлая, главная фотография",
-          "description": "Основное фото модели Красавица светлая на едином студийном фоне каталога.",
+          "description": "Основное фото модели Красавица светлая на едином студийном фоне каталога: утверждённая более крупная и плотная студийная подача.",
           "source": "public/catalog-live/krasavitsa/01_main.png",
           "localPath": "public/catalog-live/krasavitsa/01_main.png",
           "status": "published",
           "caption": "Главная фотография",
           "selectedOriginal": {
             "filename": "IMG_9300.JPG",
-            "selectionReason": "Высококачественный исходник полного вида использован как основа для честной студийной подачи без изменения типа хвои и ветвей.",
+            "selectionReason": "Утверждённый плотный главный кадр на основе IMG_9300.JPG: масштаб и ветви собраны продажнее, с сохранением модели, типа хвои и общей правды товара.",
             "selectedAt": "2026-08-05"
           },
           "background": "studio-bg-v1",
           "processingStatus": "approved",
-          "productTruthConfirmed": true
+          "productTruthConfirmed": true,
+          "selectedAt": "2026-08-05"
         },
         {
           "type": "image",
