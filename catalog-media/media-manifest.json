@@ -1,7 +1,7 @@
 {
   "brand": "Ёлки Тут",
   "schemaVersion": 1,
-  "updatedAt": "2026-08-04",
+  "updatedAt": "2026-08-05",
   "purpose": "Internal media registry for preparing real product photos and videos before publishing them in the static Avito catalog.",
   "publishedCatalog": {
     "entry": "index.html",
@@ -334,12 +334,98 @@
       "media": [
         {
           "type": "image",
-          "role": "card-primary",
-          "localPath": "public/catalog-live/krasavitsa-svetlaya-main.jpg",
-          "caption": "Текущий fallback: главное фото карточки",
-          "alt": "Ёлка Красавица светлая, общий вид",
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "role": "01_main",
+          "title": "Главная фотография",
+          "alt": "Ёлка Красавица светлая, главная фотография",
+          "description": "Основное фото модели Красавица светлая на едином студийном фоне каталога.",
+          "source": "public/catalog-live/krasavitsa/01_main.png",
+          "localPath": "public/catalog-live/krasavitsa/01_main.png",
+          "status": "published",
+          "caption": "Главная фотография",
+          "selectedOriginal": {
+            "filename": "IMG_9300.JPG",
+            "selectionReason": "Высококачественный исходник полного вида использован как основа для честной студийной подачи без изменения типа хвои и ветвей.",
+            "selectedAt": "2026-08-05"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "02_angle",
+          "title": "Объём кроны",
+          "alt": "Ёлка Красавица светлая, объём кроны",
+          "description": "Кадр для оценки объёма ветвей без повторения общего вида в полный рост.",
+          "source": "public/catalog-live/krasavitsa/02_volume.png",
+          "localPath": "public/catalog-live/krasavitsa/02_volume.png",
+          "status": "published",
+          "caption": "Объём кроны",
+          "selectedOriginal": {
+            "filename": "IMG_9302.JPG",
+            "selectionReason": "Крупный боковой фрагмент показывает зелёный объём и глубину кроны, не дублируя главный кадр.",
+            "selectedAt": "2026-08-05"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "03_branch",
+          "title": "Ветка",
+          "alt": "Ветка ёлки Красавица светлая крупным планом",
+          "description": "Крупный план ветки для оценки формы, длины иголок и фактуры модели.",
+          "source": "public/catalog-live/krasavitsa/03_branch.png",
+          "localPath": "public/catalog-live/krasavitsa/03_branch.png",
+          "status": "published",
+          "caption": "Ветка",
+          "selectedOriginal": {
+            "filename": "IMG_9303.JPG",
+            "selectionReason": "Крупный план оставляет читаемой форму ветви и исходную длину иголок.",
+            "selectedAt": "2026-08-05"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "04_needles",
+          "title": "Хвоя",
+          "alt": "Хвоя ёлки Красавица светлая крупным планом",
+          "description": "Макро хвои для оценки литых веток, светлого оттенка и фактуры.",
+          "source": "public/catalog-live/krasavitsa/04_needles.png",
+          "localPath": "public/catalog-live/krasavitsa/04_needles.png",
+          "status": "published",
+          "caption": "Хвоя",
+          "selectedOriginal": {
+            "filename": "IMG_9303.JPG",
+            "selectionReason": "Более плотный макро-фрагмент хвои визуально отличается от слайда ветки.",
+            "selectedAt": "2026-08-05"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "05_stand",
+          "title": "Подставка",
+          "alt": "Металлическая подставка ёлки Красавица светлая",
+          "description": "Фото комплектной металлической подставки на едином студийном фоне.",
+          "source": "public/catalog-live/krasavitsa/05_stand.png",
+          "localPath": "public/catalog-live/krasavitsa/05_stand.png",
+          "status": "published",
+          "caption": "Подставка",
+          "selectedOriginal": {
+            "filename": "IMG_9304.JPG",
+            "selectionReason": "Финальный технический кадр показывает комплектную металлическую подставку без лишнего бытового фона.",
+            "selectedAt": "2026-08-05"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "approved",
+          "productTruthConfirmed": true
         }
       ]
     },
