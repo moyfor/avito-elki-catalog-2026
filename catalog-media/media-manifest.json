@@ -441,12 +441,41 @@
       "media": [
         {
           "type": "image",
-          "role": "card-primary",
-          "localPath": "public/catalog/lady.png",
-          "caption": "Текущий fallback: главное фото карточки",
-          "alt": "Ёлка Леди, общий вид",
-          "processingStatus": "published_fallback",
-          "productTruthConfirmed": false
+          "role": "01_main",
+          "title": "Главная фотография",
+          "localPath": "public/catalog-live/lady/01_main.png",
+          "caption": "Главная фотография",
+          "alt": "Ёлка Леди, главная фотография",
+          "description": "Реальный исходник модели Леди с заменой окружения на единый студийный фон каталога. Дерево не перерисовывалось.",
+          "source": "public/catalog-live/lady/01_main.png",
+          "status": "published",
+          "selectedOriginal": {
+            "filename": "DSC_0037.JPG",
+            "selectionReason": "Лучший доступный полный исходник Леди; сохранены реальные пиксели дерева, фон заменён на единый каталоговый.",
+            "selectedAt": "2026-08-06"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "needs_review",
+          "productTruthConfirmed": true
+        },
+        {
+          "type": "image",
+          "role": "01_main_card",
+          "title": "Главная фотография для карточки",
+          "localPath": "public/catalog-live/lady/01_main_card.png",
+          "caption": "Главная фотография для карточки",
+          "alt": "Ёлка Леди, главное фото карточки",
+          "description": "Широкая карточная версия главного фото Леди на едином студийном фоне.",
+          "source": "public/catalog-live/lady/01_main_card.png",
+          "status": "published",
+          "selectedOriginal": {
+            "filename": "DSC_0037.JPG",
+            "selectionReason": "Карточная версия того же реального исходника без генеративной замены модели.",
+            "selectedAt": "2026-08-06"
+          },
+          "background": "studio-bg-v1",
+          "processingStatus": "needs_review",
+          "productTruthConfirmed": true
         }
       ]
     },
