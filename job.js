@@ -54,7 +54,7 @@ window.__job = async function (id) {
     st.step = 'photos'; set();
     const files = [];
     for (let i = 0; i < c.photos.length; i++) {
-      const r = await fetch(base + 'p/' + id + '/' + c.photos[i], { cache: 'no-store' });
+      const r = await fetch(base + 'p/' + id + '/' + c.photos[i], { cache: 'force-cache' });
       if (!r.ok) throw 'photo fetch ' + c.photos[i] + ' ' + r.status;
       files.push(new File([await r.blob()], id + '_' + c.photos[i], { type: c.mime[i], lastModified: Date.now() }));
     }
