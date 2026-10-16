@@ -25,14 +25,10 @@ window.__job = async function (id, mode) {
       desc: (descEl().innerText || '').trim().slice(0, 400) };
     if (st.before.price !== c.price) throw 'price differs from task: ' + st.before.price;
     if (st.before.title !== c.origTitle) st.warn = 'title differs from task original';
-    // Avito refuses to save when the required "Особенности" group is empty; we must not invent attributes.
-    const featLabel = [...document.querySelectorAll('*')].find(e => e.children.length === 0 && (e.textContent || '').trim() === 'Особенности');
-    if (featLabel) {
-      let box = featLabel; for (let k = 0; k < 6 && box && box.querySelectorAll('input[type=checkbox]').length === 0; k++) box = box.parentElement;
-      const boxes = box ? [...box.querySelectorAll('input[type=checkbox]')] : [];
-      st.features = boxes.filter(b => b.checked).length;
-      if (boxes.length && st.features === 0) throw 'features_empty';
-    }
+    // Avito refuses to save when the required "Особенности" group (params[192468]) is empty; we must not invent attributes.
+    const feats = [...document.querySelectorAll('input[type=checkbox][name="params[192468][]"]')];
+    st.features = feats.filter(x => x.checked).length;
+    if (feats.length && st.features === 0) throw 'features_empty';
     st.step = 'delete'; set();
     for (let n = 0; n < 15; n++) {
       const z = document.querySelector('[data-marker="images"]');
