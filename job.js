@@ -28,7 +28,15 @@ window.__job = async function (id, mode) {
     // Avito refuses to save when the required "Особенности" group (params[192468]) is empty; we must not invent attributes.
     const feats = [...document.querySelectorAll('input[type=checkbox][name="params[192468][]"]')];
     st.features = feats.filter(x => x.checked).length;
-    if (feats.length && st.features === 0) throw 'features_empty';
+    if (feats.length && st.features === 0) {
+      // Owner's decision (16.10.2026): when the required "Особенности" is empty, select "Гирлянда" (3359946).
+      const g = feats.find(x => x.value === '3359946');
+      if (!g) throw 'features_empty_and_no_garland_option';
+      const lbl = document.querySelector('[data-marker="params[192468][]/3359946"]') || g.closest('label');
+      (lbl || g).click();
+      if (!await waitFor(() => g.checked, 3000)) throw 'garland_not_selected';
+      st.featuresSet = 'Гирлянда (по решению владельца)';
+    }
     st.step = 'delete'; set();
     for (let n = 0; n < 15; n++) {
       const z = document.querySelector('[data-marker="images"]');
@@ -79,7 +87,7 @@ window.__job = async function (id, mode) {
     st.after = { title: title.value, desc: (descEl().innerText || '').trim(), photos: previews().length,
       price: document.querySelector('input[name=price]').value, address: document.querySelector('input[name=address]').value };
     st.ready = st.after.title === c.title && st.after.desc === c.desc && st.after.photos === 2 &&
-      st.after.price === c.price && st.after.address === st.before.address && st.orderOk;
+      st.after.price === c.price && st.after.address === st.before.address && st.orderOk && [...document.querySelectorAll('input[type=checkbox][name="params[192468][]"]')].some(x => x.checked);
     st.step = st.ready ? 'prepared' : 'check_failed';
   } catch (e) { st.step = 'error'; st.error = String(e); }
   st.finishedAt = new Date().toISOString();
