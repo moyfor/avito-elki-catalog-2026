@@ -1,6 +1,6 @@
 // Prepares ONE archived Avito listing in the open edit form. Does NOT save.
 // Runs in page main world. Progress/result -> <html data-job="{...}">
-window.__job = async function (id) {
+window.__job = async function (id, mode) {
   const R = document.documentElement;
   const st = { id, step: 'start', log: [], startedAt: new Date().toISOString() };
   const set = () => R.setAttribute('data-job', JSON.stringify(st));
@@ -52,6 +52,9 @@ window.__job = async function (id) {
     const es = hit.editorState;
     hit.onChange(es.constructor.push(es, es.getCurrentContent().constructor.createFromText(c.desc), 'remove-range'));
     st.step = 'photos'; set();
+    if (mode === 'manual') {
+      st.sizes = c.sizes; st.step = 'waiting_photos'; set();
+    } else {
     const files = [];
     for (let i = 0; i < c.photos.length; i++) {
       const r = await fetch(base + 'p/' + id + '/' + c.photos[i], { cache: 'force-cache' });
@@ -63,7 +66,8 @@ window.__job = async function (id) {
     if (!inp) throw 'image input not found';
     const dt = new DataTransfer(); files.forEach(x => dt.items.add(x));
     inp.files = dt.files; inp.dispatchEvent(new Event('change', { bubbles: true }));
-    const done = await waitFor(() => { const im = previews(); return im.length === 2 && im.every(i => /img\.avito\.st/.test(i.src)) ? im : null; }, 90000);
+    }
+    const done = await waitFor(() => { const im = previews(); return im.length === 2 && im.every(i => /img\.avito\.st/.test(i.src)) ? im : null; }, mode === 'manual' ? 900000 : 90000);
     if (!done) throw 'photo upload did not finish';
     st.previews = done.map(i => i.getAttribute('data-marker'));
     st.orderOk = st.previews[0].includes(String(st.sizes[0])) && st.previews[1].includes(String(st.sizes[1]));
