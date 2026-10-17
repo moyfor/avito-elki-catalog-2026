@@ -37,6 +37,8 @@ window.__job = async function (id, mode) {
       if (!await waitFor(() => g.checked, 3000)) throw 'garland_not_selected';
       st.featuresSet = 'Гирлянда (по решению владельца)';
     }
+    // Wait for the original photos to render before deleting (fresh navigation loads them late).
+    await waitFor(() => previews().length > 0, 20000);
     st.step = 'delete'; set();
     for (let n = 0; n < 15; n++) {
       const z = document.querySelector('[data-marker="images"]');
